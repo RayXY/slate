@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,7 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="python">python</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -226,16 +225,13 @@
             <a href="#general" class="toc-h1 toc-link" data-title="General">General</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#response-body-format" class="toc-h2 toc-link" data-title="Response Body Format">Response Body Format</a>
+                    <a href="#request-format" class="toc-h2 toc-link" data-title="Request Format">Request Format</a>
                   </li>
                   <li>
-                    <a href="#respones-status-code" class="toc-h2 toc-link" data-title="Respones Status Code">Respones Status Code</a>
+                    <a href="#response-format" class="toc-h2 toc-link" data-title="Response Format">Response Format</a>
                   </li>
                   <li>
                     <a href="#endpoint-rate-limit" class="toc-h2 toc-link" data-title="Endpoint Rate Limit">Endpoint Rate Limit</a>
-                  </li>
-                  <li>
-                    <a href="#server-re-locate" class="toc-h2 toc-link" data-title="Server Re-locate">Server Re-locate</a>
                   </li>
                   <li>
                     <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
@@ -267,8 +263,8 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Huobi API key </a></li>
-            <li><a href='https://www.huobi.pro/apikey/'>Login is required for creating an API key</a></li>
+            <li><a href='https://www.huobi.pro/apikey/'>Sign Up for a Huobi API key </a></li>
+            <li>Login is required for creating an API key</li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -278,26 +274,126 @@
 <p>Welcome to the Huobi API! You can use our API to access all market data, trading, and account management endpoints.</p>
 
 <p>We have language bindings in Shell, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='general'>General</h1><h2 id='response-body-format'>Response Body Format</h2>
-<p>TBC</p>
-<h2 id='respones-status-code'>Respones Status Code</h2>
-<p>TBC</p>
-<h2 id='endpoint-rate-limit'>Endpoint Rate Limit</h2>
-<p>TBC</p>
-<h2 id='server-re-locate'>Server Re-locate</h2>
-<p>TBC</p>
-<h2 id='authentication'>Authentication</h2>
+<h1 id='general'>General</h1><h2 id='request-format'>Request Format</h2>
+<p>All API requests are in either GET or POST method. For GET request, all parameters are path parameters. For POST request, all parameters are in POST body and in JSON format.</p>
+<h2 id='response-format'>Response Format</h2>
+<p>All response will be returned in JSON format. The top level JSON is a wrapper object which provides three metadata in &quot;status&quot;, &quot;ch&quot;, and &quot;ts&quot;. The actual per API response data is in &quot;data&quot; field.</p>
+<h3 id='response-wrapper-content'>Response Wrapper Content</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>The overall API call result status</td>
+</tr>
+<tr>
+<td>ch</td>
+<td>string</td>
+<td>The data channel this response was originated from</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>int</td>
+<td>The timestamp in milliseconds for when the response is created</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>The actual response content per API</td>
+</tr>
+</tbody></table>
+
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Response wrapper content example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>TBC
-</code></pre><pre class="highlight python tab-python"><code><span class="n">TBC</span>
-</code></pre><h1 id='market-data'>Market Data</h1><h2 id='get-klines-candles'>Get Klines(candles)</h2>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market.btcusdt.kline.1day"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499223904680</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">per</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">nested</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">object</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='endpoint-rate-limit'>Endpoint Rate Limit</h2>
+<p>Each apikey can send maximum of 100 https requests within 10 seconds. Please contact customer support if you believe you need higher limit rate.</p>
+<h2 id='authentication'>Authentication</h2>
+<p>Some API endpoints require authentication. To be authenticated, you should first acquire an API key and the corresponding secret key.</p>
+
+<aside class="notice">
+You can manage you API keys by login to your account at huobi.com and go to "API Management" under "Account" section.
+</aside>
+
+<p>In order to successfully sign a request, you need to follow below steps</p>
+
+<ol>
+<li><p>Generate the &quot;Query String&quot; for your query</p></li>
+<li><p>Use &quot;Query String&quot; and your secret key to to created a signature</p></li>
+<li><p>Add the signature as a path parameter to your query</p></li>
+</ol>
+<h3 id='generate-the-quot-query-string-quot-for-your-query'>Generate the &quot;Query String&quot; for your query</h3>
+<ol>
+<li>Add the query path to the query string in below format</li>
+</ol>
+
+<blockquote>
+<p>[HTTP Method]\n
+[URL Root]\n
+[Query Path]\n</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>GET<span class="se">\n</span>
+api.huobi.pro<span class="se">\n</span>
+/v1/order/orders<span class="se">\n</span>
+</code></pre>
+<ol>
+<li>Add mandatory authentication parameters to the query string in below format</li>
+</ol>
+
+<blockquote>
+<p>AccessKeyId=[Your API key]&amp;SignatureMethod=HmacSHA256&amp;SignatureVersion=2&amp;Timestamp=[Your Request Timestamp]</p>
+</blockquote>
+
+<aside class="notice">
+The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
+</aside>
+<pre class="highlight shell tab-shell"><code><span class="nv">AccessKeyId</span><span class="o">=</span>e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod<span class="o">=</span>HmacSHA256&amp;SignatureVersion<span class="o">=</span>2&amp;Timestamp<span class="o">=</span>2017-05-11T15%3A19%3A30
+</code></pre>
+<ol>
+<li>Add other path parameters to the query string ordered by parameter name (asc)</li>
+</ol>
+<pre class="highlight shell tab-shell"><code>&amp;order-id<span class="o">=</span>1234567890
+</code></pre>
+<p>The final query string will be this</p>
+
+<blockquote>
+<p>GET\n
+api.huobi.pro\n
+/v1/order/orders\n
+AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod=HmacSHA256&amp;SignatureVersion=2&amp;Timestamp=2017-05-11T15%3A19%3A30&amp;order-id=1234567890</p>
+</blockquote>
+<h3 id='use-quot-query-string-quot-and-your-secret-key-to-to-created-a-signature'>Use &quot;Query String&quot; and your secret key to to created a signature</h3>
+<ol>
+<li><p>Apply HmacSHA256 hash function with inputs (query string, secret key) to get the hashed string</p></li>
+<li><p>Encode the hashed string with base-64</p></li>
+</ol>
+
+<p>The result signature will look like</p>
+
+<blockquote>
+<p>4F65x5A2bLyMWVQj3Aqp+B4w+ivaA7n5Oi2SuYtCJ9o=</p>
+</blockquote>
+<h3 id='add-the-signature-as-a-path-parameter-to-your-query'>Add the signature as a path parameter to your query</h3>
+<ol>
+<li><p>Add all mandatory authentication parameters to your path parameter</p></li>
+<li><p>Add &quot;&amp;Signature=[Your request signature with URL encode]&quot; to your path parameter</p></li>
+</ol>
+<h1 id='market-data'>Market Data</h1><h2 id='get-klines-candles'>Get Klines(candles)</h2>
 <p>This endpoint retrieves all klines in a specific range.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.huobi.pro/market/history/kline</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/history/kline"</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="n">TBC</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -406,7 +502,6 @@ This is how to create a reminder.
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.huobi.pro/market/detail/merged</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail/merged"</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="n">TBC</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -514,7 +609,6 @@ This is how to create a reminder.
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="python">python</a>
           </div>
       </div>
     </div>
