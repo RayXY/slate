@@ -245,7 +245,22 @@
                     <a href="#get-klines-candles" class="toc-h2 toc-link" data-title="Get Klines(candles)">Get Klines(candles)</a>
                   </li>
                   <li>
-                    <a href="#get-latest-ticker" class="toc-h2 toc-link" data-title="Get Latest Ticker">Get Latest Ticker</a>
+                    <a href="#get-latest-aggregated-ticker" class="toc-h2 toc-link" data-title="Get Latest Aggregated Ticker">Get Latest Aggregated Ticker</a>
+                  </li>
+                  <li>
+                    <a href="#get-latest-tickers-for-all-pairs" class="toc-h2 toc-link" data-title="Get Latest Tickers for All Pairs">Get Latest Tickers for All Pairs</a>
+                  </li>
+                  <li>
+                    <a href="#get-market-depth" class="toc-h2 toc-link" data-title="Get Market Depth">Get Market Depth</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-last-trade" class="toc-h2 toc-link" data-title="Get the Last Trade">Get the Last Trade</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-most-recent-trades" class="toc-h2 toc-link" data-title="Get the Most Recent Trades">Get the Most Recent Trades</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-last-24h-market-summary" class="toc-h2 toc-link" data-title="Get the Last 24h Market Summary">Get the Last 24h Market Summary</a>
                   </li>
               </ul>
           </li>
@@ -294,7 +309,7 @@
 <tr>
 <td>ch</td>
 <td>string</td>
-<td>The data channel this response was originated from</td>
+<td>The data channel this response was originated from. Some API return does not have this field.</td>
 </tr>
 <tr>
 <td>ts</td>
@@ -495,7 +510,7 @@ AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod=HmacSHA256&amp;
 <aside class="success">
 This is how to create a reminder.
 </aside>
-<h2 id='get-latest-ticker'>Get Latest Ticker</h2>
+<h2 id='get-latest-aggregated-ticker'>Get Latest Aggregated Ticker</h2>
 <p>This endpoint retrieves the latest ticker with some important 24h aggregated market data.</p>
 
 <aside class="warning">This is how to create<code>&lt;warning&gt;</code> .</aside>
@@ -563,27 +578,27 @@ This is how to create a reminder.
 <tr>
 <td>open</td>
 <td>float</td>
-<td>The opening price</td>
+<td>The opening price of last 24 hours</td>
 </tr>
 <tr>
 <td>close</td>
 <td>float</td>
-<td>The closing price</td>
+<td>The closing price of last 24 hours</td>
 </tr>
 <tr>
 <td>low</td>
 <td>float</td>
-<td>The low price</td>
+<td>The low price of last 24 hours</td>
 </tr>
 <tr>
 <td>high</td>
 <td>float</td>
-<td>The high price</td>
+<td>The high price of last 24 hours</td>
 </tr>
 <tr>
 <td>vol</td>
 <td>float</td>
-<td>The trading volume in base currency</td>
+<td>The trading volume in base currency of last 24 hours</td>
 </tr>
 <tr>
 <td>bid</td>
@@ -594,6 +609,480 @@ This is how to create a reminder.
 <td>ask</td>
 <td>object</td>
 <td>The current best ask in format [price, quote volume]</td>
+</tr>
+</tbody></table>
+<h2 id='get-latest-tickers-for-all-pairs'>Get Latest Tickers for All Pairs</h2>
+<p>This endpoint retrieves the latest tickers for all supported pairs.</p>
+
+<aside class="notice">The returned data object can contain large amount of tickers.</aside>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://api.huobi.pro/market/tickers</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/tickers"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+    </span><span class="p">{</span><span class="w">  
+        </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">0.044297</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">daily</span><span class="w"> </span><span class="err">Kline</span><span class="p">,</span><span class="err">opennig</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">0.042178</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">daily</span><span class="w"> </span><span class="err">Kline</span><span class="p">,</span><span class="err">closing</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">0.040110</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">daily</span><span class="w"> </span><span class="err">Kline</span><span class="p">,</span><span class="err">the</span><span class="w"> </span><span class="err">minimum</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">0.045255</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">daily</span><span class="w"> </span><span class="err">Kline</span><span class="p">,</span><span class="err">the</span><span class="w"> </span><span class="err">maxmum</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">12880.8510</span><span class="p">,</span><span class="w">  
+        </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">12838</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">563.0388715740</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"ethbtc"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">  
+        </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">0.008545</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">0.008656</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">0.008088</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">0.009388</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">88056.1860</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">16077</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">771.7975953754</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"ltcbtc"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='query-parameters-3'>Query Parameters</h3>
+<p>This endpoint does not require parameters.</p>
+<h3 id='response-content-3'>Response Content</h3>
+<p>Response content is an array of object, each object has below fields.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>The aggregated trading volume in USDT of last 24 hours</td>
+</tr>
+<tr>
+<td>count</td>
+<td>integer</td>
+<td>The number of completed trades of last 24 hours</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>The opening price of last 24 hours</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>The closing price of last 24 hours</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>The low price of last 24 hours</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>The high price of last 24 hours</td>
+</tr>
+<tr>
+<td>vol</td>
+<td>float</td>
+<td>The trading volume in base currency of last 24 hours</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>The trading pair of this object, e.g. btcusdt, bccbtc</td>
+</tr>
+</tbody></table>
+<h2 id='get-market-depth'>Get Market Depth</h2>
+<p>This endpoint retrieves the current order book of a specific pair.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://api.huobi.pro/market/depth</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/depth?symbol=btcusdt&amp;type=step1"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">31615842081</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1489464585407</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7964</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0678</span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="p">[</span><span class="err">price</span><span class="p">,</span><span class="w"> </span><span class="err">amount</span><span class="p">]</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7963</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9162</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7961</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7960</span><span class="p">,</span><span class="w"> </span><span class="mf">12.8898</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7958</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7955</span><span class="p">,</span><span class="w"> </span><span class="mf">2.1009</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7954</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4708</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7953</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0564</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7951</span><span class="p">,</span><span class="w"> </span><span class="mf">2.8031</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7950</span><span class="p">,</span><span class="w"> </span><span class="mf">13.7785</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7949</span><span class="p">,</span><span class="w"> </span><span class="mf">0.125</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7948</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7942</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4337</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7940</span><span class="p">,</span><span class="w"> </span><span class="mf">6.1612</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7936</span><span class="p">,</span><span class="w"> </span><span class="mf">0.02</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7935</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3575</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7933</span><span class="p">,</span><span class="w"> </span><span class="mf">2.002</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7932</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3449</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7930</span><span class="p">,</span><span class="w"> </span><span class="mf">10.2974</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7929</span><span class="p">,</span><span class="w"> </span><span class="mf">3.2226</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7979</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0736</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7980</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0292</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7981</span><span class="p">,</span><span class="w"> </span><span class="mf">5.5652</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7986</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2416</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7990</span><span class="p">,</span><span class="w"> </span><span class="mf">1.9970</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7995</span><span class="p">,</span><span class="w"> </span><span class="mf">0.88</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7996</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0212</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8000</span><span class="p">,</span><span class="w"> </span><span class="mf">9.2609</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8002</span><span class="p">,</span><span class="w"> </span><span class="mf">0.02</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8008</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8010</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8735</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8011</span><span class="p">,</span><span class="w"> </span><span class="mf">2.36</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8012</span><span class="p">,</span><span class="w"> </span><span class="mf">0.02</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8014</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1067</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8015</span><span class="p">,</span><span class="w"> </span><span class="mf">12.9118</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8016</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5206</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8017</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0166</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8018</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3218</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8019</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">8020</span><span class="p">,</span><span class="w"> </span><span class="mf">13.6584</span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Allowed Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>All supported trading pair symbols</td>
+<td>The trading pair to query, e.g. btcusdt, bccbtc</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>true</td>
+<td>step0, step1, step2, step3, step4, step5</td>
+<td>TBC</td>
+</tr>
+</tbody></table>
+<h3 id='response-content-4'>Response Content</h3>
+<aside class="notice">The returned data object is under 'tick' object instead of 'data' object in the top level JSON</aside>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ts</td>
+<td>integer</td>
+<td>The UNIX timestamp in milliseconds</td>
+</tr>
+<tr>
+<td>version</td>
+<td>integer</td>
+<td>TBC</td>
+</tr>
+<tr>
+<td>bids</td>
+<td>object</td>
+<td>The current all bids in format [price, quote volume]</td>
+</tr>
+<tr>
+<td>asks</td>
+<td>object</td>
+<td>The current all asks in format [price, quote volume]</td>
+</tr>
+</tbody></table>
+<h2 id='get-the-last-trade'>Get the Last Trade</h2>
+<p>This endpoint retrieves the latest trade with its price, volume, and direction.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://api.huobi.pro/market/trade</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/trade?symbol=ethusdt"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">600848670</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1489464451000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">600848670</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">7962.62</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0122</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1489464451000</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>NA</td>
+<td>The trading pair to query, e.g. btcusdt, bccbtc</td>
+</tr>
+</tbody></table>
+<h3 id='response-content-5'>Response Content</h3>
+<aside class="notice">The returned data object is under 'tick' object instead of 'data' object in the top level JSON</aside>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique trade id of this trade</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>The trading volume in base currency</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>The trading price in quote currency</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>integer</td>
+<td>The UNIX timestamp in milliseconds</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>The direction of the trade: &#39;buy&#39; or &#39;sell&#39;</td>
+</tr>
+</tbody></table>
+<h2 id='get-the-most-recent-trades'>Get the Most Recent Trades</h2>
+<p>This endpoint retrieves the most recent trades with their price, volume, and direction.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://api.huobi.pro/market/history/trade</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/history/trade?symbol=ethusdt&amp;size=2"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">31618787514</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390317905</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">  
+         </span><span class="p">{</span><span class="w">  
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">9.000000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390317905</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">3161878751418918529341</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">94.690000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"direction"</span><span class="p">:</span><span class="s2">"sell"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">  
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">73.771000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390317905</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">3161878751418918532514</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">94.660000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"direction"</span><span class="p">:</span><span class="s2">"sell"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">31618776989</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390311353</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">  
+         </span><span class="p">{</span><span class="w">  
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">1.000000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390311353</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">3161877698918918522622</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">94.710000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"direction"</span><span class="p">:</span><span class="s2">"buy"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>NA</td>
+<td>The trading pair to query, e.g. btcusdt, bccbtc</td>
+</tr>
+<tr>
+<td>size</td>
+<td>integer</td>
+<td>false</td>
+<td>1</td>
+<td>The number of data returns</td>
+</tr>
+</tbody></table>
+<h3 id='response-content-6'>Response Content</h3>
+<aside class="notice">The returned data object is an array represents one recent timestamp; each timestamp object again is an array represents all trades occurred at this timestamp.</aside>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The unique trade id of this trade</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>The trading volume in base currency</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>The trading price in quote currency</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>integer</td>
+<td>The UNIX timestamp in milliseconds</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>The direction of the trade: &#39;buy&#39; or &#39;sell&#39;</td>
+</tr>
+</tbody></table>
+<h2 id='get-the-last-24h-market-summary'>Get the Last 24h Market Summary</h2>
+<p>This endpoint retrieves the summary of trading in the market for the last 24 hours.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://api.huobi.pro/market/detail/</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+   </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">613071.438479561</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">86.21</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">94.35</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">98.7</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">31619471534</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">138909</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">84.63</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">31619471534</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">5.6617373443873316</span><span class="err">E</span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>NA</td>
+<td>The trading pair to query, e.g. btcusdt, bccbtc</td>
+</tr>
+</tbody></table>
+<h3 id='response-content-7'>Response Content</h3>
+<aside class="notice">The returned data object is under 'tick' object instead of 'data' object in the top level JSON</aside>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The UNIX timestamp in seconds as response id</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>The aggregated trading volume in USDT</td>
+</tr>
+<tr>
+<td>count</td>
+<td>integer</td>
+<td>The number of completed trades</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>The opening price of last 24 hours</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>The closing price of last 24 hours</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>The low price of last 24 hours</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>The high price of last 24 hours</td>
+</tr>
+<tr>
+<td>vol</td>
+<td>float</td>
+<td>The trading volume in base currency of last 24 hours</td>
+</tr>
+<tr>
+<td>version</td>
+<td>integer</td>
+<td>TBC</td>
 </tr>
 </tbody></table>
 <h1 id='spot-trading'>Spot Trading</h1>
