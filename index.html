@@ -294,6 +294,16 @@
 <h2 id='response-format'>Response Format</h2>
 <p>All response will be returned in JSON format. The top level JSON is a wrapper object which provides three metadata in &quot;status&quot;, &quot;ch&quot;, and &quot;ts&quot;. The actual per API response data is in &quot;data&quot; field.</p>
 <h3 id='response-wrapper-content'>Response Wrapper Content</h3>
+<blockquote>
+<p>Response wrapper content example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market.btcusdt.kline.1day"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499223904680</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">per</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">nested</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">object</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -322,17 +332,7 @@
 <td>The actual response content per API</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Response wrapper content example:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"ch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"market.btcusdt.kline.1day"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499223904680</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">per</span><span class="w"> </span><span class="err">API</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">nested</span><span class="w"> </span><span class="err">JSON</span><span class="w"> </span><span class="err">object</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='endpoint-rate-limit'>Endpoint Rate Limit</h2>
+<h2 id='endpoint-rate-limit'>Endpoint Rate Limit</h2>
 <p>Each apikey can send maximum of 100 https requests within 10 seconds. Please contact customer support if you believe you need higher limit rate.</p>
 <h2 id='authentication'>Authentication</h2>
 <p>Some API endpoints require authentication. To be authenticated, you should first acquire an API key and the corresponding secret key.</p>
@@ -349,57 +349,62 @@ You can manage you API keys by login to your account at huobi.com and go to "API
 <li><p>Add the signature as a path parameter to your query</p></li>
 </ol>
 <h3 id='generate-the-quot-query-string-quot-for-your-query'>Generate the &quot;Query String&quot; for your query</h3>
-<ol>
-<li>Add the query path to the query string in below format</li>
-</ol>
-
 <blockquote>
-<p>[HTTP Method]\n
-[URL Root]\n
-[Query Path]\n</p>
+<p>Add the query path section of the query string</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>GET<span class="se">\n</span>
-api.huobi.pro<span class="se">\n</span>
-/v1/order/orders<span class="se">\n</span>
+<pre class="highlight shell tab-shell"><code><span class="o">[</span>HTTP Method]<span class="se">\n</span><span class="o">[</span>URL Root]<span class="se">\n</span><span class="o">[</span>Query Path]<span class="se">\n</span>
+</code></pre>
+<blockquote>
+<p>For example below</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>GET<span class="se">\n</span>api.huobi.pro<span class="se">\n</span>/v1/order/orders<span class="se">\n</span>
+</code></pre>
+<blockquote>
+<p>Add the authentication section of the query string</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="nv">AccessKeyId</span><span class="o">=[</span>Your API key]&amp;SignatureMethod<span class="o">=</span>HmacSHA256&amp;SignatureVersion<span class="o">=</span>2&amp;Timestamp<span class="o">=[</span>Your Request Timestamp]
+</code></pre>
+<blockquote>
+<p>For example below</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="nv">AccessKeyId</span><span class="o">=</span>e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod<span class="o">=</span>HmacSHA256&amp;SignatureVersion<span class="o">=</span>2&amp;Timestamp<span class="o">=</span>2017-05-11T15%3A19%3A30
+</code></pre>
+<blockquote>
+<p>Add the parameter section of the query string, for example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>&amp;order-id<span class="o">=</span>1234567890
+</code></pre>
+<blockquote>
+<p>The final query string will be this</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>GET<span class="se">\n</span>api.huobi.pro<span class="se">\n</span>/v1/order/orders<span class="se">\n</span><span class="nv">AccessKeyId</span><span class="o">=</span>e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod<span class="o">=</span>HmacSHA256&amp;SignatureVersion<span class="o">=</span>2&amp;Timestamp<span class="o">=</span>2017-05-11T15%3A19%3A30&amp;order-id<span class="o">=</span>1234567890
 </code></pre>
 <ol>
-<li>Add mandatory authentication parameters to the query string in below format</li>
+<li><p>Add the query path to the query string</p></li>
+<li><p>Add mandatory authentication parameters to the query string</p></li>
+<li><p>Add other path parameters to the query string ordered by parameter name (asc)</p></li>
 </ol>
-
-<blockquote>
-<p>AccessKeyId=[Your API key]&amp;SignatureMethod=HmacSHA256&amp;SignatureVersion=2&amp;Timestamp=[Your Request Timestamp]</p>
-</blockquote>
 
 <aside class="notice">
 The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 </aside>
-<pre class="highlight shell tab-shell"><code><span class="nv">AccessKeyId</span><span class="o">=</span>e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod<span class="o">=</span>HmacSHA256&amp;SignatureVersion<span class="o">=</span>2&amp;Timestamp<span class="o">=</span>2017-05-11T15%3A19%3A30
-</code></pre>
-<ol>
-<li>Add other path parameters to the query string ordered by parameter name (asc)</li>
-</ol>
-<pre class="highlight shell tab-shell"><code>&amp;order-id<span class="o">=</span>1234567890
-</code></pre>
-<p>The final query string will be this</p>
-
-<blockquote>
-<p>GET\n
-api.huobi.pro\n
-/v1/order/orders\n
-AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod=HmacSHA256&amp;SignatureVersion=2&amp;Timestamp=2017-05-11T15%3A19%3A30&amp;order-id=1234567890</p>
-</blockquote>
 <h3 id='use-quot-query-string-quot-and-your-secret-key-to-to-created-a-signature'>Use &quot;Query String&quot; and your secret key to to created a signature</h3>
+<blockquote>
+<p>The result signature will look like</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>4F65x5A2bLyMWVQj3Aqp+B4w+ivaA7n5Oi2SuYtCJ9o<span class="o">=</span>
+</code></pre>
 <ol>
 <li><p>Apply HmacSHA256 hash function with inputs (query string, secret key) to get the hashed string</p></li>
 <li><p>Encode the hashed string with base-64</p></li>
 </ol>
-
-<p>The result signature will look like</p>
-
-<blockquote>
-<p>4F65x5A2bLyMWVQj3Aqp+B4w+ivaA7n5Oi2SuYtCJ9o=</p>
-</blockquote>
 <h3 id='add-the-signature-as-a-path-parameter-to-your-query'>Add the signature as a path parameter to your query</h3>
+<blockquote>
+<p>The final request with signature will look like</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>https://api.huobi.pro/v1/order/orders?AccessKeyId<span class="o">=</span>e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;order-id<span class="o">=</span>1234567890&amp;SignatureMethod<span class="o">=</span>HmacSHA256&amp;SignatureVersion<span class="o">=</span>2&amp;Timestamp<span class="o">=</span>2017-05-11T15%3A19%3A30&amp;Signature<span class="o">=</span>4F65x5A2bLyMWVQj3Aqp%2BB4w%2BivaA7n5Oi2SuYtCJ9o%3D
+
+</code></pre>
 <ol>
 <li><p>Add all mandatory authentication parameters to your path parameter</p></li>
 <li><p>Add &quot;&amp;Signature=[Your request signature with URL encode]&quot; to your path parameter</p></li>
@@ -408,7 +413,7 @@ AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod=HmacSHA256&amp;
 <p>This endpoint retrieves all klines in a specific range.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.huobi.pro/market/history/kline</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/history/kline"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/kline?period=1day&amp;size=200&amp;symbol=btcusdt"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -447,14 +452,14 @@ AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod=HmacSHA256&amp;
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>The period of each candle, allowed values are: 1min, 5min, 15min, 30min, 60min, 1day, 1mon, 1week, 1year</td>
 </tr>
 <tr>
 <td>size</td>
 <td>integer</td>
 <td>false</td>
 <td>150</td>
-<td>The number of data returns</td>
+<td>The number of data returns, range [1, 2000]</td>
 </tr>
 </tbody></table>
 <h3 id='response-content'>Response Content</h3>
@@ -506,17 +511,11 @@ AccessKeyId=e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod=HmacSHA256&amp;
 <td>The trading volume in base currency</td>
 </tr>
 </tbody></table>
-
-<aside class="success">
-This is how to create a reminder.
-</aside>
 <h2 id='get-latest-aggregated-ticker'>Get Latest Aggregated Ticker</h2>
 <p>This endpoint retrieves the latest ticker with some important 24h aggregated market data.</p>
-
-<aside class="warning">This is how to create<code>&lt;warning&gt;</code> .</aside>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.huobi.pro/market/detail/merged</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail/merged"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail/merged?symbol=ethusdt"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -995,7 +994,7 @@ This is how to create a reminder.
 <p>This endpoint retrieves the summary of trading in the market for the last 24 hours.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://api.huobi.pro/market/detail/</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail?symbol=ethusdt"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
