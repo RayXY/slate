@@ -317,22 +317,22 @@
             <a href="#7d8240332e" class="toc-h1 toc-link" data-title="杠杆交易">杠杆交易</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#transfer-asset-from-spot-trading-account-to-margin-account" class="toc-h2 toc-link" data-title="Transfer Asset from Spot Trading Account to Margin Account">Transfer Asset from Spot Trading Account to Margin Account</a>
+                    <a href="#e0eba8facc" class="toc-h2 toc-link" data-title="从现货账户划转到杠杆账户">从现货账户划转到杠杆账户</a>
                   </li>
                   <li>
-                    <a href="#transfer-asset-from-margin-account-to-spot-trading-account" class="toc-h2 toc-link" data-title="Transfer Asset from Margin Account to Spot Trading Account">Transfer Asset from Margin Account to Spot Trading Account</a>
+                    <a href="#8d6e0b2c92" class="toc-h2 toc-link" data-title="从杠杆账户划转到现货账户">从杠杆账户划转到现货账户</a>
                   </li>
                   <li>
-                    <a href="#place-a-margin-loan-order" class="toc-h2 toc-link" data-title="Place a Margin Loan Order">Place a Margin Loan Order</a>
+                    <a href="#48cca1ce88" class="toc-h2 toc-link" data-title="申请借贷">申请借贷</a>
                   </li>
                   <li>
-                    <a href="#repay-margin-loan" class="toc-h2 toc-link" data-title="Repay Margin Loan">Repay Margin Loan</a>
+                    <a href="#48aa7c8199" class="toc-h2 toc-link" data-title="归还借贷">归还借贷</a>
                   </li>
                   <li>
-                    <a href="#search-past-margin-orders" class="toc-h2 toc-link" data-title="Search Past Margin Orders">Search Past Margin Orders</a>
+                    <a href="#e52396720a" class="toc-h2 toc-link" data-title="查询借贷订单">查询借贷订单</a>
                   </li>
                   <li>
-                    <a href="#return-the-balance-of-the-margin-loan-account" class="toc-h2 toc-link" data-title="Return the Balance of the Margin Loan Account">Return the Balance of the Margin Loan Account</a>
+                    <a href="#6e79ba8e80" class="toc-h2 toc-link" data-title="借贷账户详情">借贷账户详情</a>
                   </li>
               </ul>
           </li>
@@ -482,7 +482,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/kline?period=1day&amp;size=200&amp;symbol=btcusdt"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -496,14 +496,14 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
     </span><span class="s2">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mf">71031537.97866500</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='query-parameters'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15'>请求参数</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -528,7 +528,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>The number of data returns, range [1, 2000]</td>
 </tr>
 </tbody></table>
-<h3 id='response-content'>Response Content</h3>
+<h3 id='2213f4c32f'>响应数据</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -584,7 +584,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail/merged?symbol=ethusdt"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1499225271</span><span class="p">,</span><span class="w">
@@ -599,14 +599,14 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
   </span><span class="s2">"ask"</span><span class="p">:[</span><span class="mf">1885.0000</span><span class="p">,</span><span class="mf">21.8804</span><span class="p">],</span><span class="w">
   </span><span class="s2">"bid"</span><span class="p">:[</span><span class="mf">1884.0000</span><span class="p">,</span><span class="mf">1.6702</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-2'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-2'>请求参数</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -617,7 +617,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>The trading pair to query, e.g. btcusdt, bccbtc</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-2'>Response Content</h3>
+<h3 id='2213f4c32f-2'>响应数据</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -685,7 +685,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/tickers"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
     </span><span class="p">{</span><span class="w">  
@@ -709,9 +709,9 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
         </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"ltcbtc"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='query-parameters-3'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-3'>请求参数</h3>
 <p>This endpoint does not require parameters.</p>
-<h3 id='response-content-3'>Response Content</h3>
+<h3 id='2213f4c32f-3'>响应数据</h3>
 <p>Response content is an array of object, each object has below fields.</p>
 
 <table><thead>
@@ -769,7 +769,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/depth?symbol=btcusdt&amp;type=step1"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">31615842081</span><span class="p">,</span><span class="w">
@@ -819,7 +819,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
       </span><span class="p">[</span><span class="mi">8020</span><span class="p">,</span><span class="w"> </span><span class="mf">13.6584</span><span class="p">]</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-4'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-4'>请求参数</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -844,7 +844,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>TBC</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-4'>Response Content</h3>
+<h3 id='2213f4c32f-4'>响应数据</h3>
 <aside class="notice">The returned data object is under 'tick' object instead of 'data' object in the top level JSON</aside>
 
 <table><thead>
@@ -882,7 +882,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/trade?symbol=ethusdt"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">600848670</span><span class="p">,</span><span class="w">
@@ -897,14 +897,14 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-5'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-5'>请求参数</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -915,7 +915,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>The trading pair to query, e.g. btcusdt, bccbtc</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-5'>Response Content</h3>
+<h3 id='2213f4c32f-5'>响应数据</h3>
 <aside class="notice">The returned data object is under 'tick' object instead of 'data' object in the top level JSON</aside>
 
 <table><thead>
@@ -958,7 +958,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/history/trade?symbol=ethusdt&amp;size=2"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
    </span><span class="p">{</span><span class="w">  
@@ -995,14 +995,14 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
       </span><span class="p">]</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='query-parameters-6'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-6'>请求参数</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1020,7 +1020,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>The number of data returns</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-6'>Response Content</h3>
+<h3 id='2213f4c32f-6'>响应数据</h3>
 <aside class="notice">The returned data object is an array represents one recent timestamp; each timestamp object again is an array represents all trades occurred at this timestamp.</aside>
 
 <table><thead>
@@ -1063,7 +1063,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail?symbol=ethusdt"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
    </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">613071.438479561</span><span class="p">,</span><span class="w">
@@ -1076,14 +1076,14 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
    </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">31619471534</span><span class="p">,</span><span class="w">
    </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">5.6617373443873316</span><span class="err">E</span><span class="mi">7</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-7'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-7'>请求参数</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1094,7 +1094,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>The trading pair to query, e.g. btcusdt, bccbtc</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-7'>Response Content</h3>
+<h3 id='2213f4c32f-7'>响应数据</h3>
 <aside class="notice">The returned data object is under 'tick' object instead of 'data' object in the top level JSON</aside>
 
 <table><thead>
@@ -1166,19 +1166,19 @@ BODY <span class="o">{</span>
    <span class="s2">"type"</span>: <span class="s2">"buy-limit"</span><span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59378"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-8'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-8'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1193,7 +1193,7 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to trade, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>type</td>
@@ -1224,7 +1224,7 @@ BODY <span class="o">{</span>
 <td>When trade with margin use &#39;margin-api&#39;</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-8'>Response Content</h3>
+<h3 id='2213f4c32f-8'>响应数据</h3>
 <aside class="notice">The returned data object is a single string which represents the order id</aside>
 <h2 id='show-all-open-orders'>Show All Open Orders</h2>
 <p>This endpoint returns all open orders which have not been filled completely.</p>
@@ -1240,7 +1240,7 @@ BODY <span class="o">{</span>
    <span class="s2">"type"</span>: <span class="s2">"buy-limit"</span><span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1260,14 +1260,14 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-9'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-9'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1282,7 +1282,7 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>false</td>
 <td>NA</td>
-<td>The trading pair to trade, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>side</td>
@@ -1299,12 +1299,12 @@ BODY <span class="o">{</span>
 <td>The max number of orders to return</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-9'>Response Content</h3>
+<h3 id='2213f4c32f-9'>响应数据</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1315,7 +1315,7 @@ BODY <span class="o">{</span>
 <tr>
 <td>symbol</td>
 <td>string</td>
-<td>The trading pair to trade, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>price</td>
@@ -1367,7 +1367,7 @@ BODY <span class="o">{</span>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378/submitcancel"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59378"</span><span class="w">
@@ -1384,7 +1384,7 @@ BODY <span class="o">{</span>
 <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1401,14 +1401,14 @@ BODY <span class="o">{</span>
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-10'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-10'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1419,12 +1419,12 @@ BODY <span class="o">{</span>
 <td>The order ids to cancel. Max size is 50.</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-10'>Response Content</h3>
+<h3 id='2213f4c32f-10'>响应数据</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1450,7 +1450,7 @@ BODY <span class="o">{</span>
 <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1467,14 +1467,14 @@ BODY <span class="o">{</span>
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-11'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-11'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1485,12 +1485,12 @@ BODY <span class="o">{</span>
 <td>The order ids to cancel. Max size is 50.</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-11'>Response Content</h3>
+<h3 id='2213f4c32f-11'>响应数据</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1511,7 +1511,7 @@ BODY <span class="o">{</span>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1534,12 +1534,12 @@ BODY <span class="o">{</span>
     </span><span class="s2">"batch"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-content-12'>Response Content</h3>
+</span></code></pre><h3 id='2213f4c32f-12'>响应数据</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1550,7 +1550,7 @@ BODY <span class="o">{</span>
 <tr>
 <td>symbol</td>
 <td>string</td>
-<td>The trading pair to trade, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>account-id</td>
@@ -1630,7 +1630,7 @@ BODY <span class="o">{</span>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378/matchresult"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1648,14 +1648,14 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-content-13'>Response Content</h3>
+</span></code></pre><h3 id='2213f4c32f-13'>响应数据</h3>
 <aside class="notice">The return data contains a list and each item in the list represents a match result</aside>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1666,7 +1666,7 @@ BODY <span class="o">{</span>
 <tr>
 <td>symbol</td>
 <td>string</td>
-<td>The trading pair to trade, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>order-id</td>
@@ -1724,7 +1724,7 @@ BODY <span class="o">{</span>
    <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1749,14 +1749,14 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-12'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-12'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1764,7 +1764,7 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to trade, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>types</td>
@@ -1778,7 +1778,7 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>false</td>
 <td>All</td>
-<td>The states of order to include in the search</td>
+<td>订单状态</td>
 </tr>
 <tr>
 <td>start-date</td>
@@ -1816,12 +1816,12 @@ BODY <span class="o">{</span>
 <td>The max number of orders to return, max value is 100</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-14'>Response Content</h3>
+<h3 id='2213f4c32f-14'>响应数据</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1847,7 +1847,7 @@ BODY <span class="o">{</span>
 <tr>
 <td>symbol</td>
 <td>string</td>
-<td>The trading pair to trade, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>price</td>
@@ -1917,7 +1917,7 @@ BODY <span class="o">{</span>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/matchresults"</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1935,14 +1935,14 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-13'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-13'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1950,7 +1950,7 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to trade, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>types</td>
@@ -1964,7 +1964,7 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>false</td>
 <td>All</td>
-<td>The states of order to include in the search</td>
+<td>订单状态</td>
 </tr>
 <tr>
 <td>start-date</td>
@@ -2002,14 +2002,14 @@ BODY <span class="o">{</span>
 <td>The max number of orders to return</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-15'>Response Content</h3>
+<h3 id='2213f4c32f-15'>响应数据</h3>
 <aside class="notice">The return data contains a list and each item in the list represents a match result</aside>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2020,7 +2020,7 @@ BODY <span class="o">{</span>
 <tr>
 <td>symbol</td>
 <td>string</td>
-<td>The trading pair to trade, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>order-id</td>
@@ -2069,10 +2069,10 @@ BODY <span class="o">{</span>
 <aside class="notice">Currently margin trade only supports base currency of USDT and BTC</aside>
 
 <aside class="warning">All order placed with margin should set the 'source' field to 'margin-api'</aside>
-<h2 id='transfer-asset-from-spot-trading-account-to-margin-account'>Transfer Asset from Spot Trading Account to Margin Account</h2>
-<p>This endpoint transfer specific asset from spot trading account to margin account.</p>
+<h2 id='e0eba8facc'>从现货账户划转到杠杆账户</h2>
+<p>此接口用于将资产从现货账户划转到杠杆账户。</p>
 <h3 id='http-request-17'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/dw/transfer-in</code></p>
+<p><code>POST https://api.huobi.pro/v1/dw/transfer-in</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/dw/transfer-in"</span>
 BODY
 <span class="o">{</span>
@@ -2082,19 +2082,19 @@ BODY
 <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-14'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-14'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2102,31 +2102,31 @@ BODY
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to borrow margin, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bchbtc</td>
 </tr>
 <tr>
 <td>currency</td>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The currency to borrow</td>
+<td>币种</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The amount of currency to borrow</td>
+<td>划转数量</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-16'>Response Content</h3>
+<h3 id='2213f4c32f-16'>响应数据</h3>
 <aside class="notice">The return data contains a single value instead of an object</aside>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2135,8 +2135,8 @@ BODY
 <td>Transfer id</td>
 </tr>
 </tbody></table>
-<h2 id='transfer-asset-from-margin-account-to-spot-trading-account'>Transfer Asset from Margin Account to Spot Trading Account</h2>
-<p>This endpoint transfer specific asset from margin account to spot trading account.</p>
+<h2 id='8d6e0b2c92'>从杠杆账户划转到现货账户</h2>
+<p>此接口用于将资产从杠杆账户划转到现货账户。</p>
 <h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://api.huobi.pro/v1/dw/transfer-out</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/dw/transfer-out"</span>
@@ -2148,19 +2148,19 @@ BODY
 <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-15'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-15'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2168,31 +2168,31 @@ BODY
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to borrow margin, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>currency</td>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The currency to borrow</td>
+<td>币种</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The amount of currency to borrow</td>
+<td>划转数量</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-17'>Response Content</h3>
+<h3 id='2213f4c32f-17'>响应数据</h3>
 <aside class="notice">The return data contains a single value instead of an object</aside>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2201,10 +2201,10 @@ BODY
 <td>Transfer id</td>
 </tr>
 </tbody></table>
-<h2 id='place-a-margin-loan-order'>Place a Margin Loan Order</h2>
-<p>This endpoint place an order to initiate a margin loan.</p>
+<h2 id='48cca1ce88'>申请借贷</h2>
+<p>此接口用于申请借贷.</p>
 <h3 id='http-request-19'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/margin/orders</code></p>
+<p><code>POST https://api.huobi.pro/v1/margin/orders</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/margin/orders"</span>
 BODY
 <span class="o">{</span>
@@ -2214,19 +2214,19 @@ BODY
 <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-16'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-16'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2234,31 +2234,31 @@ BODY
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to borrow margin, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>currency</td>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The currency to borrow</td>
+<td>币种</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The amount of currency to borrow</td>
+<td>借贷数量</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-18'>Response Content</h3>
+<h3 id='2213f4c32f-18'>响应数据</h3>
 <aside class="notice">The return data contains a single value instead of an object</aside>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2267,8 +2267,8 @@ BODY
 <td>Margin order id</td>
 </tr>
 </tbody></table>
-<h2 id='repay-margin-loan'>Repay Margin Loan</h2>
-<p>This endpoint repays margin loan with you asset in your margin account.</p>
+<h2 id='48aa7c8199'>归还借贷</h2>
+<p>此接口用于归还借贷.</p>
 <h3 id='http-request-20'>HTTP Request</h3>
 <p><code>POST https://api.huobi.pro/v1/margin/orders/{order-id}/repay</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/margin/orders/1000/repay"</span>
@@ -2278,19 +2278,19 @@ BODY
 <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-17'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-17'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2298,17 +2298,17 @@ BODY
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The amount of currency to repay</td>
+<td>归还币种</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-19'>Response Content</h3>
+<h3 id='2213f4c32f-19'>响应数据</h3>
 <aside class="notice">The return data contains a single value instead of an object</aside>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2317,10 +2317,10 @@ BODY
 <td>Margin order id</td>
 </tr>
 </tbody></table>
-<h2 id='search-past-margin-orders'>Search Past Margin Orders</h2>
+<h2 id='e52396720a'>查询借贷订单</h2>
 <p>This endpoint returns margin orders based on a specific searching criteria.</p>
 <h3 id='http-request-21'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/margin/loan-orders</code></p>
+<p><code>POST https://api.huobi.pro/v1/margin/loan-orders</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/margin/load-orders"</span>
 BODY <span class="o">{</span>
    <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
@@ -2332,7 +2332,7 @@ BODY <span class="o">{</span>
    <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2353,14 +2353,14 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-18'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-18'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2368,14 +2368,14 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to trade, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>states</td>
 <td>string</td>
 <td>false</td>
 <td>All</td>
-<td>The states of order to include in the search</td>
+<td>订单状态</td>
 </tr>
 <tr>
 <td>start-date</td>
@@ -2413,12 +2413,12 @@ BODY <span class="o">{</span>
 <td>The max number of orders to return, max value is 100</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-20'>Response Content</h3>
+<h3 id='2213f4c32f-20'>响应数据</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2492,7 +2492,7 @@ BODY <span class="o">{</span>
 <td>Loan state, possible values: created, accrual, cleared, invalid</td>
 </tr>
 </tbody></table>
-<h2 id='return-the-balance-of-the-margin-loan-account'>Return the Balance of the Margin Loan Account</h2>
+<h2 id='6e79ba8e80'>借贷账户详情</h2>
 <p>This endpoint returns the balance of the margin loan account.</p>
 <h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET https://api.huobi.pro/v1/margin/accounts/balance</code></p>
@@ -2507,61 +2507,61 @@ BODY <span class="o">{</span>
    <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
 </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18264</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"margin"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"fl-price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"fl-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safe"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"risk-rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"475.952571086994250554"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1168.533000000000000000"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frozen"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000000000000000"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-2.433000000000000000"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"interest"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.000533000000000000"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transfer-out-available"</span><span class="p">,</span><span class="err">//可转btc</span><span class="w">
-                    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1163.872174670000000000"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan-available"</span><span class="p">,</span><span class="err">//可借btc</span><span class="w">
-                    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8161.876538350676000000"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18264</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"margin"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"fl-price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"fl-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safe"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"risk-rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"475.952571086994250554"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1168.533000000000000000"</span><span class="w">
+                            </span><span class="p">},</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frozen"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000000000000000"</span><span class="w">
+                            </span><span class="p">},</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-2.433000000000000000"</span><span class="w">
+                            </span><span class="p">},</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"interest"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.000533000000000000"</span><span class="w">
+                            </span><span class="p">},</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transfer-out-available"</span><span class="p">,</span><span class="err">//可转btc</span><span class="w">
+                                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1163.872174670000000000"</span><span class="w">
+                            </span><span class="p">},</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan-available"</span><span class="p">,</span><span class="err">//可借btc</span><span class="w">
+                                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8161.876538350676000000"</span><span class="w">
+                            </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-19'>Query Parameters</h3>
+</span></code></pre><h3 id='1f9ac54b15-19'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2569,10 +2569,10 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to borrow margin, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 </tbody></table>
-<h3 id='response-content-21'>Response Content</h3>
+<h3 id='2213f4c32f-21'>响应数据</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2629,6 +2629,7 @@ BODY <span class="o">{</span>
         lang_btn.href = '/slate/v1/en/';
         v1_url.href = '/slate/v1/cn/';
         v2_url.href = '/slate/v2/cn/';
+        lang_btn.style.display = 'block';
       }
       function GetUrlRelativePath(){
         let url = document.location.toString();
