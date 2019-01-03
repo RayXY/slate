@@ -1,4 +1,340 @@
-<h1 id='introduction'>Introduction</h1>
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Huobi API Reference V1 English</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction-to-api-1-0-chinese" class="toc-h1 toc-link" data-title="Introduction to API 1.0 Chinese">Introduction to API 1.0 Chinese</a>
+          </li>
+          <li>
+            <a href="#general" class="toc-h1 toc-link" data-title="General">General</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#request-format" class="toc-h2 toc-link" data-title="Request Format">Request Format</a>
+                  </li>
+                  <li>
+                    <a href="#response-format" class="toc-h2 toc-link" data-title="Response Format">Response Format</a>
+                  </li>
+                  <li>
+                    <a href="#endpoint-rate-limit" class="toc-h2 toc-link" data-title="Endpoint Rate Limit">Endpoint Rate Limit</a>
+                  </li>
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#market-data" class="toc-h1 toc-link" data-title="Market Data">Market Data</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-klines-candles" class="toc-h2 toc-link" data-title="Get Klines(candles)">Get Klines(candles)</a>
+                  </li>
+                  <li>
+                    <a href="#get-latest-aggregated-ticker" class="toc-h2 toc-link" data-title="Get Latest Aggregated Ticker">Get Latest Aggregated Ticker</a>
+                  </li>
+                  <li>
+                    <a href="#get-latest-tickers-for-all-pairs" class="toc-h2 toc-link" data-title="Get Latest Tickers for All Pairs">Get Latest Tickers for All Pairs</a>
+                  </li>
+                  <li>
+                    <a href="#get-market-depth" class="toc-h2 toc-link" data-title="Get Market Depth">Get Market Depth</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-last-trade" class="toc-h2 toc-link" data-title="Get the Last Trade">Get the Last Trade</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-most-recent-trades" class="toc-h2 toc-link" data-title="Get the Most Recent Trades">Get the Most Recent Trades</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-last-24h-market-summary" class="toc-h2 toc-link" data-title="Get the Last 24h Market Summary">Get the Last 24h Market Summary</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#spot-trading" class="toc-h1 toc-link" data-title="Spot Trading">Spot Trading</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#place-a-new-trading-order" class="toc-h2 toc-link" data-title="Place a New Trading Order">Place a New Trading Order</a>
+                  </li>
+                  <li>
+                    <a href="#show-all-open-orders" class="toc-h2 toc-link" data-title="Show All Open Orders">Show All Open Orders</a>
+                  </li>
+                  <li>
+                    <a href="#submit-cancel-for-an-order" class="toc-h2 toc-link" data-title="Submit Cancel for an Order">Submit Cancel for an Order</a>
+                  </li>
+                  <li>
+                    <a href="#submit-cancel-for-multiple-orders-at-once" class="toc-h2 toc-link" data-title="Submit Cancel for Multiple Orders at Once">Submit Cancel for Multiple Orders at Once</a>
+                  </li>
+                  <li>
+                    <a href="#submit-cancel-for-multiple-orders-at-once-2" class="toc-h2 toc-link" data-title="Submit Cancel for Multiple Orders at Once">Submit Cancel for Multiple Orders at Once</a>
+                  </li>
+                  <li>
+                    <a href="#show-the-order-detail-of-one-order" class="toc-h2 toc-link" data-title="Show the Order Detail of One Order">Show the Order Detail of One Order</a>
+                  </li>
+                  <li>
+                    <a href="#show-the-match-result-of-an-order" class="toc-h2 toc-link" data-title="Show the Match Result of an Order">Show the Match Result of an Order</a>
+                  </li>
+                  <li>
+                    <a href="#search-past-orders" class="toc-h2 toc-link" data-title="Search Past Orders">Search Past Orders</a>
+                  </li>
+                  <li>
+                    <a href="#search-the-match-results" class="toc-h2 toc-link" data-title="Search the Match Results">Search the Match Results</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#margin-trading" class="toc-h1 toc-link" data-title="Margin Trading">Margin Trading</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#transfer-asset-from-spot-trading-account-to-margin-account" class="toc-h2 toc-link" data-title="Transfer Asset from Spot Trading Account to Margin Account">Transfer Asset from Spot Trading Account to Margin Account</a>
+                  </li>
+                  <li>
+                    <a href="#transfer-asset-from-margin-account-to-spot-trading-account" class="toc-h2 toc-link" data-title="Transfer Asset from Margin Account to Spot Trading Account">Transfer Asset from Margin Account to Spot Trading Account</a>
+                  </li>
+                  <li>
+                    <a href="#place-a-margin-loan-order" class="toc-h2 toc-link" data-title="Place a Margin Loan Order">Place a Margin Loan Order</a>
+                  </li>
+                  <li>
+                    <a href="#repay-margin-loan" class="toc-h2 toc-link" data-title="Repay Margin Loan">Repay Margin Loan</a>
+                  </li>
+                  <li>
+                    <a href="#search-past-margin-orders" class="toc-h2 toc-link" data-title="Search Past Margin Orders">Search Past Margin Orders</a>
+                  </li>
+                  <li>
+                    <a href="#return-the-balance-of-the-margin-loan-account" class="toc-h2 toc-link" data-title="Return the Balance of the Margin Loan Account">Return the Balance of the Margin Loan Account</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#wallet-deposit-and-withdraw" class="toc-h1 toc-link" data-title="Wallet (Deposit and Withdraw)">Wallet (Deposit and Withdraw)</a>
+          </li>
+          <li>
+            <a href="#account" class="toc-h1 toc-link" data-title="Account">Account</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://www.huobi.pro/apikey/'>Sign Up for a Huobi API key </a></li>
+            <li>Login is required for creating an API key</li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction-to-api-1-0-chinese'>Introduction to API 1.0 Chinese</h1>
 <p>Welcome to the Huobi API! You can use our API to access all market data, trading, and account management endpoints.</p>
 
 <p>We have language bindings in Shell, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
@@ -2235,7 +2571,7 @@ BODY <span class="o">{</span>
 <tr>
 <td>state</td>
 <td>string</td>
-<td>Balance state, possible values: working,fl-sys,fl-mgt,fl-end</td>
+<td>Loan state, possible values: created, accrual, cleared, invalid</td>
 </tr>
 <tr>
 <td>risk-rate</td>
@@ -2253,90 +2589,17 @@ BODY <span class="o">{</span>
 <td>The list of loans and their details</td>
 </tr>
 </tbody></table>
-<h1 id='wallet-deposit-and-withdraw'>Wallet (Deposit and Withdraw)</h1><h2 id='create-a-withdraw-request'>Create a Withdraw Request</h2>
-<p>This endpoint creates a withdraw request from your spot trading account to an external address.</p>
-
-<aside class="notice">Only supported the existed addresses in your withdraw address list</aside>
-<h3 id='http-request-23'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/dw/withdraw/api/create</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/dw/withdraw/api/create"</span>
-BODY
-<span class="o">{</span>
-  <span class="s2">"address"</span>: <span class="s2">"0xde709f2102306220921060314715629080e2fb77"</span>,
-  <span class="s2">"amount"</span>: <span class="s2">"0.05"</span>,
-  <span class="s2">"currency"</span>: <span class="s2">"eth"</span>,
-  <span class="s2">"fee"</span>: <span class="s2">"0.01"</span>
-<span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='query-parameters-20'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>address</td>
-<td>string</td>
-<td>true</td>
-<td>NA</td>
-<td>The desination address of this withdraw</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>string</td>
-<td>true</td>
-<td>NA</td>
-<td>The crypto currency to withdraw</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>string</td>
-<td>true</td>
-<td>NA</td>
-<td>The amount of currency to withdraw</td>
-</tr>
-<tr>
-<td>fee</td>
-<td>string</td>
-<td>true</td>
-<td>NA</td>
-<td>The trading pair to borrow margin, e.g. btcusdt, bccbtc</td>
-</tr>
-<tr>
-<td>addr-tag</td>
-<td>string</td>
-<td>true</td>
-<td>NA</td>
-<td>The trading pair to borrow margin, e.g. btcusdt, bccbtc</td>
-</tr>
-</tbody></table>
-<h3 id='response-content-22'>Response Content</h3>
-<aside class="notice">The return data contains a single value instead of an object</aside>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>data</td>
-<td>integer</td>
-<td>Transfer id</td>
-</tr>
-</tbody></table>
-
+<h1 id='wallet-deposit-and-withdraw'>Wallet (Deposit and Withdraw)</h1>
 <p>TBC</p>
 <h1 id='account'>Account</h1>
 <p>TBC</p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
