@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;]">
     <a href="#" id="nav-button">
       <span>
         <img src="images/navbar.png" alt="Navbar" />
@@ -229,6 +229,7 @@
     <div class="toc-wrapper">
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="python">python</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -262,7 +263,7 @@
                     <a href="#k" class="toc-h2 toc-link" data-title="K 线数据（蜡烛图）">K 线数据（蜡烛图）</a>
                   </li>
                   <li>
-                    <a href="#ticker" class="toc-h2 toc-link" data-title="最新的聚合 Ticker">最新的聚合 Ticker</a>
+                    <a href="#ticker" class="toc-h2 toc-link" data-title="聚合行情（Ticker）">聚合行情（Ticker）</a>
                   </li>
                   <li>
                     <a href="#tickers" class="toc-h2 toc-link" data-title="所有交易对的最新 Tickers">所有交易对的最新 Tickers</a>
@@ -271,10 +272,10 @@
                     <a href="#0f7bd4961a" class="toc-h2 toc-link" data-title="市场深度数据">市场深度数据</a>
                   </li>
                   <li>
-                    <a href="#get-the-last-trade" class="toc-h2 toc-link" data-title="Get the Last Trade">Get the Last Trade</a>
+                    <a href="#a7fb7754d7" class="toc-h2 toc-link" data-title="最近市场成交记录">最近市场成交记录</a>
                   </li>
                   <li>
-                    <a href="#get-the-most-recent-trades" class="toc-h2 toc-link" data-title="Get the Most Recent Trades">Get the Most Recent Trades</a>
+                    <a href="#6c0e0ca109" class="toc-h2 toc-link" data-title="最近的市场成交记录">最近的市场成交记录</a>
                   </li>
                   <li>
                     <a href="#24" class="toc-h2 toc-link" data-title="最近24小时行情数据">最近24小时行情数据</a>
@@ -288,22 +289,22 @@
                     <a href="#fd6ce2a756" class="toc-h2 toc-link" data-title="下单">下单</a>
                   </li>
                   <li>
-                    <a href="#show-all-open-orders" class="toc-h2 toc-link" data-title="Show All Open Orders">Show All Open Orders</a>
+                    <a href="#95f2078356" class="toc-h2 toc-link" data-title="查询当前未成交订单">查询当前未成交订单</a>
                   </li>
                   <li>
-                    <a href="#submit-cancel-for-an-order" class="toc-h2 toc-link" data-title="Submit Cancel for an Order">Submit Cancel for an Order</a>
+                    <a href="#8d883f1577" class="toc-h2 toc-link" data-title=""></a>
                   </li>
                   <li>
                     <a href="#submit-cancel-for-multiple-orders-at-once" class="toc-h2 toc-link" data-title="Submit Cancel for Multiple Orders at Once">Submit Cancel for Multiple Orders at Once</a>
                   </li>
                   <li>
-                    <a href="#submit-cancel-for-multiple-orders-at-once-2" class="toc-h2 toc-link" data-title="Submit Cancel for Multiple Orders at Once">Submit Cancel for Multiple Orders at Once</a>
+                    <a href="#037c64513f" class="toc-h2 toc-link" data-title="批量取消符合条件的订单">批量取消符合条件的订单</a>
                   </li>
                   <li>
-                    <a href="#show-the-order-detail-of-one-order" class="toc-h2 toc-link" data-title="Show the Order Detail of One Order">Show the Order Detail of One Order</a>
+                    <a href="#58f6496bf1" class="toc-h2 toc-link" data-title="查询单个订单详情">查询单个订单详情</a>
                   </li>
                   <li>
-                    <a href="#show-the-match-result-of-an-order" class="toc-h2 toc-link" data-title="Show the Match Result of an Order">Show the Match Result of an Order</a>
+                    <a href="#cc0e50078c" class="toc-h2 toc-link" data-title="某个订单的成交明细">某个订单的成交明细</a>
                   </li>
                   <li>
                     <a href="#search-past-orders" class="toc-h2 toc-link" data-title="Search Past Orders">Search Past Orders</a>
@@ -344,8 +345,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://www.huobi.pro/apikey/'>Sign Up for a Huobi API key </a></li>
-            <li>Login is required for creating an API key</li>
+            <li><a href='https://www.huobi.pro/apikey/'>获取 APIKEY </a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -372,9 +372,9 @@
 </span></code></pre>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数名称</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -399,12 +399,17 @@
 </tr>
 </tbody></table>
 <h2 id='c1fd2fc5ac'>限频规则</h2>
-<p>Each apikey can send maximum of 100 https requests within 10 seconds. Please contact customer support if you believe you need higher limit rate.</p>
+<p>现货 / 杠杆(api.huobi.pro)：10秒100次</p>
+
+<p>合约(api.hbdm.com)：限制频率为10秒50次
+<aside class="notice">
+单个APIKEY维度限制，建议行情API访问也要加上签名，否则限频会更严格。
+</aside></p>
 <h2 id='c64cd15fdc'>签名认证</h2>
 <p>Some API endpoints require authentication. To be authenticated, you should first acquire an API key and the corresponding secret key.</p>
 
 <aside class="notice">
-You can manage you API keys by login to your account at huobi.com and go to "API Management" under "Account" section.
+目前关于apikey申请和修改，请在“账户 - API管理”页面进行相关操作。其中AccessKey为API 访问密钥，SecretKey为用户对请求进行签名的密钥（仅申请时可见）。
 </aside>
 
 <p>In order to successfully sign a request, you need to follow below steps</p>
@@ -478,7 +483,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <h1 id='d9d514d202'>行情数据</h1><h2 id='k'>K 线数据（蜡烛图）</h2>
 <p>This endpoint retrieves all klines in a specific range.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/market/history/kline</code></p>
+<p><code>GET /market/history/kline</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/kline?period=1day&amp;size=200&amp;symbol=btcusdt"</span>
 </code></pre>
 <blockquote>
@@ -501,7 +506,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <tr>
 <th>Parameter</th>
 <th>数据类型</th>
-<th>是否必须</th>
+<th>是否必需</th>
 <th>默认值</th>
 <th>描述</th>
 </tr>
@@ -511,7 +516,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to query, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>period</td>
@@ -531,9 +536,9 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <h3 id='2213f4c32f'>响应数据</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数名称</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -577,10 +582,10 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>The trading volume in base currency</td>
 </tr>
 </tbody></table>
-<h2 id='ticker'>最新的聚合 Ticker</h2>
+<h2 id='ticker'>聚合行情（Ticker）</h2>
 <p>This endpoint retrieves the latest ticker with some important 24h aggregated market data.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/market/detail/merged</code></p>
+<p><code>GET /market/detail/merged</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail/merged?symbol=ethusdt"</span>
 </code></pre>
 <blockquote>
@@ -604,7 +609,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <tr>
 <th>Parameter</th>
 <th>数据类型</th>
-<th>是否必须</th>
+<th>是否必需</th>
 <th>默认值</th>
 <th>描述</th>
 </tr>
@@ -614,15 +619,15 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to query, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-2'>响应数据</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数名称</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -681,7 +686,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 
 <aside class="notice">The returned data object can contain large amount of tickers.</aside>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/market/tickers</code></p>
+<p><code>GET /market/tickers</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/tickers"</span>
 </code></pre>
 <blockquote>
@@ -716,9 +721,9 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数名称</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -765,7 +770,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <h2 id='0f7bd4961a'>市场深度数据</h2>
 <p>This endpoint retrieves the current order book of a specific pair.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/market/depth</code></p>
+<p><code>GET /market/depth</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/depth?symbol=btcusdt&amp;type=step1"</span>
 </code></pre>
 <blockquote>
@@ -822,11 +827,11 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 </span></code></pre><h3 id='1f9ac54b15-4'>请求参数</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Required</th>
-<th>Allowed Value</th>
-<th>Description</th>
+<th>参数名称</th>
+<th>数据类型</th>
+<th>是否必需</th>
+<th>取值范围</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -834,7 +839,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>string</td>
 <td>true</td>
 <td>All supported trading pair symbols</td>
-<td>The trading pair to query, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>type</td>
@@ -849,9 +854,9 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数名称</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -875,10 +880,10 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>The current all asks in format [price, quote volume]</td>
 </tr>
 </tbody></table>
-<h2 id='get-the-last-trade'>Get the Last Trade</h2>
+<h2 id='a7fb7754d7'>最近市场成交记录</h2>
 <p>This endpoint retrieves the latest trade with its price, volume, and direction.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/market/trade</code></p>
+<p><code>GET /market/trade</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/trade?symbol=ethusdt"</span>
 </code></pre>
 <blockquote>
@@ -902,7 +907,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <tr>
 <th>Parameter</th>
 <th>数据类型</th>
-<th>是否必须</th>
+<th>是否必需</th>
 <th>默认值</th>
 <th>描述</th>
 </tr>
@@ -912,7 +917,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to query, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-5'>响应数据</h3>
@@ -920,9 +925,9 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数名称</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -951,10 +956,10 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>The direction of the trade: &#39;buy&#39; or &#39;sell&#39;</td>
 </tr>
 </tbody></table>
-<h2 id='get-the-most-recent-trades'>Get the Most Recent Trades</h2>
+<h2 id='6c0e0ca109'>最近的市场成交记录</h2>
 <p>This endpoint retrieves the most recent trades with their price, volume, and direction.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/market/history/trade</code></p>
+<p><code>GET /market/history/trade</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/history/trade?symbol=ethusdt&amp;size=2"</span>
 </code></pre>
 <blockquote>
@@ -1000,7 +1005,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <tr>
 <th>Parameter</th>
 <th>数据类型</th>
-<th>是否必须</th>
+<th>是否必需</th>
 <th>默认值</th>
 <th>描述</th>
 </tr>
@@ -1010,7 +1015,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to query, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 <tr>
 <td>size</td>
@@ -1025,9 +1030,9 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数名称</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1059,7 +1064,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <h2 id='24'>最近24小时行情数据</h2>
 <p>This endpoint retrieves the summary of trading in the market for the last 24 hours.</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/market/detail/</code></p>
+<p><code>GET /market/detail/</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail?symbol=ethusdt"</span>
 </code></pre>
 <blockquote>
@@ -1081,7 +1086,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <tr>
 <th>Parameter</th>
 <th>数据类型</th>
-<th>是否必须</th>
+<th>是否必需</th>
 <th>默认值</th>
 <th>描述</th>
 </tr>
@@ -1091,7 +1096,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>The trading pair to query, e.g. btcusdt, bccbtc</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-7'>响应数据</h3>
@@ -1099,9 +1104,9 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数名称</th>
+<th>数据类型</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1147,7 +1152,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <tr>
 <td>version</td>
 <td>integer</td>
-<td>TBC</td>
+<td></td>
 </tr>
 </tbody></table>
 <h1 id='57aa173947'>现货交易</h1>
@@ -1155,7 +1160,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 <h2 id='fd6ce2a756'>下单</h2>
 <p>This endpoint place an trading order and send to the exchange to be matched.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/order/orders/place</code></p>
+<p><code>GET /v1/order/orders/place</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/place"</span>
 BODY <span class="o">{</span>
    <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
@@ -1174,9 +1179,9 @@ BODY <span class="o">{</span>
 </span></code></pre><h3 id='1f9ac54b15-8'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
+<th>参数名称</th>
 <th>数据类型</th>
-<th>是否必须</th>
+<th>是否必需</th>
 <th>默认值</th>
 <th>描述</th>
 </tr>
@@ -1226,10 +1231,10 @@ BODY <span class="o">{</span>
 </tbody></table>
 <h3 id='2213f4c32f-8'>响应数据</h3>
 <aside class="notice">The returned data object is a single string which represents the order id</aside>
-<h2 id='show-all-open-orders'>Show All Open Orders</h2>
+<h2 id='95f2078356'>查询当前未成交订单</h2>
 <p>This endpoint returns all open orders which have not been filled completely.</p>
 <h3 id='http-request-9'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/order/openOrders</code></p>
+<p><code>GET /v1/order/openOrders</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/openOrders"</span>
 BODY <span class="o">{</span>
    <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
@@ -1263,9 +1268,9 @@ BODY <span class="o">{</span>
 </span></code></pre><h3 id='1f9ac54b15-9'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
+<th>参数名称</th>
 <th>数据类型</th>
-<th>是否必须</th>
+<th>是否必需</th>
 <th>默认值</th>
 <th>描述</th>
 </tr>
@@ -1302,7 +1307,7 @@ BODY <span class="o">{</span>
 <h3 id='2213f4c32f-9'>响应数据</h3>
 <table><thead>
 <tr>
-<th>参数</th>
+<th>参数名称</th>
 <th>数据类型</th>
 <th>描述</th>
 </tr>
@@ -1358,12 +1363,12 @@ BODY <span class="o">{</span>
 <td>submitted, partical-filled, cancelling</td>
 </tr>
 </tbody></table>
-<h2 id='submit-cancel-for-an-order'>Submit Cancel for an Order</h2>
+<h2 id='8d883f1577'></h2>
 <p>This endpoint submit a request to cancel an order.</p>
 
 <aside class="warning">This only submit the cancel request, the actual result of the canel request needs to be checked by order status or match result endpoints</aside>
 <h3 id='http-request-10'>HTTP Request</h3>
-<p><code>POST https://api.huobi.pro/v1/order/orders/{order-id}/submitcancel</code></p>
+<p><code>POST /v1/order/orders/{order-id}/submitcancel</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378/submitcancel"</span>
 </code></pre>
 <blockquote>
@@ -1375,7 +1380,7 @@ BODY <span class="o">{</span>
 </span></code></pre><h2 id='submit-cancel-for-multiple-orders-at-once'>Submit Cancel for Multiple Orders at Once</h2>
 <p>This endpoint submit cancellation for multiple orders at once.</p>
 <h3 id='http-request-11'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/order/orders/batchcancel</code></p>
+<p><code>GET /v1/order/orders/batchcancel</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/batchcancel"</span>
 BODY <span class="o">{</span>
   <span class="s2">"order-ids"</span>: <span class="o">[</span>
@@ -1404,44 +1409,45 @@ BODY <span class="o">{</span>
 </span></code></pre><h3 id='1f9ac54b15-10'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
 <th>是否必须</th>
-<th>默认值</th>
+<th>类型</th>
 <th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>order-ids</td>
-<td>list</td>
 <td>true</td>
-<td>NA</td>
-<td>The order ids to cancel. Max size is 50.</td>
+<td>list</td>
+<td>撤销订单ID列表</td>
+<td></td>
+<td>单次不超过50个订单id</td>
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-10'>响应数据</h3>
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
 <th>描述</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>success</td>
-<td>list</td>
-<td>The order ids with thier cancel request sent successfully</td>
-</tr>
-<tr>
-<td>failed</td>
-<td>list</td>
-<td>The details of the failed cancel request</td>
+<td>data</td>
+<td>false</td>
+<td>map</td>
+<td>撤单结果</td>
+<td></td>
 </tr>
 </tbody></table>
-<h2 id='submit-cancel-for-multiple-orders-at-once-2'>Submit Cancel for Multiple Orders at Once</h2>
+<h2 id='037c64513f'>批量取消符合条件的订单</h2>
 <p>This endpoint submit cancellation for multiple orders at once.</p>
 <h3 id='http-request-12'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/order/orders/batchcancel</code></p>
+<p><code>GET /v1/order/orders/batchcancel</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/batchcancel"</span>
 BODY <span class="o">{</span>
   <span class="s2">"order-ids"</span>: <span class="o">[</span>
@@ -1470,44 +1476,83 @@ BODY <span class="o">{</span>
 </span></code></pre><h3 id='1f9ac54b15-11'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
 <th>是否必须</th>
-<th>默认值</th>
+<th>类型</th>
 <th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>order-ids</td>
-<td>list</td>
+<td>account-id</td>
 <td>true</td>
-<td>NA</td>
-<td>The order ids to cancel. Max size is 50.</td>
+<td>string</td>
+<td>账户ID</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>false</td>
+<td>string</td>
+<td>交易对</td>
+<td></td>
+<td>单个交易对字符串，缺省将返回所有符合条件尚未成交订单</td>
+</tr>
+<tr>
+<td>side</td>
+<td>false</td>
+<td>string</td>
+<td>主动交易方向</td>
+<td></td>
+<td>“buy”或“sell”，缺省将返回所有符合条件尚未成交订单</td>
+</tr>
+<tr>
+<td>size</td>
+<td>false</td>
+<td>int</td>
+<td>所需返回记录数</td>
+<td>100</td>
+<td>[0, 100]</td>
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-11'>响应数据</h3>
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
 <th>描述</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>success</td>
-<td>list</td>
-<td>The order ids with thier cancel request sent successfully</td>
+<td>success-count</td>
+<td>true</td>
+<td>int</td>
+<td>成功取消的订单数</td>
+<td></td>
 </tr>
 <tr>
-<td>failed</td>
-<td>list</td>
-<td>The details of the failed cancel request</td>
+<td>failed-count</td>
+<td>true</td>
+<td>int</td>
+<td>取消失败的订单数</td>
+<td></td>
+</tr>
+<tr>
+<td>next-id</td>
+<td>true</td>
+<td>long</td>
+<td>下一个符合取消条件的订单号</td>
+<td></td>
 </tr>
 </tbody></table>
-<h2 id='show-the-order-detail-of-one-order'>Show the Order Detail of One Order</h2>
+<h2 id='58f6496bf1'>查询单个订单详情</h2>
 <p>This endpoint returns the detail of one order.</p>
 <h3 id='http-request-13'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/order/orders/{order-id}</code></p>
+<p><code>GET /v1/order/orders/{order-id}</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378"</span>
 </code></pre>
 <blockquote>
@@ -1534,100 +1579,140 @@ BODY <span class="o">{</span>
     </span><span class="s2">"batch"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='2213f4c32f-12'>响应数据</h3>
+</span></code></pre><h3 id='1f9ac54b15-12'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>类型</th>
 <th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>integer</td>
-<td>order id</td>
-</tr>
-<tr>
-<td>symbol</td>
+<td>order-id</td>
+<td>true</td>
 <td>string</td>
-<td>交易对, e.g. btcusdt, bccbtc</td>
+<td>订单ID，填在path中</td>
+<td></td>
+<td></td>
 </tr>
+</tbody></table>
+<h3 id='2213f4c32f-12'>响应数据</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
+<th>描述</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>account-id</td>
-<td>string</td>
-<td>The account id which this order belongs to</td>
+<td>true</td>
+<td>long</td>
+<td>账户 ID</td>
+<td></td>
 </tr>
 <tr>
 <td>amount</td>
+<td>true</td>
 <td>string</td>
-<td>The amount of base currency in this order</td>
-</tr>
-<tr>
-<td>price</td>
-<td>string</td>
-<td>The limit price of limit order</td>
-</tr>
-<tr>
-<td>created-at</td>
-<td>int</td>
-<td>The timestamp in milliseconds when the order was created</td>
-</tr>
-<tr>
-<td>finished-at</td>
-<td>int</td>
-<td>The timestamp in milliseconds when the order was changed to a final state. This is not the time the order is matched.</td>
+<td>订单数量</td>
+<td></td>
 </tr>
 <tr>
 <td>canceled-at</td>
-<td>int</td>
-<td>The timestamp in milliseconds when the order was canceled, if not canceled then has value of 0</td>
+<td>false</td>
+<td>long</td>
+<td>订单撤销时间</td>
+<td></td>
 </tr>
 <tr>
-<td>type</td>
-<td>string</td>
-<td>The order type, possible values are: buy-market, sell-market, buy-limit, sell-limit, buy-ioc, sell-ioc, buy-limit-maker, sell-limit-maker</td>
+<td>created-at</td>
+<td>true</td>
+<td>long</td>
+<td>订单创建时间</td>
+<td></td>
 </tr>
 <tr>
-<td>filled-amount</td>
+<td>field-amount</td>
+<td>true</td>
 <td>string</td>
-<td>The amount which has been filled</td>
+<td>已成交数量</td>
+<td></td>
 </tr>
 <tr>
-<td>filled-cash-amount</td>
+<td>field-cash-amount</td>
+<td>true</td>
 <td>string</td>
-<td>The filled total in quote currency</td>
+<td>已成交总金额</td>
+<td></td>
 </tr>
 <tr>
-<td>filled-fees</td>
+<td>field-fees</td>
+<td>true</td>
 <td>string</td>
-<td>Transaction fee paid so far</td>
+<td>已成交手续费（买入为币，卖出为钱）</td>
+<td></td>
+</tr>
+<tr>
+<td>finished-at</td>
+<td>false</td>
+<td>long</td>
+<td>订单变为终结态的时间，不是成交时间，包含“已撤单”状态</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>long</td>
+<td>订单ID</td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>true</td>
+<td>string</td>
+<td>订单价格</td>
+<td></td>
 </tr>
 <tr>
 <td>source</td>
+<td>true</td>
 <td>string</td>
-<td>The source where the order was triggered, possible values: sys, web, api, app</td>
+<td>订单来源</td>
+<td>api</td>
 </tr>
 <tr>
 <td>state</td>
+<td>true</td>
 <td>string</td>
-<td>Order state: submitted, partical-filled, cancelling, filled, canceled</td>
+<td>订单状态</td>
+<td>submitting , submitted 已提交, partial-filled 部分成交, partial-canceled 部分成交撤销, filled 完全成交, canceled 已撤销</td>
 </tr>
 <tr>
-<td>exchange</td>
+<td>symbol</td>
+<td>true</td>
 <td>string</td>
-<td>Internal data</td>
+<td>交易对</td>
+<td>btcusdt, bchbtc, rcneth ...</td>
 </tr>
 <tr>
-<td>batch</td>
+<td>type</td>
+<td>true</td>
 <td>string</td>
-<td>Internal data</td>
+<td>订单类型</td>
+<td>buy-market：市价买, sell-market：市价卖, buy-limit：限价买, sell-limit：限价卖, buy-ioc：IOC买单, sell-ioc：IOC卖单</td>
 </tr>
 </tbody></table>
-<h2 id='show-the-match-result-of-an-order'>Show the Match Result of an Order</h2>
+<h2 id='cc0e50078c'>某个订单的成交明细</h2>
 <p>This endpoint returns the match result of an order.</p>
 <h3 id='http-request-14'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/order/orders/{order-id}/matchresult</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378/matchresult"</span>
+<p><code>GET /v1/order/orders/{order-id}/matchresults</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378/matchresults"</span>
 </code></pre>
 <blockquote>
 <p>以上命令返回的 JSON 结果:</p>
@@ -1648,71 +1733,113 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='2213f4c32f-13'>响应数据</h3>
+</span></code></pre><h3 id='1f9ac54b15-13'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order-id</td>
+<td>true</td>
+<td>string</td>
+<td>订单ID，填在path中</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='2213f4c32f-13'>响应数据</h3>
 <aside class="notice">The return data contains a list and each item in the list represents a match result</aside>
 
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
 <th>描述</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>integer</td>
-<td>Internal id</td>
-</tr>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>交易对, e.g. btcusdt, bccbtc</td>
-</tr>
-<tr>
-<td>order-id</td>
-<td>string</td>
-<td>The order id of this order</td>
-</tr>
-<tr>
-<td>match-id</td>
-<td>string</td>
-<td>The match id of this match</td>
-</tr>
-<tr>
-<td>price</td>
-<td>string</td>
-<td>The limit price of limit order</td>
-</tr>
-<tr>
 <td>created-at</td>
-<td>int</td>
-<td>The timestamp in milliseconds when the match and fill is done</td>
-</tr>
-<tr>
-<td>type</td>
-<td>string</td>
-<td>The order type, possible values are: buy-market, sell-market, buy-limit, sell-limit, buy-ioc, sell-ioc, buy-limit-maker, sell-limit-maker</td>
+<td>true</td>
+<td>long</td>
+<td>成交时间</td>
+<td></td>
 </tr>
 <tr>
 <td>filled-amount</td>
+<td>true</td>
 <td>string</td>
-<td>The amount which has been filled</td>
+<td>成交数量</td>
+<td></td>
 </tr>
 <tr>
 <td>filled-fees</td>
+<td>true</td>
 <td>string</td>
-<td>Transaction fee paid so far</td>
+<td>成交手续费</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>long</td>
+<td>订单成交记录ID</td>
+<td></td>
+</tr>
+<tr>
+<td>match-id</td>
+<td>true</td>
+<td>long</td>
+<td>撮合ID</td>
+<td></td>
+</tr>
+<tr>
+<td>order-id</td>
+<td>true</td>
+<td>long</td>
+<td>订单 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>true</td>
+<td>string</td>
+<td>成交价格</td>
+<td></td>
 </tr>
 <tr>
 <td>source</td>
+<td>true</td>
 <td>string</td>
-<td>The source where the order was triggered, possible values: sys, web, api, app</td>
+<td>订单来源</td>
+<td>api</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>true</td>
+<td>string</td>
+<td>交易对</td>
+<td>btcusdt, bchbtc, rcneth ...</td>
+</tr>
+<tr>
+<td>type</td>
+<td>true</td>
+<td>string</td>
+<td>订单类型</td>
+<td>buy-market：市价买, sell-market：市价卖, buy-limit：限价买, sell-limit：限价卖, buy-ioc：IOC买单, sell-ioc：IOC卖单</td>
 </tr>
 </tbody></table>
 <h2 id='search-past-orders'>Search Past Orders</h2>
 <p>This endpoint returns orders based on a specific searching criteria.</p>
 <h3 id='http-request-15'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/order/orders</code></p>
+<p><code>GET /v1/order/orders</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders"</span>
 BODY <span class="o">{</span>
    <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
@@ -1749,171 +1876,195 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-12'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-14'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
 <th>是否必须</th>
-<th>默认值</th>
+<th>类型</th>
 <th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>symbol</td>
-<td>string</td>
 <td>true</td>
-<td>NA</td>
-<td>交易对, e.g. btcusdt, bccbtc</td>
+<td>string</td>
+<td>交易对</td>
+<td></td>
+<td>btcusdt, bchbtc, rcneth ...</td>
 </tr>
 <tr>
 <td>types</td>
-<td>string</td>
 <td>false</td>
-<td>All</td>
-<td>The types of order to include in the search</td>
-</tr>
-<tr>
-<td>states</td>
 <td>string</td>
-<td>false</td>
-<td>All</td>
-<td>订单状态</td>
+<td>查询的订单类型组合，使用&#39;,&#39;分割</td>
+<td></td>
+<td>buy-market：市价买, sell-market：市价卖, buy-limit：限价买, sell-limit：限价卖, buy-ioc：IOC买单, sell-ioc：IOC卖单</td>
 </tr>
 <tr>
 <td>start-date</td>
-<td>string</td>
 <td>false</td>
-<td>-61d</td>
-<td>Search starts date, in format yyyy-mm-dd</td>
+<td>string</td>
+<td>查询开始日期, 日期格式yyyy-mm-dd</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>end-date</td>
-<td>string</td>
 <td>false</td>
-<td>today</td>
-<td>Search ends date, in format yyyy-mm-dd</td>
+<td>string</td>
+<td>查询结束日期, 日期格式yyyy-mm-dd</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>states</td>
+<td>true</td>
+<td>string</td>
+<td>查询的订单状态组合，使用&#39;,&#39;分割</td>
+<td></td>
+<td>submitted 已提交, partial-filled 部分成交, partial-canceled 部分成交撤销, filled 完全成交, canceled 已撤销</td>
 </tr>
 <tr>
 <td>from</td>
-<td>string</td>
 <td>false</td>
-<td>both</td>
-<td>Search order id to begin with</td>
+<td>string</td>
+<td>查询起始 ID</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>direct</td>
-<td>string</td>
 <td>false</td>
-<td>both</td>
-<td>Search direction when &#39;from&#39; is used, possible values: &#39;next&#39;, &#39;prev&#39;</td>
+<td>string</td>
+<td>查询方向</td>
+<td></td>
+<td>prev 向前，next 向后</td>
 </tr>
 <tr>
 <td>size</td>
-<td>int</td>
 <td>false</td>
-<td>100</td>
-<td>The max number of orders to return, max value is 100</td>
+<td>string</td>
+<td>查询记录大小</td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-14'>响应数据</h3>
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
 <th>描述</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>integer</td>
-<td>Order id</td>
-</tr>
-<tr>
 <td>account-id</td>
-<td>integer</td>
-<td>Account id</td>
-</tr>
-<tr>
-<td>user-id</td>
-<td>integer</td>
-<td>User id</td>
+<td>true</td>
+<td>long</td>
+<td>账户 ID</td>
+<td></td>
 </tr>
 <tr>
 <td>amount</td>
+<td>true</td>
 <td>string</td>
-<td>The amount of base currency in this order</td>
+<td>订单数量</td>
+<td></td>
 </tr>
 <tr>
-<td>symbol</td>
-<td>string</td>
-<td>交易对, e.g. btcusdt, bccbtc</td>
-</tr>
-<tr>
-<td>price</td>
-<td>string</td>
-<td>The limit price of limit order</td>
+<td>canceled-at</td>
+<td>false</td>
+<td>long</td>
+<td>接到撤单申请的时间</td>
+<td></td>
 </tr>
 <tr>
 <td>created-at</td>
-<td>int</td>
-<td>The timestamp in milliseconds when the order was created</td>
+<td>true</td>
+<td>long</td>
+<td>订单创建时间</td>
+<td></td>
 </tr>
 <tr>
-<td>canceled-at</td>
-<td>int</td>
-<td>The timestamp in milliseconds when the order was canceled, or 0 if not canceled</td>
-</tr>
-<tr>
-<td>canceled-at</td>
-<td>int</td>
-<td>The timestamp in milliseconds when the order was finished, or 0 if not finished</td>
-</tr>
-<tr>
-<td>type</td>
+<td>field-amount</td>
+<td>true</td>
 <td>string</td>
-<td>The order type, possible values are: buy-market, sell-market, buy-limit, sell-limit, buy-ioc, sell-ioc, buy-limit-maker, sell-limit-maker</td>
+<td>已成交数量</td>
+<td></td>
 </tr>
 <tr>
-<td>filled-amount</td>
+<td>field-cash-amount</td>
+<td>true</td>
 <td>string</td>
-<td>The amount which has been filled</td>
+<td>已成交总金额</td>
+<td></td>
 </tr>
 <tr>
-<td>filled-cash-amount</td>
+<td>field-fees</td>
+<td>true</td>
 <td>string</td>
-<td>The filled total in quote currency</td>
+<td>已成交手续费（买入为币，卖出为钱）</td>
+<td></td>
 </tr>
 <tr>
-<td>filled-fees</td>
+<td>finished-at</td>
+<td>false</td>
+<td>long</td>
+<td>最后成交时间</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>long</td>
+<td>订单ID</td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>true</td>
 <td>string</td>
-<td>Transaction fee paid so far</td>
+<td>订单价格</td>
+<td></td>
 </tr>
 <tr>
 <td>source</td>
+<td>true</td>
 <td>string</td>
-<td>The source where the order was triggered, possible values: sys, web, api, app</td>
+<td>订单来源</td>
+<td>api</td>
 </tr>
 <tr>
 <td>state</td>
+<td>true</td>
 <td>string</td>
-<td>submitted, partical-filled, cancelling</td>
+<td>订单状态</td>
+<td>submitting , submitted 已提交, partial-filled 部分成交, partial-canceled 部分成交撤销, filled 完全成交, canceled 已撤销</td>
 </tr>
 <tr>
-<td>exchange</td>
+<td>symbol</td>
+<td>true</td>
 <td>string</td>
-<td>Internal data</td>
+<td>交易对</td>
+<td>btcusdt, bchbtc, rcneth ...</td>
 </tr>
 <tr>
-<td>batch</td>
+<td>type</td>
+<td>true</td>
 <td>string</td>
-<td>Internal data</td>
+<td>订单类型</td>
+<td>submit-cancel：已提交撤单申请  ,buy-market：市价买, sell-market：市价卖, buy-limit：限价买, sell-limit：限价卖, buy-ioc：IOC买单, sell-ioc：IOC卖单</td>
 </tr>
 </tbody></table>
 <h2 id='search-the-match-results'>Search the Match Results</h2>
 <p>This endpoint returns the match results of past and open orders based on specific search criteria.</p>
 <h3 id='http-request-16'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/order/matchresults</code></p>
+<p><code>GET /v1/order/matchresults</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/matchresults"</span>
 </code></pre>
 <blockquote>
@@ -1935,71 +2086,72 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-13'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-15'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
 <th>是否必须</th>
-<th>默认值</th>
+<th>类型</th>
 <th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>symbol</td>
-<td>string</td>
 <td>true</td>
-<td>NA</td>
-<td>交易对, e.g. btcusdt, bccbtc</td>
+<td>string</td>
+<td>交易对</td>
+<td>btcusdt, bchbtc, rcneth ...</td>
+<td></td>
 </tr>
 <tr>
 <td>types</td>
-<td>string</td>
 <td>false</td>
-<td>All</td>
-<td>The types of order to include in the search</td>
-</tr>
-<tr>
-<td>states</td>
 <td>string</td>
-<td>false</td>
-<td>All</td>
-<td>订单状态</td>
+<td>查询的订单类型组合，使用&#39;,&#39;分割</td>
+<td></td>
+<td>buy-market：市价买, sell-market：市价卖, buy-limit：限价买, sell-limit：限价卖, buy-ioc：IOC买单, sell-ioc：IOC卖单</td>
 </tr>
 <tr>
 <td>start-date</td>
-<td>string</td>
 <td>false</td>
-<td>-61d</td>
-<td>Search starts date, in format yyyy-mm-dd</td>
+<td>string</td>
+<td>查询开始日期, 日期格式yyyy-mm-dd</td>
+<td>-61 days</td>
+<td>[-61day, now]</td>
 </tr>
 <tr>
 <td>end-date</td>
-<td>string</td>
 <td>false</td>
-<td>today</td>
-<td>Search ends date, in format yyyy-mm-dd</td>
+<td>string</td>
+<td>查询结束日期, 日期格式yyyy-mm-dd</td>
+<td>Now</td>
+<td>[start-date, now]</td>
 </tr>
 <tr>
 <td>from</td>
-<td>string</td>
 <td>false</td>
-<td>NA</td>
-<td>Search match result id to begin with</td>
+<td>string</td>
+<td>查询起始 ID</td>
+<td>订单成交记录ID（最大值）</td>
+<td></td>
 </tr>
 <tr>
 <td>direct</td>
-<td>string</td>
 <td>false</td>
-<td>next</td>
-<td>Search direction when &#39;from&#39; is used, possible values: &#39;next&#39;, &#39;prev&#39;</td>
+<td>string</td>
+<td>查询方向</td>
+<td>默认next， 成交记录ID由大到小排序</td>
+<td>prev 向前，next 向后</td>
 </tr>
 <tr>
 <td>size</td>
-<td>int</td>
 <td>false</td>
+<td>string</td>
+<td>查询记录大小</td>
 <td>100</td>
-<td>The max number of orders to return</td>
+<td>&lt;=100</td>
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-15'>响应数据</h3>
@@ -2007,60 +2159,82 @@ BODY <span class="o">{</span>
 
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
 <th>描述</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>integer</td>
-<td>Internal id</td>
-</tr>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>交易对, e.g. btcusdt, bccbtc</td>
-</tr>
-<tr>
-<td>order-id</td>
-<td>string</td>
-<td>The order id of this order</td>
-</tr>
-<tr>
-<td>match-id</td>
-<td>string</td>
-<td>The match id of this match</td>
-</tr>
-<tr>
-<td>price</td>
-<td>string</td>
-<td>The limit price of limit order</td>
-</tr>
-<tr>
 <td>created-at</td>
-<td>int</td>
-<td>The timestamp in milliseconds when the match and fill is done</td>
-</tr>
-<tr>
-<td>type</td>
-<td>string</td>
-<td>The order type, possible values are: buy-market, sell-market, buy-limit, sell-limit, buy-ioc, sell-ioc, buy-limit-maker, sell-limit-maker</td>
+<td>true</td>
+<td>long</td>
+<td>成交时间</td>
+<td></td>
 </tr>
 <tr>
 <td>filled-amount</td>
+<td>true</td>
 <td>string</td>
-<td>The amount which has been filled</td>
+<td>成交数量</td>
+<td></td>
 </tr>
 <tr>
 <td>filled-fees</td>
+<td>true</td>
 <td>string</td>
-<td>Transaction fee paid so far</td>
+<td>成交手续费</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>long</td>
+<td>订单成交记录ID</td>
+<td></td>
+</tr>
+<tr>
+<td>match-id</td>
+<td>true</td>
+<td>long</td>
+<td>撮合ID</td>
+<td></td>
+</tr>
+<tr>
+<td>order-id</td>
+<td>true</td>
+<td>long</td>
+<td>订单 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>true</td>
+<td>string</td>
+<td>成交价格</td>
+<td></td>
 </tr>
 <tr>
 <td>source</td>
+<td>true</td>
 <td>string</td>
-<td>The source where the order was triggered, possible values: sys, web, api, app</td>
+<td>订单来源</td>
+<td>api</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>true</td>
+<td>string</td>
+<td>交易对</td>
+<td>btcusdt, bchbtc, rcneth ...</td>
+</tr>
+<tr>
+<td>type</td>
+<td>true</td>
+<td>string</td>
+<td>订单类型</td>
+<td>buy-market：市价买, sell-market：市价卖, buy-limit：限价买, sell-limit：限价卖, buy-ioc：IOC买单, sell-ioc：IOC卖单</td>
 </tr>
 </tbody></table>
 <h1 id='7d8240332e'>杠杆交易</h1>
@@ -2072,7 +2246,7 @@ BODY <span class="o">{</span>
 <h2 id='e0eba8facc'>从现货账户划转到杠杆账户</h2>
 <p>此接口用于将资产从现货账户划转到杠杆账户。</p>
 <h3 id='http-request-17'>HTTP Request</h3>
-<p><code>POST https://api.huobi.pro/v1/dw/transfer-in</code></p>
+<p><code>POST /v1/dw/transfer-in</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/dw/transfer-in"</span>
 BODY
 <span class="o">{</span>
@@ -2087,12 +2261,12 @@ BODY
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-14'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-16'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
+<th>参数名称</th>
 <th>数据类型</th>
-<th>是否必须</th>
+<th>是否必需</th>
 <th>默认值</th>
 <th>描述</th>
 </tr>
@@ -2120,11 +2294,9 @@ BODY
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-16'>响应数据</h3>
-<aside class="notice">The return data contains a single value instead of an object</aside>
-
 <table><thead>
 <tr>
-<th>参数</th>
+<th>参数名称</th>
 <th>数据类型</th>
 <th>描述</th>
 </tr>
@@ -2138,7 +2310,7 @@ BODY
 <h2 id='8d6e0b2c92'>从杠杆账户划转到现货账户</h2>
 <p>此接口用于将资产从杠杆账户划转到现货账户。</p>
 <h3 id='http-request-18'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/dw/transfer-out</code></p>
+<p><code>GET /v1/dw/transfer-out</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/dw/transfer-out"</span>
 BODY
 <span class="o">{</span>
@@ -2153,12 +2325,12 @@ BODY
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-15'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-17'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
+<th>参数名称</th>
 <th>数据类型</th>
-<th>是否必须</th>
+<th>是否必需</th>
 <th>默认值</th>
 <th>描述</th>
 </tr>
@@ -2186,11 +2358,9 @@ BODY
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-17'>响应数据</h3>
-<aside class="notice">The return data contains a single value instead of an object</aside>
-
 <table><thead>
 <tr>
-<th>参数</th>
+<th>参数名称</th>
 <th>数据类型</th>
 <th>描述</th>
 </tr>
@@ -2204,7 +2374,7 @@ BODY
 <h2 id='48cca1ce88'>申请借贷</h2>
 <p>此接口用于申请借贷.</p>
 <h3 id='http-request-19'>HTTP Request</h3>
-<p><code>POST https://api.huobi.pro/v1/margin/orders</code></p>
+<p><code>POST /v1/margin/orders</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/margin/orders"</span>
 BODY
 <span class="o">{</span>
@@ -2219,12 +2389,12 @@ BODY
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-16'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-18'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
+<th>参数名称</th>
 <th>数据类型</th>
-<th>是否必须</th>
+<th>是否必需</th>
 <th>默认值</th>
 <th>描述</th>
 </tr>
@@ -2252,11 +2422,9 @@ BODY
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-18'>响应数据</h3>
-<aside class="notice">The return data contains a single value instead of an object</aside>
-
 <table><thead>
 <tr>
-<th>参数</th>
+<th>参数名称</th>
 <th>数据类型</th>
 <th>描述</th>
 </tr>
@@ -2270,7 +2438,7 @@ BODY
 <h2 id='48aa7c8199'>归还借贷</h2>
 <p>此接口用于归还借贷.</p>
 <h3 id='http-request-20'>HTTP Request</h3>
-<p><code>POST https://api.huobi.pro/v1/margin/orders/{order-id}/repay</code></p>
+<p><code>POST /v1/margin/orders/{order-id}/repay</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/margin/orders/1000/repay"</span>
 BODY
 <span class="o">{</span>
@@ -2283,30 +2451,32 @@ BODY
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-17'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-19'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
+<th>参数名称</th>
 <th>数据类型</th>
-<th>是否必须</th>
-<th>默认值</th>
+<th>是否必需</th>
 <th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>order-id</td>
+<td>string</td>
+<td>true</td>
+<td>借贷订单 ID，写在 path 中</td>
+</tr>
+<tr>
 <td>amount</td>
 <td>string</td>
 <td>true</td>
-<td>NA</td>
 <td>归还币种</td>
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-19'>响应数据</h3>
-<aside class="notice">The return data contains a single value instead of an object</aside>
-
 <table><thead>
 <tr>
-<th>参数</th>
+<th>参数名称</th>
 <th>数据类型</th>
 <th>描述</th>
 </tr>
@@ -2320,7 +2490,7 @@ BODY
 <h2 id='e52396720a'>查询借贷订单</h2>
 <p>This endpoint returns margin orders based on a specific searching criteria.</p>
 <h3 id='http-request-21'>HTTP Request</h3>
-<p><code>POST https://api.huobi.pro/v1/margin/loan-orders</code></p>
+<p><code>POST /v1/margin/loan-orders</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/margin/load-orders"</span>
 BODY <span class="o">{</span>
    <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
@@ -2353,149 +2523,180 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-18'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-20'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
 <th>是否必须</th>
-<th>默认值</th>
+<th>类型</th>
 <th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>symbol</td>
-<td>string</td>
 <td>true</td>
-<td>NA</td>
-<td>交易对, e.g. btcusdt, bccbtc</td>
-</tr>
-<tr>
-<td>states</td>
 <td>string</td>
-<td>false</td>
-<td>All</td>
-<td>订单状态</td>
+<td>交易对</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>start-date</td>
-<td>string</td>
 <td>false</td>
-<td>-61d</td>
-<td>Search starts date, in format yyyy-mm-dd</td>
+<td>string</td>
+<td>查询开始日期, 日期格式yyyy-mm-dd</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>end-date</td>
-<td>string</td>
 <td>false</td>
-<td>today</td>
-<td>Search ends date, in format yyyy-mm-dd</td>
+<td>string</td>
+<td>查询结束日期, 日期格式yyyy-mm-dd</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>states</td>
+<td>false</td>
+<td>string</td>
+<td>状态</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>from</td>
-<td>string</td>
 <td>false</td>
-<td>both</td>
-<td>Search order id to begin with</td>
+<td>string</td>
+<td>查询起始 ID</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>direct</td>
-<td>string</td>
 <td>false</td>
-<td>both</td>
-<td>Search direction when &#39;from&#39; is used, possible values: &#39;next&#39;, &#39;prev&#39;</td>
+<td>string</td>
+<td>查询方向</td>
+<td></td>
+<td>prev 向前，next 向后</td>
 </tr>
 <tr>
 <td>size</td>
-<td>int</td>
 <td>false</td>
-<td>100</td>
-<td>The max number of orders to return, max value is 100</td>
+<td>string</td>
+<td>查询记录大小</td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-20'>响应数据</h3>
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
 <th>描述</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>integer</td>
-<td>Order id</td>
-</tr>
-<tr>
-<td>account-id</td>
-<td>integer</td>
-<td>Account id</td>
+<td>true</td>
+<td>long</td>
+<td>订单号</td>
+<td></td>
 </tr>
 <tr>
 <td>user-id</td>
-<td>integer</td>
-<td>User id</td>
+<td>true</td>
+<td>long</td>
+<td>用户ID</td>
+<td></td>
+</tr>
+<tr>
+<td>account-id</td>
+<td>true</td>
+<td>long</td>
+<td>账户ID</td>
+<td></td>
 </tr>
 <tr>
 <td>symbol</td>
+<td>true</td>
 <td>string</td>
-<td>The margin loan pair to trade, e.g. btcusdt, bccbtc</td>
+<td>交易对</td>
+<td></td>
 </tr>
 <tr>
 <td>currency</td>
+<td>true</td>
 <td>string</td>
-<td>The currency in the loan</td>
-</tr>
-<tr>
-<td>created-at</td>
-<td>int</td>
-<td>The timestamp in milliseconds when the order was created</td>
-</tr>
-<tr>
-<td>accrued-at</td>
-<td>int</td>
-<td>The timestamp in milliseconds when the last accure happened</td>
-</tr>
-<tr>
-<td>type</td>
-<td>string</td>
-<td>The order type, possible values are: buy-market, sell-market, buy-limit, sell-limit, buy-ioc, sell-ioc, buy-limit-maker, sell-limit-maker</td>
+<td>币种</td>
+<td></td>
 </tr>
 <tr>
 <td>loan-amount</td>
+<td>true</td>
 <td>string</td>
-<td>The amount of the origin loan</td>
+<td>借贷本金总额</td>
+<td></td>
 </tr>
 <tr>
 <td>loan-balance</td>
+<td>true</td>
 <td>string</td>
-<td>The amount of the loan left</td>
+<td>未还本金</td>
+<td></td>
 </tr>
 <tr>
 <td>interest-rate</td>
+<td>true</td>
 <td>string</td>
-<td>The loan interest rate</td>
+<td>利率</td>
+<td></td>
 </tr>
 <tr>
 <td>interest-amount</td>
+<td>true</td>
 <td>string</td>
-<td>The accumulated loan interest</td>
+<td>利息总额</td>
+<td></td>
 </tr>
 <tr>
 <td>interest-balance</td>
+<td>true</td>
 <td>string</td>
-<td>The amount of loan interest left</td>
+<td>未还利息</td>
+<td></td>
+</tr>
+<tr>
+<td>created-at</td>
+<td>true</td>
+<td>long</td>
+<td>借贷发起时间</td>
+<td></td>
+</tr>
+<tr>
+<td>accrued-at</td>
+<td>true</td>
+<td>long</td>
+<td>最近一次计息时间</td>
+<td></td>
 </tr>
 <tr>
 <td>state</td>
+<td>true</td>
 <td>string</td>
-<td>Loan state, possible values: created, accrual, cleared, invalid</td>
+<td>订单状态</td>
+<td>created 未放款，accrual 已放款，cleared 已还清，invalid 异常</td>
 </tr>
 </tbody></table>
 <h2 id='6e79ba8e80'>借贷账户详情</h2>
 <p>This endpoint returns the balance of the margin loan account.</p>
 <h3 id='http-request-22'>HTTP Request</h3>
-<p><code>GET https://api.huobi.pro/v1/margin/accounts/balance</code></p>
+<p><code>GET /v1/margin/accounts/balance</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/margin/accounts/balance"</span>
 BODY <span class="o">{</span>
    <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
@@ -2510,100 +2711,114 @@ BODY <span class="o">{</span>
 <p>以上命令返回的 JSON 结果:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
-</span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18264</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"margin"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"fl-price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"fl-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safe"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"risk-rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"475.952571086994250554"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                            </span><span class="p">{</span><span class="w">
-                                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-                                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
-                                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1168.533000000000000000"</span><span class="w">
-                            </span><span class="p">},</span><span class="w">
-                            </span><span class="p">{</span><span class="w">
-                                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-                                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frozen"</span><span class="p">,</span><span class="w">
-                                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000000000000000"</span><span class="w">
-                            </span><span class="p">},</span><span class="w">
-                            </span><span class="p">{</span><span class="w">
-                                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-                                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan"</span><span class="p">,</span><span class="w">
-                                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-2.433000000000000000"</span><span class="w">
-                            </span><span class="p">},</span><span class="w">
-                            </span><span class="p">{</span><span class="w">
-                                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-                                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"interest"</span><span class="p">,</span><span class="w">
-                                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.000533000000000000"</span><span class="w">
-                            </span><span class="p">},</span><span class="w">
-                            </span><span class="p">{</span><span class="w">
-                                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-                                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transfer-out-available"</span><span class="p">,</span><span class="err">//可转btc</span><span class="w">
-                                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1163.872174670000000000"</span><span class="w">
-                            </span><span class="p">},</span><span class="w">
-                            </span><span class="p">{</span><span class="w">
-                                </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-                                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan-available"</span><span class="p">,</span><span class="err">//可借btc</span><span class="w">
-                                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8161.876538350676000000"</span><span class="w">
-                            </span><span class="p">}</span><span class="w">
-                </span><span class="p">]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18264</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"margin"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"fl-price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"fl-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safe"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"risk-rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"475.952571086994250554"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1168.533000000000000000"</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frozen"</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000000000000000"</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan"</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-2.433000000000000000"</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"interest"</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.000533000000000000"</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transfer-out-available"</span><span class="p">,</span><span class="err">//可转btc</span><span class="w">
+                                    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1163.872174670000000000"</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+                                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan-available"</span><span class="p">,</span><span class="err">//可借btc</span><span class="w">
+                                    </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8161.876538350676000000"</span><span class="w">
+                                </span><span class="p">}</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-19'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-21'>请求参数</h3>
 <table><thead>
 <tr>
-<th>参数</th>
-<th>数据类型</th>
+<th>参数名称</th>
 <th>是否必须</th>
-<th>默认值</th>
+<th>类型</th>
 <th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>symbol</td>
+<td>false</td>
 <td>string</td>
-<td>true</td>
-<td>NA</td>
-<td>交易对, e.g. btcusdt, bccbtc</td>
+<td>交易对，作为get参数</td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-21'>响应数据</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Data Type</th>
-<th>Description</th>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
+<th>描述</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>symbol</td>
+<td>true</td>
 <td>string</td>
-<td>The margin loan pair, e.g. btcusdt, bccbtc</td>
+<td>交易对</td>
+<td></td>
 </tr>
 <tr>
 <td>state</td>
+<td>true</td>
 <td>string</td>
-<td>Loan state, possible values: created, accrual, cleared, invalid</td>
+<td>账户状态</td>
+<td>working,fl-sys,fl-mgt,fl-end</td>
 </tr>
 <tr>
 <td>risk-rate</td>
-<td>string</td>
-<td>The risk rate</td>
+<td>true</td>
+<td>object</td>
+<td>风险率</td>
+<td></td>
 </tr>
 <tr>
 <td>fl-price</td>
+<td>true</td>
 <td>string</td>
-<td>The price which triggers closeout</td>
+<td>爆仓价</td>
+<td></td>
 </tr>
 <tr>
 <td>list</td>
-<td>object array</td>
-<td>The list of loans and their details</td>
+<td>true</td>
+<td>array</td>
+<td>子账户列表</td>
+<td></td>
 </tr>
 </tbody></table>
 <h1 id='e0d7f450bc'>钱包（充值与提现）</h1>
@@ -2615,6 +2830,7 @@ BODY <span class="o">{</span>
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="python">python</a>
           </div>
       </div>
     </div>
