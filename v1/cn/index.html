@@ -204,12 +204,29 @@
   <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
-        NAV
         <img src="images/navbar.png" alt="Navbar" />
       </span>
     </a>
+    <header>
+      <div class="flex_box">
+        <img src="images/logo.svg" class="logo" alt="Logo" />
+        <div class="nav_box">
+          <span class="nav_cell">
+            <a href="javascript:;" class="nav_first">v1<i class="icon_nav"></i></a>
+            <ul class="nav_ul">
+              <li>
+                <a href="/slate/v1/en/" id="v1_url">v1</a>
+              </li>
+              <li>
+                <a href="/slate/v2/en/" id="v2_url">v2</a>
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
+      <a href="/slate/v1/cn/" class="lang" id="lang_box">简体中文</a>
+    </header>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -2601,5 +2618,31 @@ BODY <span class="o">{</span>
           </div>
       </div>
     </div>
+    <script>
+      const lang_btn = document.getElementById('lang_box');
+      const v1_url = document.getElementById('v1_url');
+      const v2_url = document.getElementById('v2_url');
+      const url = GetUrlRelativePath();
+      if(url.indexOf('cn') != -1){
+        //如果是中文环境
+        lang_btn.innerHTML = 'English';
+        lang_btn.href = '/slate/v1/en/';
+        v1_url.href = '/slate/v1/cn/';
+        v2_url.href = '/slate/v2/cn/';
+      }
+      function GetUrlRelativePath(){
+        let url = document.location.toString();
+        let arrUrl = url.split("//");
+        let start = arrUrl[1].indexOf("/");
+        let relUrl = arrUrl[1].substring(start);
+        if(relUrl.indexOf("?") != -1){
+          relUrl = relUrl.split("?")[0];
+        }
+        if(relUrl.indexOf("#") != -1){
+          relUrl = relUrl.split("#")[0];
+        }
+        return relUrl;
+  　　}
+    </script>
   </body>
 </html>
