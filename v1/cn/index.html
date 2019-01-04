@@ -240,7 +240,7 @@
             <a href="#api-v1-0" class="toc-h1 toc-link" data-title="API v1.0 简介">API v1.0 简介</a>
           </li>
           <li>
-            <a href="#153042ed9e" class="toc-h1 toc-link" data-title="概述">概述</a>
+            <a href="#1a0fdce8f8" class="toc-h1 toc-link" data-title="通用">通用</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#21d67c3c4c" class="toc-h2 toc-link" data-title="请求格式">请求格式</a>
@@ -253,6 +253,20 @@
                   </li>
                   <li>
                     <a href="#c64cd15fdc" class="toc-h2 toc-link" data-title="签名认证">签名认证</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#7d73ee41fe" class="toc-h1 toc-link" data-title="基础接口">基础接口</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#b60dd9cffd" class="toc-h2 toc-link" data-title="返回所有支持的交易对">返回所有支持的交易对</a>
+                  </li>
+                  <li>
+                    <a href="#56e5edc6a1" class="toc-h2 toc-link" data-title="返回所有支持的币种">返回所有支持的币种</a>
+                  </li>
+                  <li>
+                    <a href="#5113d0e5ad" class="toc-h2 toc-link" data-title="返回当前系统时间">返回当前系统时间</a>
                   </li>
               </ul>
           </li>
@@ -352,16 +366,18 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='api-v1-0'>API v1.0 简介</h1>
-<p>Welcome to the Huobi API! You can use our API to access all market data, trading, and account management endpoints.</p>
+<p>欢迎使用火币API v1.0! 你可以使用此API获得市场行情数据，进行交易，并且管理你的账户。</p>
 
-<p>We have language bindings in Shell, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='153042ed9e'>概述</h1><h2 id='21d67c3c4c'>请求格式</h2>
-<p>All API requests are in either GET or POST method. For GET request, all parameters are path parameters. For POST request, all parameters are in POST body and in JSON format.</p>
+<p>在文档的右侧是代码实例，目前我们仅提供针对shell的代码实例。</p>
+
+<p>你可以通过选择上方下拉菜单的版本号来切换文档对应的API版本。你也可以通过点击右上方的语言按钮来切换文档语言。</p>
+<h1 id='1a0fdce8f8'>通用</h1><h2 id='21d67c3c4c'>请求格式</h2>
+<p>所有的API请求都以GET或者POST形式发出。对于GET请求，所有的参数都在路径参数里；对于POST请求，所有参数则以JSON格式发送在请求主体（body）里。</p>
 <h2 id='dac673286f'>返回格式</h2>
-<p>All response will be returned in JSON format. The top level JSON is a wrapper object which provides three metadata in &quot;status&quot;, &quot;ch&quot;, and &quot;ts&quot;. The actual per API response data is in &quot;data&quot; field.</p>
-<h3 id='response-wrapper-content'>Response Wrapper Content</h3>
+<p>所有的接口返回都是JSON格式。在JSON最上层有几个表示请求状态和属性的字段：&quot;status&quot;, &quot;ch&quot;, 和 &quot;ts&quot;. 实际的接口返回内容在&quot;data&quot;字段里.</p>
+<h3 id='d9618612cd'>返回内容格式</h3>
 <blockquote>
-<p>Response wrapper content example:</p>
+<p>返回内容将会是以下格式:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
@@ -380,22 +396,22 @@
 <tr>
 <td>status</td>
 <td>string</td>
-<td>The overall API call result status</td>
+<td>API接口返回状态</td>
 </tr>
 <tr>
 <td>ch</td>
 <td>string</td>
-<td>The data channel this response was originated from. Some API return does not have this field.</td>
+<td>接口数据对应的数据流。部分接口没有对应数据流因此不返回此字段</td>
 </tr>
 <tr>
 <td>ts</td>
 <td>int</td>
-<td>The timestamp in milliseconds for when the response is created</td>
+<td>接口返回的时间戳</td>
 </tr>
 <tr>
 <td>data</td>
 <td>object</td>
-<td>The actual response content per API</td>
+<td>接口返回数据主体</td>
 </tr>
 </tbody></table>
 <h2 id='c1fd2fc5ac'>限频规则</h2>
@@ -406,20 +422,22 @@
 单个APIKEY维度限制，建议行情API访问也要加上签名，否则限频会更严格。
 </aside></p>
 <h2 id='c64cd15fdc'>签名认证</h2>
-<p>Some API endpoints require authentication. To be authenticated, you should first acquire an API key and the corresponding secret key.</p>
+<p>部分接口需要通过签名验证以确保数据私有性。 在进行接口签名验证之前，你需要先获得API key和其对应的密钥。</p>
 
 <aside class="notice">
 目前关于apikey申请和修改，请在“账户 - API管理”页面进行相关操作。其中AccessKey为API 访问密钥，SecretKey为用户对请求进行签名的密钥（仅申请时可见）。
 </aside>
 
-<p>In order to successfully sign a request, you need to follow below steps</p>
+<p>为了完成签名认证，你需要遵循以下步骤</p>
 
 <ol>
-<li><p>Generate the &quot;Query String&quot; for your query</p></li>
-<li><p>Use &quot;Query String&quot; and your secret key to to created a signature</p></li>
-<li><p>Add the signature as a path parameter to your query</p></li>
+<li><p>为你的接口请求生成一个“请求字符串”</p></li>
+<li><p>用上一步里生成的“请求字符串”和你的密钥生成一个数字签名</p></li>
+<li><p>将生成的数字签名加入到请求的路径参数里</p></li>
 </ol>
-<h3 id='generate-the-quot-query-string-quot-for-your-query'>Generate the &quot;Query String&quot; for your query</h3>
+
+<p>以下将对每一步进行详细解释</p>
+<h3 id='bd1dd195b6'>为你的接口请求生成一个“请求字符串”</h3>
 <blockquote>
 <p>Add the query path section of the query string</p>
 </blockquote>
@@ -450,26 +468,28 @@
 </blockquote>
 <pre class="highlight shell tab-shell"><code>GET<span class="se">\n</span>api.huobi.pro<span class="se">\n</span>/v1/order/orders<span class="se">\n</span><span class="nv">AccessKeyId</span><span class="o">=</span>e2xxxxxx-99xxxxxx-84xxxxxx-7xxxx&amp;SignatureMethod<span class="o">=</span>HmacSHA256&amp;SignatureVersion<span class="o">=</span>2&amp;Timestamp<span class="o">=</span>2017-05-11T15%3A19%3A30&amp;order-id<span class="o">=</span>1234567890
 </code></pre>
+<p>请求字符串一开始为空，通过三个步骤陆续增加内容。</p>
+
 <ol>
-<li><p>Add the query path to the query string</p></li>
-<li><p>Add mandatory authentication parameters to the query string</p></li>
-<li><p>Add other path parameters to the query string ordered by parameter name (asc)</p></li>
+<li><p>将接口路径加入请求字符串</p></li>
+<li><p>加入必须的认证参数到请求字符串</p></li>
+<li><p>加入可选的认证参数到请求字符串。可选参数的添加顺序必须符合参数名的字母排序。</p></li>
 </ol>
 
 <aside class="notice">
-The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
+时间戳需要以YYYY-MM-DDThh:mm:ss格式添加并且符合URL编码。
 </aside>
-<h3 id='use-quot-query-string-quot-and-your-secret-key-to-to-created-a-signature'>Use &quot;Query String&quot; and your secret key to to created a signature</h3>
+<h3 id='59b550ae4c'>用上一步里生成的“请求字符串”和你的密钥生成一个数字签名</h3>
 <blockquote>
 <p>The result signature will look like</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code>4F65x5A2bLyMWVQj3Aqp+B4w+ivaA7n5Oi2SuYtCJ9o<span class="o">=</span>
 </code></pre>
 <ol>
-<li><p>Apply HmacSHA256 hash function with inputs (query string, secret key) to get the hashed string</p></li>
-<li><p>Encode the hashed string with base-64</p></li>
+<li><p>将上一步得到的请求字符串和API私钥作为两个参数，调用HmacSHA256哈希函数来获得哈希值。</p></li>
+<li><p>将此哈希值用base-64编码，得到的值作为此次接口调用的数字签名。</p></li>
 </ol>
-<h3 id='add-the-signature-as-a-path-parameter-to-your-query'>Add the signature as a path parameter to your query</h3>
+<h3 id='cd99308247'>将生成的数字签名加入到请求的路径参数里</h3>
 <blockquote>
 <p>The final request with signature will look like</p>
 </blockquote>
@@ -477,9 +497,104 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
 
 </code></pre>
 <ol>
-<li><p>Add all mandatory authentication parameters to your path parameter</p></li>
-<li><p>Add &quot;&amp;Signature=[Your request signature with URL encode]&quot; to your path parameter</p></li>
+<li><p>把所有必须的认证参数添加到接口调用的路径参数里</p></li>
+<li><p>把数字签名在URL编码后加入到路径参数里，参数名为“Signature”。</p></li>
 </ol>
+<h1 id='7d73ee41fe'>基础接口</h1><h2 id='b60dd9cffd'>返回所有支持的交易对</h2>
+<p>此接口返回所有火币支持的交易对。</p>
+<h3 id='http'>HTTP请求</h3>
+<p><code>GET https://api.huobi.pro/v1/common/symbols</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.prov1/common/symbols"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structure like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"base-currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quote-currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price-precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount-precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol-partition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"base-currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quote-currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price-precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount-precision"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol-partition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='1f9ac54b15'>请求参数</h3>
+<p>此接口不接受任何参数。</p>
+<h3 id='aceee0d936'>返回字段</h3>
+<table><thead>
+<tr>
+<th>字段</th>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>base-currency</td>
+<td>string</td>
+<td>交易对中的基础币种</td>
+</tr>
+<tr>
+<td>quote-currency</td>
+<td>string</td>
+<td>交易对中的报价币种</td>
+</tr>
+<tr>
+<td>price-precision</td>
+<td>integer</td>
+<td>交易对报价的精度（小数点后位数）</td>
+</tr>
+<tr>
+<td>amount-precision</td>
+<td>integer</td>
+<td>交易对基础币种计数精度（小数点后位数）</td>
+</tr>
+<tr>
+<td>symbol-partition</td>
+<td>string</td>
+<td>交易区，可能值: [main，innovation，bifurcation]</td>
+</tr>
+</tbody></table>
+<h2 id='56e5edc6a1'>返回所有支持的币种</h2>
+<p>此接口返回所有火币支持的币种。</p>
+<h3 id='http-2'>HTTP请求</h3>
+<p><code>GET https://api.huobi.pro/v1/common/currencys</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.prov1/common/currencys"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"etc"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='1f9ac54b15-2'>请求参数</h3>
+<p>此接口不接受任何参数。</p>
+<h3 id='aceee0d936-2'>返回字段</h3>
+<aside class="notice">返回的“data”对象是一个字符串数组，每一个字符串代表一个支持的币种。</aside>
+<h2 id='5113d0e5ad'>返回当前系统时间</h2>
+<p>此接口返回当前的系统时间，时间是以毫秒为单位的UNIX时间戳。</p>
+<h3 id='http-3'>HTTP请求</h3>
+<p><code>GET https://api.huobi.pro/v1/common/timestamp</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.prov1/common/timestamp"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494900087029</span><span class="w">
+</span></code></pre><h3 id='1f9ac54b15-3'>请求参数</h3>
+<p>此接口不接受任何参数。</p>
+<h3 id='response-content'>Response Content</h3>
+<p>返回的“data”对象是一个整数表示返回的时间戳。</p>
 <h1 id='d9d514d202'>行情数据</h1><h2 id='k'>K 线数据（蜡烛图）</h2>
 <p>This endpoint retrieves all klines in a specific range.</p>
 <h3 id='http-request'>HTTP Request</h3>
@@ -501,7 +616,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
     </span><span class="s2">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mf">71031537.97866500</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-4'>请求参数</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -604,7 +719,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
   </span><span class="s2">"ask"</span><span class="p">:[</span><span class="mf">1885.0000</span><span class="p">,</span><span class="mf">21.8804</span><span class="p">],</span><span class="w">
   </span><span class="s2">"bid"</span><span class="p">:[</span><span class="mf">1884.0000</span><span class="p">,</span><span class="mf">1.6702</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-2'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-5'>请求参数</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -714,7 +829,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
         </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"ltcbtc"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-3'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-6'>请求参数</h3>
 <p>This endpoint does not require parameters.</p>
 <h3 id='2213f4c32f-3'>响应数据</h3>
 <p>Response content is an array of object, each object has below fields.</p>
@@ -824,7 +939,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
       </span><span class="p">[</span><span class="mi">8020</span><span class="p">,</span><span class="w"> </span><span class="mf">13.6584</span><span class="p">]</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-4'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-7'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -902,7 +1017,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-5'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-8'>请求参数</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1000,7 +1115,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
       </span><span class="p">]</span><span class="w">
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-6'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-9'>请求参数</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1081,7 +1196,7 @@ The timestamp should be in YYYY-MM-DDThh:mm:ss format with URL encoding.
    </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">31619471534</span><span class="p">,</span><span class="w">
    </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">5.6617373443873316</span><span class="err">E</span><span class="mi">7</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-7'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-10'>请求参数</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1176,7 +1291,7 @@ BODY <span class="o">{</span>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59378"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-8'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-11'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1265,7 +1380,7 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-9'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-12'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1406,7 +1521,7 @@ BODY <span class="o">{</span>
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-10'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-13'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1473,7 +1588,7 @@ BODY <span class="o">{</span>
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-11'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-14'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1579,7 +1694,7 @@ BODY <span class="o">{</span>
     </span><span class="s2">"batch"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-12'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-15'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1733,7 +1848,7 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-13'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-16'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1876,7 +1991,7 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-14'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-17'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2086,7 +2201,7 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-15'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-18'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2261,7 +2376,7 @@ BODY
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-16'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-19'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2325,7 +2440,7 @@ BODY
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-17'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-20'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2389,7 +2504,7 @@ BODY
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-18'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-21'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2451,7 +2566,7 @@ BODY
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-19'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-22'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2523,7 +2638,7 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-20'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-23'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2755,7 +2870,7 @@ BODY <span class="o">{</span>
                 </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-21'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-24'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
