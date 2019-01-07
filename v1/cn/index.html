@@ -399,42 +399,28 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://www.huobi.pro/API Key/'>获取 API Key </a></li>
+            <li><a href='https://www.huobi.pro/API Key/'>创建 API Key </a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='api-v1-0'>API v1.0 简介</h1>
-<p>欢迎使用火币API v1.0! 你可以使用此API获得市场行情数据，进行交易，并且管理你的账户。</p>
+<p>欢迎使用火币 API v1.0！ 你可以使用此API获得市场行情数据，进行交易，并且管理你的账户。</p>
 
 <p>在文档的右侧是代码实例，目前我们仅提供针对shell的代码实例。</p>
 
 <p>你可以通过选择上方下拉菜单的版本号来切换文档对应的API版本。你也可以通过点击右上方的语言按钮来切换文档语言。</p>
 <h1 id='1a0fdce8f8'>通用</h1><h2 id='urls'>接入 URLs</h2>
-<p>API 可以帮用户快速接入火币交易系统，实现程序化交易。</p>
+<p>URL: https://api.huobi.pro</p>
 
-<table><thead>
-<tr>
-<th>访问地址</th>
-<th>适用站点</th>
-<th>适用功能</th>
-<th>适用范围</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>https://api.huobi.pro/market</td>
-<td>火币全球站</td>
-<td>行情</td>
-<td>所有火币全球站交易中的交易对</td>
-</tr>
-<tr>
-<td>https://api.huobi.pro/v1</td>
-<td>火币全球站</td>
-<td>交易</td>
-<td>所有火币全球站交易中的交易对</td>
-</tr>
-</tbody></table>
+<aside class="notice">
+请使用中国大陆以外的 IP 访问火币 API
+</aside>
+
+<aside class="notice">
+鉴于延迟高和稳定性差等原因，不建议使用代理的方式访问火币 API
+</aside>
 <h2 id='21d67c3c4c'>请求格式</h2>
 <p>所有的API请求都以GET或者POST形式发出。对于GET请求，所有的参数都在路径参数里；对于POST请求，所有参数则以JSON格式发送在请求主体（body）里。</p>
 <h2 id='dac673286f'>返回格式</h2>
@@ -580,7 +566,7 @@
 <p>此接口返回所有火币全球站支持的交易对。</p>
 <h3 id='http'>HTTP 请求</h3>
 <ul>
-<li>GET <code>https://api.huobi.pro/v1/common/symbols</code></li>
+<li>GET <code>/v1/common/symbols</code></li>
 </ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/common/symbols"</span>
 </code></pre>
@@ -644,7 +630,7 @@
 <h2 id='56e5edc6a1'>返回所有支持的币种</h2>
 <p>此接口返回所有火币全球站支持的币种。</p>
 <h3 id='http-2'>HTTP 请求</h3>
-<p><code>GET https://api.huobi.pro/v1/common/currencys</code></p>
+<p><code>GET /v1/common/currencys</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/common/currencys"</span>
 </code></pre><h3 id='1f9ac54b15-2'>请求参数</h3>
 <p>此接口不接受任何参数。</p>
@@ -662,7 +648,7 @@
 </span></code></pre><h2 id='5113d0e5ad'>返回当前系统时间</h2>
 <p>此接口返回当前的系统时间，时间是以毫秒为单位的UNIX时间戳。</p>
 <h3 id='http-3'>HTTP 请求</h3>
-<p><code>GET https://api.huobi.pro/v1/common/timestamp</code></p>
+<p><code>GET /v1/common/timestamp</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/common/timestamp"</span>
 </code></pre><h3 id='1f9ac54b15-3'>请求参数</h3>
 <p>此接口不接受任何参数。</p>
@@ -2421,7 +2407,7 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>false</td>
 <td>NA</td>
-<td>账户 ID，使用accounts方法获得。现货交易使用‘spot’账户的 account-id；杠杆交易，请使用 ‘margin’ 账户的 account-id</td>
+<td>账户 ID，使用 GET /v1/account/accounts 接口获得。现货交易使用‘spot’账户的 account-id；杠杆交易，请使用 ‘margin’ 账户的 account-id</td>
 </tr>
 <tr>
 <td>symbol</td>
@@ -2631,7 +2617,7 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>账户ID</td>
 <td></td>
-<td></td>
+<td>账户 ID，使用 GET /v1/account/accounts 接口获得。现货交易使用‘spot’账户的 account-id；杠杆交易，请使用 ‘margin’ 账户的 account-id</td>
 </tr>
 <tr>
 <td>symbol</td>
@@ -3377,7 +3363,7 @@ BODY <span class="o">{</span>
 <h2 id='0d3c2e7382'>资产划转</h2>
 <p>此接口用于现货账户与杠杆账户的资产互转。</p>
 
-<p>从币币交易账户划转至杠杆账户（transfer-in），从杠杆账户划转至币币交易账户（transfer-out）</p>
+<p>从现货账户划转至杠杆账户（transfer-in），从杠杆账户划转至现货账户（transfer-out）</p>
 <h3 id='http-28'>HTTP 请求</h3>
 <p><code>POST /v1/dw/transfer-in/margin</code></p>
 
@@ -3935,8 +3921,9 @@ BODY <span class="o">{</span>
     </span><span class="s2">"redemption_max_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
     </span><span class="s2">"purchase_fee_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w">
     </span><span class="s2">"redemption_fee_rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.002</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"etf_status"</span><span class="p">:</span><span class="mi">1</span><span class="w">
-    </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"etf_status"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.9</span><span class="w">
@@ -4261,8 +4248,10 @@ BODY <span class="o">{</span>
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.5</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"used_ currency_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> 
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"used_ currency_list"</span><span class="p">:</span><span class="w"> 
+        </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.666</span><span class="w">
@@ -4275,7 +4264,8 @@ BODY <span class="o">{</span>
         </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.002</span><span class="p">,</span><span class="w">
         </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.11</span><span class="p">,</span><span class="w">
         </span><span class="s2">"point_card_amount"</span><span class="p">:</span><span class="mf">1.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"obtain_ currency_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"obtain_ currency_list"</span><span class="p">:</span><span class="w"> 
+        </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hb10"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
@@ -4290,8 +4280,10 @@ BODY <span class="o">{</span>
       </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">11.5</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"used_ currency_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> 
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"used_ currency_list"</span><span class="p">:</span><span class="w"> 
+        </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.666</span><span class="w">
@@ -4304,7 +4296,8 @@ BODY <span class="o">{</span>
         </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.002</span><span class="p">,</span><span class="w">
         </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.11</span><span class="p">,</span><span class="w">
         </span><span class="s2">"point_card_amount"</span><span class="p">:</span><span class="mf">1.0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"obtain_ currency_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"obtain_ currency_list"</span><span class="p">:</span><span class="w">
+        </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hb10"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
