@@ -296,7 +296,7 @@
               </ul>
           </li>
           <li>
-            <a href="#57aa173947" class="toc-h1 toc-link" data-title="现货交易">现货交易</a>
+            <a href="#4832b46474" class="toc-h1 toc-link" data-title="现货 / 杠杆交易">现货 / 杠杆交易</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#fd6ce2a756" class="toc-h2 toc-link" data-title="下单">下单</a>
@@ -328,7 +328,7 @@
               </ul>
           </li>
           <li>
-            <a href="#7d8240332e" class="toc-h1 toc-link" data-title="杠杆交易">杠杆交易</a>
+            <a href="#176a7a1019" class="toc-h1 toc-link" data-title="借贷">借贷</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#e0eba8facc" class="toc-h2 toc-link" data-title="从现货账户划转到杠杆账户">从现货账户划转到杠杆账户</a>
@@ -352,9 +352,28 @@
           </li>
           <li>
             <a href="#e0d7f450bc" class="toc-h1 toc-link" data-title="钱包（充值与提现）">钱包（充值与提现）</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ba9b2e88fe" class="toc-h2 toc-link" data-title="虚拟币提现">虚拟币提现</a>
+                  </li>
+                  <li>
+                    <a href="#c9d941b159" class="toc-h2 toc-link" data-title="取消提现">取消提现</a>
+                  </li>
+                  <li>
+                    <a href="#26f11f9985" class="toc-h2 toc-link" data-title="虚拟币充提记录">虚拟币充提记录</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#2a0d0be224" class="toc-h1 toc-link" data-title="账户相关">账户相关</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#bd9157656f" class="toc-h2 toc-link" data-title="账户信息">账户信息</a>
+                  </li>
+                  <li>
+                    <a href="#bd9157656f-2" class="toc-h2 toc-link" data-title="账户信息">账户信息</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -1314,10 +1333,12 @@
 <td>内部数据</td>
 </tr>
 </tbody></table>
-<h1 id='57aa173947'>现货交易</h1>
+<h1 id='4832b46474'>现货 / 杠杆交易</h1>
 <aside class="notice">与这个部分的接口交互需要先进行身份验证。</aside>
+
+<aside class="warning">杠杆交易时，“account-id”参数需设置为 “margin” 的 account-id， “source”参数需设置为“margin-api”</aside>
 <h2 id='fd6ce2a756'>下单</h2>
-<p>此接口发送一个新订单到火币以进行撮合。</p>
+<p>发送一个新订单到火币以进行撮合。</p>
 <h3 id='http-11'>Http请求</h3>
 <p><code>GET /v1/order/orders/place</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/place"</span>
@@ -1350,7 +1371,7 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>现货交易的账户id</td>
+<td>账户 ID，使用accounts方法获得。现货交易使用‘spot’账户的 account-id；杠杆交易，请使用 ‘margin’ 账户的 account-id</td>
 </tr>
 <tr>
 <td>symbol</td>
@@ -1364,7 +1385,7 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>订单类型，包括buy-market, sell-market, buy-limit, sell-limit, buy-ioc, sell-ioc, buy-limit-maker, sell-limit-maker （TBC 这里可能需要翻译加说明）</td>
+<td>订单类型，包括buy-market, sell-market, buy-limit, sell-limit, buy-ioc, sell-ioc, buy-limit-maker, sell-limit-maker（说明见下文）</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -1385,9 +1406,21 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>false</td>
 <td>api</td>
-<td>现货交易填写“api”</td>
+<td>现货交易填写“api”，杠杆交易填写“margin-api”</td>
 </tr>
 </tbody></table>
+
+<p><strong>buy-limit-maker</strong></p>
+
+<p>当“下单价格”&gt;=“市场最低卖出价”，订单提交后，系统将拒绝接受此订单；</p>
+
+<p>当“下单价格”&lt;“市场最低卖出价”，提交成功后，此订单将被系统接受。</p>
+
+<p><strong>sell-limit-maker</strong></p>
+
+<p>当“下单价格”&lt;=“市场最高买入价”，订单提交后，系统将拒绝接受此订单；</p>
+
+<p>当“下单价格”&gt;“市场最高买入价”，提交成功后，此订单将被系统接受。</p>
 <h3 id='2213f4c32f-9'>响应数据</h3>
 <p>返回的主数据对象是一个对应下单单号的字符串。</p>
 <h2 id='95f2078356'>查询当前未成交订单</h2>
@@ -1439,7 +1472,7 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>false</td>
 <td>NA</td>
-<td>现货交易的账户id</td>
+<td>账户 ID，使用accounts方法获得。现货交易使用‘spot’账户的 account-id；杠杆交易，请使用 ‘margin’ 账户的 account-id</td>
 </tr>
 <tr>
 <td>symbol</td>
@@ -2388,12 +2421,10 @@ BODY <span class="o">{</span>
 <td>buy-market：市价买, sell-market：市价卖, buy-limit：限价买, sell-limit：限价卖, buy-ioc：IOC买单, sell-ioc：IOC卖单</td>
 </tr>
 </tbody></table>
-<h1 id='7d8240332e'>杠杆交易</h1>
+<h1 id='176a7a1019'>借贷</h1>
 <aside class="notice">与这个部分的接口交互需要先进行身份验证。</aside>
 
-<aside class="notice">目前杠杆交易仅支持以USDT和BTC为报价币种的交易对。</aside>
-
-<aside class="warning">所有通过杠杆交易接口发出的订单，“source”参数需设置为“margin-api”</aside>
+<aside class="notice">目前杠杆交易仅支持部分以USDT和BTC为报价币种的交易对。</aside>
 <h2 id='e0eba8facc'>从现货账户划转到杠杆账户</h2>
 <p>此接口用于将资产从现货账户划转到杠杆账户。</p>
 <h3 id='http-20'>Http请求</h3>
@@ -2859,56 +2890,7 @@ BODY <span class="o">{</span>
    <span class="s2">"symbol"</span>: <span class="s2">"ethusdt"</span>,
    <span class="s2">"type"</span>: <span class="s2">"buy-limit"</span>
    <span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18264</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"margin"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"fl-price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"fl-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safe"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"risk-rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"475.952571086994250554"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1168.533000000000000000"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frozen"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000000000000000"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-2.433000000000000000"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"interest"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.000533000000000000"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transfer-out-available"</span><span class="p">,</span><span class="err">//可转btc</span><span class="w">
-              </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1163.872174670000000000"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan-available"</span><span class="p">,</span><span class="err">//可借btc</span><span class="w">
-              </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8161.876538350676000000"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-24'>请求参数</h3>
+</code></pre><h3 id='1f9ac54b15-24'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2974,11 +2956,645 @@ BODY <span class="o">{</span>
 <td></td>
 </tr>
 </tbody></table>
-<h1 id='e0d7f450bc'>钱包（充值与提现）</h1>
-<p>TBC</p>
-<h1 id='2a0d0be224'>账户相关</h1>
-<p>TBC</p>
 
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18264</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"margin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fl-price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fl-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"risk-rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"475.952571086994250554"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1168.533000000000000000"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frozen"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000000000000000"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-2.433000000000000000"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"interest"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.000533000000000000"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transfer-out-available"</span><span class="p">,</span><span class="err">//可转btc</span><span class="w">
+              </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1163.872174670000000000"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loan-available"</span><span class="p">,</span><span class="err">//可借btc</span><span class="w">
+              </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8161.876538350676000000"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='e0d7f450bc'>钱包（充值与提现）</h1><h2 id='ba9b2e88fe'>虚拟币提现</h2>
+<p>查询当前用户的所有账户（account-id）及其相关信息</p>
+
+<aside class="warning">仅支持在官网上相应币种[可信地址列表](https://www.hbg.com/zh-cn/withdraw_address/) 中的地址</aside>
+<h3 id='http-26'>Http请求</h3>
+<p><code>POST /v1/dw/withdraw/api/create</code></p>
+<pre class="highlight shell tab-shell"><code>/<span class="k">*</span> POST /v1/dw/withdraw/api/create<span class="k">*</span>/
+<span class="o">{</span>
+  <span class="s2">"address"</span>: <span class="s2">"0xde709f2102306220921060314715629080e2fb77"</span>,
+  <span class="s2">"amount"</span>: <span class="s2">"0.05"</span>,
+  <span class="s2">"currency"</span>: <span class="s2">"eth"</span>,
+  <span class="s2">"fee"</span>: <span class="s2">"0.01"</span>
+<span class="o">}</span>
+</code></pre><h3 id='1f9ac54b15-25'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>true</td>
+<td>string</td>
+<td>提现地址</td>
+<td></td>
+<td>仅支持在官网上相应币种<a href="https://www.hbg.com/zh-cn/withdraw_address/">可信地址列表</a> 中的地址</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>true</td>
+<td>string</td>
+<td>提币数量</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>currency</td>
+<td>true</td>
+<td>string</td>
+<td>资产类型</td>
+<td></td>
+<td>btc, ltc, bch, eth, etc ...(火币全球站支持的币种)</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>false</td>
+<td>string</td>
+<td>转账手续费</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>addr-tag</td>
+<td>false</td>
+<td>string</td>
+<td>虚拟币共享地址tag，适用于xrp，xem，bts，steem，eos，xmr</td>
+<td></td>
+<td>格式, &quot;123&quot;类的整数字符串</td>
+</tr>
+</tbody></table>
+<h3 id='2213f4c32f-24'>响应数据</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
+<th>描述</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>false</td>
+<td>long</td>
+<td>提现ID</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='c9d941b159'>取消提现</h2><h3 id='http-27'>Http请求</h3>
+<p><code>POST /v1/dw/withdraw-virtual/{withdraw-id}/cancel</code></p>
+<h3 id='1f9ac54b15-26'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>withdraw-id</td>
+<td>true</td>
+<td>long</td>
+<td>提现ID，填在path中</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='2213f4c32f-25'>响应数据</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
+<th>描述</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>false</td>
+<td>long</td>
+<td>提现 ID</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='26f11f9985'>虚拟币充提记录</h2><h3 id='http-28'>Http请求</h3>
+<p><code>GET /v1/query/deposit-withdraw</code></p>
+<h3 id='1f9ac54b15-27'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>true</td>
+<td>string</td>
+<td>币种</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>true</td>
+<td>string</td>
+<td>&#39;deposit&#39; or &#39;withdraw&#39;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>from</td>
+<td>true</td>
+<td>string</td>
+<td>查询起始 ID</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>size</td>
+<td>true</td>
+<td>string</td>
+<td>查询记录大小</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='2213f4c32f-26'>响应数据</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
+<th>描述</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>long</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>true</td>
+<td>long</td>
+<td>类型</td>
+<td>&#39;deposit&#39; &#39;withdraw&#39;</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>true</td>
+<td>string</td>
+<td>币种</td>
+<td></td>
+</tr>
+<tr>
+<td>tx-hash</td>
+<td>true</td>
+<td>string</td>
+<td>交易哈希</td>
+<td></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>true</td>
+<td>long</td>
+<td>个数</td>
+<td></td>
+</tr>
+<tr>
+<td>address</td>
+<td>true</td>
+<td>string</td>
+<td>地址</td>
+<td></td>
+</tr>
+<tr>
+<td>address-tag</td>
+<td>true</td>
+<td>string</td>
+<td>地址标签</td>
+<td></td>
+</tr>
+<tr>
+<td>fee</td>
+<td>true</td>
+<td>long</td>
+<td>手续费</td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td>true</td>
+<td>string</td>
+<td>状态</td>
+<td>状态参见下表</td>
+</tr>
+<tr>
+<td>created-at</td>
+<td>true</td>
+<td>long</td>
+<td>发起时间</td>
+<td></td>
+</tr>
+<tr>
+<td>updated-at</td>
+<td>true</td>
+<td>long</td>
+<td>最后更新时间</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>虚拟币充值状态定义：</p>
+
+<table><thead>
+<tr>
+<th>状态</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>unknown</td>
+<td>状态未知</td>
+</tr>
+<tr>
+<td>confirming</td>
+<td>确认中</td>
+</tr>
+<tr>
+<td>confirmed</td>
+<td>确认中</td>
+</tr>
+<tr>
+<td>safe</td>
+<td>已完成</td>
+</tr>
+<tr>
+<td>orphan</td>
+<td>待确认</td>
+</tr>
+</tbody></table>
+
+<p>虚拟币提现状态定义：</p>
+
+<table><thead>
+<tr>
+<th>状态</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>submitted</td>
+<td>已提交</td>
+</tr>
+<tr>
+<td>reexamine</td>
+<td>审核中</td>
+</tr>
+<tr>
+<td>canceled</td>
+<td>已撤销</td>
+</tr>
+<tr>
+<td>pass</td>
+<td>审批通过</td>
+</tr>
+<tr>
+<td>reject</td>
+<td>审批拒绝</td>
+</tr>
+<tr>
+<td>pre-transfer</td>
+<td>处理中</td>
+</tr>
+<tr>
+<td>wallet-transfer</td>
+<td>已汇出</td>
+</tr>
+<tr>
+<td>wallet-reject</td>
+<td>钱包拒绝</td>
+</tr>
+<tr>
+<td>confirmed</td>
+<td>区块已确认</td>
+</tr>
+<tr>
+<td>confirm-error</td>
+<td>区块确认错误</td>
+</tr>
+<tr>
+<td>repealed</td>
+<td>已撤销</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1171</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deposit"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tx-hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed03094b84eafbe4bc16e7ef766ee959885ee5bcb265872baaa9c64e1cf86c2b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.457467</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rae93V8d2mdoUQHwBDBdM4NHCMehRJAsbm"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address-tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100040"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"safe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1510912472199</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1511145876575</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='2a0d0be224'>账户相关</h1><h2 id='bd9157656f'>账户信息</h2>
+<p>查询当前用户的所有账户（account-id）及其相关信息</p>
+<h3 id='http-29'>Http请求</h3>
+<p><code>GET /v1/account/accounts</code></p>
+<h3 id='1f9ac54b15-28'>请求参数</h3>
+<p>无</p>
+<h3 id='2213f4c32f-27'>响应数据</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
+<th>描述</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>long</td>
+<td>account-id</td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td>true</td>
+<td>string</td>
+<td>账户状态</td>
+<td>working：正常, lock：账户被锁定</td>
+</tr>
+<tr>
+<td>type</td>
+<td>true</td>
+<td>string</td>
+<td>账户类型</td>
+<td>spot：现货账户， margin：杠杆账户，otc：OTC账户，point：点卡账户</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100001</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100002</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"margin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btcusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100003</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"margin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100004</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"otc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='bd9157656f-2'>账户信息</h2>
+<p>查询当前用户的所有账户（account-id）及其相关信息</p>
+<h3 id='http-30'>Http请求</h3>
+<p><code>GET /v1/account/accounts/{account-id}/balance</code></p>
+<h3 id='1f9ac54b15-29'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account-id</td>
+<td>true</td>
+<td>string</td>
+<td>account-id，填在 path 中，可用 GET /v1/account/accounts 获取</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='2213f4c32f-28'>响应数据</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
+<th>描述</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>long</td>
+<td>账户 ID</td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td>true</td>
+<td>string</td>
+<td>账户状态</td>
+<td>working：正常  lock：账户被锁定</td>
+</tr>
+<tr>
+<td>type</td>
+<td>true</td>
+<td>string</td>
+<td>账户类型</td>
+<td>spot：现货账户， margin：杠杆账户，otc：OTC账户，point：点卡账户</td>
+</tr>
+<tr>
+<td>list</td>
+<td>false</td>
+<td>Array</td>
+<td>子账户数组</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>list字段说明</p>
+
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>数据类型</th>
+<th>描述</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>balance</td>
+<td>true</td>
+<td>string</td>
+<td>余额</td>
+<td></td>
+</tr>
+<tr>
+<td>currency</td>
+<td>true</td>
+<td>string</td>
+<td>币种</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>true</td>
+<td>string</td>
+<td>类型</td>
+<td>trade: 交易余额，frozen: 冻结余额</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100009</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spot"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5007.4362872650"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frozen"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"348.1199920000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"etc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4616.1302471000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"etc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frozen"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9786.6783000000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4616.1302471000"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frozen"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86.6783000000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"user-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
