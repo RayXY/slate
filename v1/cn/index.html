@@ -255,7 +255,7 @@
               </ul>
           </li>
           <li>
-            <a href="#7d73ee41fe" class="toc-h1 toc-link" data-title="基础接口">基础接口</a>
+            <a href="#41654e0268" class="toc-h1 toc-link" data-title="基础信息">基础信息</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#b60dd9cffd" class="toc-h2 toc-link" data-title="返回所有支持的交易对">返回所有支持的交易对</a>
@@ -335,28 +335,28 @@
                     <a href="#fd6ce2a756" class="toc-h2 toc-link" data-title="下单">下单</a>
                   </li>
                   <li>
+                    <a href="#4e53c0fccd" class="toc-h2 toc-link" data-title="撤销订单">撤销订单</a>
+                  </li>
+                  <li>
                     <a href="#95f2078356" class="toc-h2 toc-link" data-title="查询当前未成交订单">查询当前未成交订单</a>
                   </li>
                   <li>
-                    <a href="#54db740501" class="toc-h2 toc-link" data-title="发送订单取消请求">发送订单取消请求</a>
+                    <a href="#open-orders" class="toc-h2 toc-link" data-title="批量撤销订单（open orders）">批量撤销订单（open orders）</a>
                   </li>
                   <li>
                     <a href="#ad00632ed5" class="toc-h2 toc-link" data-title="批量撤销订单">批量撤销订单</a>
                   </li>
                   <li>
-                    <a href="#037c64513f" class="toc-h2 toc-link" data-title="批量取消符合条件的订单">批量取消符合条件的订单</a>
+                    <a href="#92d59b6aad" class="toc-h2 toc-link" data-title="查询订单详情">查询订单详情</a>
                   </li>
                   <li>
-                    <a href="#58f6496bf1" class="toc-h2 toc-link" data-title="查询单个订单详情">查询单个订单详情</a>
-                  </li>
-                  <li>
-                    <a href="#0f4ede5fb1" class="toc-h2 toc-link" data-title="指定订单的成交明细">指定订单的成交明细</a>
+                    <a href="#56c6c47284" class="toc-h2 toc-link" data-title="成交明细">成交明细</a>
                   </li>
                   <li>
                     <a href="#d72a5b49e7" class="toc-h2 toc-link" data-title="搜索历史订单">搜索历史订单</a>
                   </li>
                   <li>
-                    <a href="#d7e029843f" class="toc-h2 toc-link" data-title="查询当前和历史成交">查询当前和历史成交</a>
+                    <a href="#0fa6055598" class="toc-h2 toc-link" data-title="当前和历史成交">当前和历史成交</a>
                   </li>
               </ul>
           </li>
@@ -381,7 +381,7 @@
               </ul>
           </li>
           <li>
-            <a href="#etf-hb10" class="toc-h1 toc-link" data-title="ETF （HB10）">ETF （HB10）</a>
+            <a href="#etf-hb10" class="toc-h1 toc-link" data-title="ETF（HB10）">ETF（HB10）</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#b122f813d5" class="toc-h2 toc-link" data-title="基本信息">基本信息</a>
@@ -396,6 +396,9 @@
                     <a href="#etf" class="toc-h2 toc-link" data-title="ETF净值">ETF净值</a>
                   </li>
               </ul>
+          </li>
+          <li>
+            <a href="#websocket" class="toc-h1 toc-link" data-title="Websocket 订阅">Websocket 订阅</a>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -412,7 +415,17 @@
 
 <p>你可以通过选择上方下拉菜单的版本号来切换文档对应的API版本。你也可以通过点击右上方的语言按钮来切换文档语言。</p>
 <h1 id='1a0fdce8f8'>通用</h1><h2 id='urls'>接入 URLs</h2>
-<p>URL: https://api.huobi.pro</p>
+<p><strong>REST API</strong></p>
+
+<p><strong><code>https://api.huobi.pro</code></strong></p>
+
+<p><strong>Websocket Feed（行情）</strong></p>
+
+<p><strong><code>wss://api.huobi.pro/ws</code></strong></p>
+
+<p><strong>Websocket Feed（资产和订单）</strong></p>
+
+<p><strong><code>wss://api.huobi.pro/ws/v1</code></strong></p>
 
 <aside class="notice">
 请使用中国大陆以外的 IP 访问火币 API
@@ -562,7 +575,7 @@
 <li><p>把所有必须的认证参数添加到接口调用的路径参数里</p></li>
 <li><p>把数字签名在URL编码后加入到路径参数里，参数名为“Signature”。</p></li>
 </ol>
-<h1 id='7d73ee41fe'>基础接口</h1><h2 id='b60dd9cffd'>返回所有支持的交易对</h2>
+<h1 id='41654e0268'>基础信息</h1><h2 id='b60dd9cffd'>返回所有支持的交易对</h2>
 <p>此接口返回所有火币全球站支持的交易对。</p>
 <h3 id='http'>HTTP 请求</h3>
 <ul>
@@ -685,12 +698,6 @@
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100003</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"margin"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100004</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"otc"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"working"</span><span class="w">
@@ -774,26 +781,6 @@
         </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usdt"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frozen"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"348.1199920000"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"etc"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4616.1302471000"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"etc"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frozen"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9786.6783000000"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-     </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trade"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4616.1302471000"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frozen"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86.6783000000"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"user-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
@@ -1342,7 +1329,7 @@
 <td>type</td>
 <td>true</td>
 <td>string</td>
-<td>&#39;deposit&#39; or &#39;withdraw&#39;</td>
+<td>deposit 或 withdraw</td>
 <td></td>
 <td></td>
 </tr>
@@ -2358,9 +2345,27 @@ BODY <span class="o">{</span>
 <p>当“下单价格”&gt;“市场最高买入价”，提交成功后，此订单将被系统接受。</p>
 <h3 id='2213f4c32f-17'>响应数据</h3>
 <p>返回的主数据对象是一个对应下单单号的字符串。</p>
-<h2 id='95f2078356'>查询当前未成交订单</h2>
-<p>此接口查询已发送但是仍未成交的订单。</p>
+<h2 id='4e53c0fccd'>撤销订单</h2>
+<p>此接口发送一个撤销订单的请求。</p>
+
+<aside class="warning">此接口只提交取消请求，实际取消结果需要通过订单状态，撮合状态等接口来确认。</aside>
 <h3 id='http-20'>HTTP 请求</h3>
+<p><code>POST /v1/order/orders/{order-id}/submitcancel</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378/submitcancel"</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59378"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='1f9ac54b15-20'>请求参数</h3>
+<p>此接口不接受任何参数。</p>
+<h3 id='2213f4c32f-18'>响应数据</h3>
+<p>返回的主数据对象是一个对应下单单号的字符串。</p>
+<h2 id='95f2078356'>查询当前未成交订单</h2>
+<p>查询已提交但是仍未完全成交或被撤销的订单。</p>
+<h3 id='http-21'>HTTP 请求</h3>
 <p><code>GET /v1/order/openOrders</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/openOrders"</span>
 BODY <span class="o">{</span>
@@ -2392,7 +2397,7 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-20'>请求参数</h3>
+</span></code></pre><h3 id='1f9ac54b15-21'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2431,7 +2436,7 @@ BODY <span class="o">{</span>
 <td>返回订单的数量，最大值2000。</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-18'>响应数据</h3>
+<h3 id='2213f4c32f-19'>响应数据</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -2490,54 +2495,14 @@ BODY <span class="o">{</span>
 <td>订单状态，包括submitted, partical-filled, cancelling</td>
 </tr>
 </tbody></table>
-<h2 id='54db740501'>发送订单取消请求</h2>
-<p>此接口发送一个取消订单的请求。</p>
+<h2 id='open-orders'>批量撤销订单（open orders）</h2>
+<p>此接口发送批量撤销订单的请求。</p>
 
 <aside class="warning">此接口只提交取消请求，实际取消结果需要通过订单状态，撮合状态等接口来确认。</aside>
-<h3 id='http-21'>HTTP 请求</h3>
-<p><code>POST /v1/order/orders/{order-id}/submitcancel</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378/submitcancel"</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59378"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-21'>请求参数</h3>
-<p>此接口不接受任何参数。</p>
-<h3 id='2213f4c32f-19'>响应数据</h3>
-<p>返回的主数据对象是一个对应下单单号的字符串。</p>
-<h2 id='ad00632ed5'>批量撤销订单</h2>
-<p>此接口同时为多个订单（基于id）发送取消请求。</p>
 <h3 id='http-22'>HTTP 请求</h3>
-<p><code>POST /v1/order/orders/batchcancel</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/batchcancel"</span>
-BODY <span class="o">{</span>
-  <span class="s2">"order-ids"</span>: <span class="o">[</span>
-    <span class="s2">"1"</span>, <span class="s2">"2"</span>, <span class="s2">"3"</span>
-  <span class="o">]</span>
-<span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"3"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"failed"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"err-msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"记录无效"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"order-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"err-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base-record-invalid"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-22'>请求参数</h3>
+<p><code>POST /v1/order/orders/batchCancelOpenOrders</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/batchCancelOpenOrders"</span>
+</code></pre><h3 id='1f9ac54b15-22'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2549,32 +2514,86 @@ BODY <span class="o">{</span>
 </tr>
 </thead><tbody>
 <tr>
-<td>order-ids</td>
+<td>account-id</td>
 <td>true</td>
-<td>list</td>
-<td>撤销订单ID列表</td>
+<td>string</td>
+<td>账户ID</td>
 <td></td>
-<td>单次不超过50个订单id</td>
+<td></td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>false</td>
+<td>string</td>
+<td>交易对</td>
+<td></td>
+<td>单个交易对字符串，缺省将返回所有符合条件尚未成交订单</td>
+</tr>
+<tr>
+<td>side</td>
+<td>false</td>
+<td>string</td>
+<td>主动交易方向</td>
+<td></td>
+<td>“buy”或“sell”，缺省将返回所有符合条件尚未成交订单</td>
+</tr>
+<tr>
+<td>size</td>
+<td>false</td>
+<td>int</td>
+<td>所需返回记录数</td>
+<td>100</td>
+<td>[0,100]</td>
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-20'>响应数据</h3>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"success-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"failed-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5454600</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <table><thead>
 <tr>
-<th>字段名称</th>
+<th>参数名称</th>
+<th>是否必须</th>
 <th>数据类型</th>
 <th>描述</th>
+<th>取值范围</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>data</td>
-<td>map</td>
-<td>撤单结果</td>
+<td>success-count</td>
+<td>true</td>
+<td>int</td>
+<td>成功取消的订单数</td>
+<td></td>
+</tr>
+<tr>
+<td>failed-count</td>
+<td>true</td>
+<td>int</td>
+<td>取消失败的订单数</td>
+<td></td>
+</tr>
+<tr>
+<td>next-id</td>
+<td>true</td>
+<td>long</td>
+<td>下一个符合取消条件的订单号</td>
+<td></td>
 </tr>
 </tbody></table>
-<h2 id='037c64513f'>批量取消符合条件的订单</h2>
-<p>此接口同时为多个订单（基于筛选条件）发送取消请求。</p>
+<h2 id='ad00632ed5'>批量撤销订单</h2>
+<p>此接口同时为多个订单（基于id）发送取消请求。</p>
 <h3 id='http-23'>HTTP 请求</h3>
-<p><code>GET /v1/order/orders/batchcancel</code></p>
+<p><code>POST /v1/order/orders/batchcancel</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/batchcancel"</span>
 BODY <span class="o">{</span>
   <span class="s2">"order-ids"</span>: <span class="o">[</span>
@@ -2612,36 +2631,12 @@ BODY <span class="o">{</span>
 </tr>
 </thead><tbody>
 <tr>
-<td>account-id</td>
+<td>order-ids</td>
 <td>true</td>
-<td>string</td>
-<td>账户ID</td>
+<td>list</td>
+<td>撤销订单ID列表</td>
 <td></td>
-<td>账户 ID，使用 GET /v1/account/accounts 接口获得。现货交易使用‘spot’账户的 account-id；杠杆交易，请使用 ‘margin’ 账户的 account-id</td>
-</tr>
-<tr>
-<td>symbol</td>
-<td>false</td>
-<td>string</td>
-<td>交易对</td>
-<td></td>
-<td>单个交易对字符串，缺省将返回所有符合条件尚未成交订单</td>
-</tr>
-<tr>
-<td>side</td>
-<td>false</td>
-<td>string</td>
-<td>主动交易方向</td>
-<td></td>
-<td>“buy”或“sell”，缺省将返回所有符合条件尚未成交订单</td>
-</tr>
-<tr>
-<td>size</td>
-<td>false</td>
-<td>int</td>
-<td>所需返回记录数</td>
-<td>100</td>
-<td>[0, 100]</td>
+<td>单次不超过50个订单id</td>
 </tr>
 </tbody></table>
 <h3 id='2213f4c32f-21'>响应数据</h3>
@@ -2653,22 +2648,12 @@ BODY <span class="o">{</span>
 </tr>
 </thead><tbody>
 <tr>
-<td>success-count</td>
-<td>true</td>
-<td>int</td>
-</tr>
-<tr>
-<td>failed-count</td>
-<td>true</td>
-<td>int</td>
-</tr>
-<tr>
-<td>next-id</td>
-<td>true</td>
-<td>long</td>
+<td>data</td>
+<td>map</td>
+<td>撤单结果</td>
 </tr>
 </tbody></table>
-<h2 id='58f6496bf1'>查询单个订单详情</h2>
+<h2 id='92d59b6aad'>查询订单详情</h2>
 <p>此接口返回指定订单的最新状态和详情。</p>
 <h3 id='http-24'>HTTP 请求</h3>
 <p><code>GET /v1/order/orders/{order-id}</code></p>
@@ -2827,7 +2812,7 @@ BODY <span class="o">{</span>
 <td>buy-market：市价买, sell-market：市价卖, buy-limit：限价买, sell-limit：限价卖, buy-ioc：IOC买单, sell-ioc：IOC卖单</td>
 </tr>
 </tbody></table>
-<h2 id='0f4ede5fb1'>指定订单的成交明细</h2>
+<h2 id='56c6c47284'>成交明细</h2>
 <p>此接口返回指定订单的成交明细。</p>
 <h3 id='http-25'>HTTP 请求</h3>
 <p><code>GET /v1/order/orders/{order-id}/matchresults</code></p>
@@ -3127,7 +3112,7 @@ BODY <span class="o">{</span>
 <td>field-fees</td>
 <td>true</td>
 <td>string</td>
-<td>已成交手续费（买入为币，卖出为钱）</td>
+<td>已成交手续费（买入为基础币，卖出为计价币）</td>
 <td></td>
 </tr>
 <tr>
@@ -3180,7 +3165,7 @@ BODY <span class="o">{</span>
 <td>submit-cancel：已提交撤单申请  ,buy-market：市价买, sell-market：市价卖, buy-limit：限价买, sell-limit：限价卖, buy-ioc：IOC买单, sell-ioc：IOC卖单</td>
 </tr>
 </tbody></table>
-<h2 id='d7e029843f'>查询当前和历史成交</h2>
+<h2 id='0fa6055598'>当前和历史成交</h2>
 <p>此接口基于搜索条件查询当前和历史成交记录。</p>
 <h3 id='http-27'>HTTP 请求</h3>
 <p><code>GET /v1/order/matchresults</code></p>
@@ -3884,7 +3869,7 @@ BODY <span class="o">{</span>
 <td></td>
 </tr>
 </tbody></table>
-<h1 id='etf-hb10'>ETF （HB10）</h1><h2 id='b122f813d5'>基本信息</h2>
+<h1 id='etf-hb10'>ETF（HB10）</h1><h2 id='b122f813d5'>基本信息</h2>
 <p>用户可以通过该接口取得关于 ETF 换入换出的 基本信息，包括一次换入最小量，一次换入最大量，一 次换出最小量，一次换出最大量，换入费率，换出费 率，最新 ETF 换入换出状态，以及 ETF 的成分结构。</p>
 <h3 id='http-33'>HTTP 请求</h3>
 <p><code>GET /etf/swap/config</code></p>
@@ -4552,6 +4537,10 @@ BODY <span class="o">{</span>
 <td></td>
 </tr>
 </tbody></table>
+<h1 id='websocket'>Websocket 订阅</h1>
+<ul>
+<li><a href='https://github.com/huobiapi/API_Docs/wiki/WS_request'>Websocket 文档 </a></li>
+</ul>
 
       </div>
       <div class="dark-box">
