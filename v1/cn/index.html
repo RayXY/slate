@@ -269,6 +269,32 @@
               </ul>
           </li>
           <li>
+            <a href="#d9d514d202" class="toc-h1 toc-link" data-title="行情数据">行情数据</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#k" class="toc-h2 toc-link" data-title="K 线数据（蜡烛图）">K 线数据（蜡烛图）</a>
+                  </li>
+                  <li>
+                    <a href="#ticker" class="toc-h2 toc-link" data-title="聚合行情（Ticker）">聚合行情（Ticker）</a>
+                  </li>
+                  <li>
+                    <a href="#tickers" class="toc-h2 toc-link" data-title="所有交易对的最新 Tickers">所有交易对的最新 Tickers</a>
+                  </li>
+                  <li>
+                    <a href="#0f7bd4961a" class="toc-h2 toc-link" data-title="市场深度数据">市场深度数据</a>
+                  </li>
+                  <li>
+                    <a href="#a7fb7754d7" class="toc-h2 toc-link" data-title="最近市场成交记录">最近市场成交记录</a>
+                  </li>
+                  <li>
+                    <a href="#5583b4ac64" class="toc-h2 toc-link" data-title="获得近期交易记录">获得近期交易记录</a>
+                  </li>
+                  <li>
+                    <a href="#24" class="toc-h2 toc-link" data-title="最近24小时行情数据">最近24小时行情数据</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#2a0d0be224" class="toc-h1 toc-link" data-title="账户相关">账户相关</a>
               <ul class="toc-list-h2">
                   <li>
@@ -299,32 +325,6 @@
                   </li>
                   <li>
                     <a href="#d3612d98d4" class="toc-h2 toc-link" data-title="充提记录">充提记录</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#d9d514d202" class="toc-h1 toc-link" data-title="行情数据">行情数据</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#k" class="toc-h2 toc-link" data-title="K 线数据（蜡烛图）">K 线数据（蜡烛图）</a>
-                  </li>
-                  <li>
-                    <a href="#ticker" class="toc-h2 toc-link" data-title="聚合行情（Ticker）">聚合行情（Ticker）</a>
-                  </li>
-                  <li>
-                    <a href="#tickers" class="toc-h2 toc-link" data-title="所有交易对的最新 Tickers">所有交易对的最新 Tickers</a>
-                  </li>
-                  <li>
-                    <a href="#0f7bd4961a" class="toc-h2 toc-link" data-title="市场深度数据">市场深度数据</a>
-                  </li>
-                  <li>
-                    <a href="#a7fb7754d7" class="toc-h2 toc-link" data-title="最近市场成交记录">最近市场成交记录</a>
-                  </li>
-                  <li>
-                    <a href="#5583b4ac64" class="toc-h2 toc-link" data-title="获得近期交易记录">获得近期交易记录</a>
-                  </li>
-                  <li>
-                    <a href="#24" class="toc-h2 toc-link" data-title="最近24小时行情数据">最近24小时行情数据</a>
                   </li>
               </ul>
           </li>
@@ -486,7 +486,7 @@
 单个 API Key 维度限制，建议行情API访问也要加上签名，否则限频会更严格。
 </aside>
 <h2 id='c64cd15fdc'>签名认证</h2><h3 id='api-key'>创建 API Key</h3>
-<p>私有接口需要您的 API Key 做签名认证，您可以在 <a href='https://www.huobi.pro/apikey/'>这里 </a> 创建 API Key。</p>
+<p>除公共接口（基础信息，行情数据）外的私有接口均必须使用您的 API Key 做签名认证，您可以在 <a href='https://www.huobi.pro/apikey/'>这里 </a> 创建 API Key。</p>
 
 <p>API Key 包括以下两部分</p>
 
@@ -577,14 +577,16 @@
 </ol>
 <h1 id='41654e0268'>基础信息</h1><h2 id='b60dd9cffd'>返回所有支持的交易对</h2>
 <p>此接口返回所有火币全球站支持的交易对。</p>
-<h3 id='http'>HTTP 请求</h3>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/common/symbols"</span>
+</code></pre><h3 id='http'>HTTP 请求</h3>
 <ul>
 <li>GET <code>/v1/common/symbols</code></li>
 </ul>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/common/symbols"</span>
-</code></pre>
+<h3 id='1f9ac54b15'>请求参数</h3>
+<p>此接口不接受任何参数。</p>
+
 <blockquote>
-<p>The above command returns JSON structure like this:</p>
+<p>Responds:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -604,9 +606,7 @@
         </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15'>请求参数</h3>
-<p>此接口不接受任何参数。</p>
-<h3 id='aceee0d936'>返回字段</h3>
+</span></code></pre><h3 id='aceee0d936'>返回字段</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -642,13 +642,11 @@
 </tbody></table>
 <h2 id='56e5edc6a1'>返回所有支持的币种</h2>
 <p>此接口返回所有火币全球站支持的币种。</p>
-<h3 id='http-2'>HTTP 请求</h3>
-<p><code>GET /v1/common/currencys</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/common/currencys"</span>
-</code></pre><h3 id='1f9ac54b15-2'>请求参数</h3>
+</code></pre><h3 id='http-2'>HTTP 请求</h3>
+<p><code>GET /v1/common/currencys</code></p>
+<h3 id='1f9ac54b15-2'>请求参数</h3>
 <p>此接口不接受任何参数。</p>
-<h3 id='aceee0d936-2'>返回字段</h3>
-<aside class="notice">返回的“data”对象是一个字符串数组，每一个字符串代表一个支持的币种。</aside>
 
 <blockquote>
 <p>Response:</p>
@@ -658,27 +656,707 @@
     </span><span class="s2">"eth"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"etc"</span><span class="w">
   </span><span class="p">]</span><span class="w">
-</span></code></pre><h2 id='5113d0e5ad'>返回当前系统时间</h2>
+</span></code></pre><h3 id='aceee0d936-2'>返回字段</h3>
+<aside class="notice">返回的“data”对象是一个字符串数组，每一个字符串代表一个支持的币种。</aside>
+<h2 id='5113d0e5ad'>返回当前系统时间</h2>
 <p>此接口返回当前的系统时间，时间是以毫秒为单位的UNIX时间戳。</p>
-<h3 id='http-3'>HTTP 请求</h3>
-<p><code>GET /v1/common/timestamp</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/common/timestamp"</span>
-</code></pre><h3 id='1f9ac54b15-3'>请求参数</h3>
+</code></pre><h3 id='http-3'>HTTP 请求</h3>
+<p><code>GET /v1/common/timestamp</code></p>
+<h3 id='1f9ac54b15-3'>请求参数</h3>
 <p>此接口不接受任何参数。</p>
-<h3 id='2213f4c32f'>响应数据</h3>
-<p>返回的“data”对象是一个整数表示返回的时间戳。</p>
 
 <blockquote>
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494900087029</span><span class="w">
-</span></code></pre><h1 id='2a0d0be224'>账户相关</h1><h2 id='bd9157656f'>账户信息</h2>
-<p>查询当前用户的所有账户（account-id）及其相关信息</p>
+</span></code></pre><h3 id='2213f4c32f'>响应数据</h3>
+<p>返回的“data”对象是一个整数表示返回的时间戳。</p>
+<h1 id='d9d514d202'>行情数据</h1><h2 id='k'>K 线数据（蜡烛图）</h2>
+<p>此接口返回历史K线数据。</p>
 <h3 id='http-4'>HTTP 请求</h3>
+<p><code>GET /market/history/kline</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/kline?period=1day&amp;size=200&amp;symbol=btcusdt"</span>
+</code></pre><h3 id='1f9ac54b15-4'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>NA</td>
+<td>交易对, e.g. btcusdt, bccbtc</td>
+</tr>
+<tr>
+<td>period</td>
+<td>string</td>
+<td>true</td>
+<td>NA</td>
+<td>The period of each candle, allowed values are: 1min, 5min, 15min, 30min, 60min, 1day, 1mon, 1week, 1year</td>
+</tr>
+<tr>
+<td>size</td>
+<td>integer</td>
+<td>false</td>
+<td>150</td>
+<td>The number of data returns, range [1, 2000]</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499184000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">37593.0266</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">1935.2000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">1879.0000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">1856.0000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">1940.0000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mf">71031537.97866500</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-2'>响应数据</h3>
+<table><thead>
+<tr>
+<th>字段名称</th>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>以UNIX秒为单位的时间戳，并以此作为此K线柱的id</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>以基础币种计量的交易量</td>
+</tr>
+<tr>
+<td>count</td>
+<td>integer</td>
+<td>交易次数</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>本阶段开盘价</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>本阶段收盘价</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>本阶段最低价</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>本阶段最高价</td>
+</tr>
+<tr>
+<td>vol</td>
+<td>float</td>
+<td>以报价币种计量的交易量</td>
+</tr>
+</tbody></table>
+<h2 id='ticker'>聚合行情（Ticker）</h2>
+<p>此接口获取ticker信息同时提供最近24小时的交易聚合信息。</p>
+<h3 id='http-5'>HTTP 请求</h3>
+<p><code>GET /market/detail/merged</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail/merged?symbol=ethusdt"</span>
+</code></pre><h3 id='1f9ac54b15-5'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>NA</td>
+<td>交易对, 例如 btcusdt, bccbtc</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1499225271</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1499225271000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">1885.0000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">1960.0000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">1985.0000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">1856.0000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">81486.2926</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">42122</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">157052744.85708200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ask"</span><span class="p">:[</span><span class="mf">1885.0000</span><span class="p">,</span><span class="mf">21.8804</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"bid"</span><span class="p">:[</span><span class="mf">1884.0000</span><span class="p">,</span><span class="mf">1.6702</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-3'>响应数据</h3>
+<table><thead>
+<tr>
+<th>字段名称</th>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>以UNIX秒为单位的时间戳，并以此作为此ticker的id</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>以基础币种计量的交易量</td>
+</tr>
+<tr>
+<td>count</td>
+<td>integer</td>
+<td>交易次数</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>本阶段开盘价</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>本阶段收盘价</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>本阶段最低价</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>本阶段最高价</td>
+</tr>
+<tr>
+<td>vol</td>
+<td>float</td>
+<td>以报价币种计量的交易量</td>
+</tr>
+<tr>
+<td>bid</td>
+<td>object</td>
+<td>当前的最高卖价 [price, quote volume]</td>
+</tr>
+<tr>
+<td>ask</td>
+<td>object</td>
+<td>当前的最低买价 [price, quote volume]</td>
+</tr>
+</tbody></table>
+<h2 id='tickers'>所有交易对的最新 Tickers</h2>
+<p>获得所有交易对的 tickers。</p>
+
+<aside class="notice">此接口返回所有交易对的 ticker，因此数据量较大</aside>
+<h3 id='http-6'>HTTP 请求</h3>
+<p><code>GET /market/tickers</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/tickers"</span>
+</code></pre><h3 id='1f9ac54b15-6'>请求参数</h3>
+<p>此接口不接受任何参数。</p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+    </span><span class="p">{</span><span class="w">  
+        </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">0.044297</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">daily</span><span class="w"> </span><span class="err">Kline</span><span class="p">,</span><span class="err">opennig</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">0.042178</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">daily</span><span class="w"> </span><span class="err">Kline</span><span class="p">,</span><span class="err">closing</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">0.040110</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">daily</span><span class="w"> </span><span class="err">Kline</span><span class="p">,</span><span class="err">the</span><span class="w"> </span><span class="err">minimum</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">0.045255</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">daily</span><span class="w"> </span><span class="err">Kline</span><span class="p">,</span><span class="err">the</span><span class="w"> </span><span class="err">maxmum</span><span class="w"> </span><span class="err">price</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">12880.8510</span><span class="p">,</span><span class="w">  
+        </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">12838</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">563.0388715740</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"ethbtc"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">  
+        </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">0.008545</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">0.008656</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">0.008088</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">0.009388</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">88056.1860</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">16077</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">771.7975953754</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"ltcbtc"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-4'>响应数据</h3>
+<p>核心响应数据为一个对象列，每个对象包含下面的字段</p>
+
+<table><thead>
+<tr>
+<th>字段名称</th>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>以基础币种计量的交易量</td>
+</tr>
+<tr>
+<td>count</td>
+<td>integer</td>
+<td>交易次数</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>本阶段开盘价</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>本阶段收盘价</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>本阶段最低价</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>本阶段最高价</td>
+</tr>
+<tr>
+<td>vol</td>
+<td>float</td>
+<td>以报价币种计量的交易量</td>
+</tr>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>交易对，例如btcusdt, bccbtc</td>
+</tr>
+</tbody></table>
+<h2 id='0f7bd4961a'>市场深度数据</h2>
+<p>此接口返回指定交易对的当前市场深度数据。</p>
+<h3 id='http-7'>HTTP 请求</h3>
+<p><code>GET /market/depth</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/depth?symbol=btcusdt&amp;type=step1"</span>
+</code></pre><h3 id='1f9ac54b15-7'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>交易对，例如btcusdt, bccbtc</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>true</td>
+<td>深度的精细度，具体说明见下方</td>
+</tr>
+</tbody></table>
+
+<p><strong>参数type的各值说明（需补充）</strong></p>
+
+<table><thead>
+<tr>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>step0</td>
+<td></td>
+</tr>
+<tr>
+<td>step1</td>
+<td></td>
+</tr>
+<tr>
+<td>step2</td>
+<td></td>
+</tr>
+<tr>
+<td>step3</td>
+<td></td>
+</tr>
+<tr>
+<td>step4</td>
+<td></td>
+</tr>
+<tr>
+<td>step5</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">31615842081</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1489464585407</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7964</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0678</span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="p">[</span><span class="err">price</span><span class="p">,</span><span class="w"> </span><span class="err">amount</span><span class="p">]</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7963</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9162</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7961</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7960</span><span class="p">,</span><span class="w"> </span><span class="mf">12.8898</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7958</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">],</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7979</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0736</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7980</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0292</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7981</span><span class="p">,</span><span class="w"> </span><span class="mf">5.5652</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7986</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2416</span><span class="p">],</span><span class="w">
+      </span><span class="p">[</span><span class="mi">7990</span><span class="p">,</span><span class="w"> </span><span class="mf">1.9970</span><span class="p">],</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-5'>响应数据</h3>
+<aside class="notice">返回的JSON顶级数据对象名为'tick'而不是通常的'data'</aside>
+
+<table><thead>
+<tr>
+<th>字段名称</th>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ts</td>
+<td>integer</td>
+<td>UNIX毫秒时间戳</td>
+</tr>
+<tr>
+<td>version</td>
+<td>integer</td>
+<td>内部字段</td>
+</tr>
+<tr>
+<td>bids</td>
+<td>object</td>
+<td>当前的所有买单 [price, quote volume]</td>
+</tr>
+<tr>
+<td>asks</td>
+<td>object</td>
+<td>当前的所有卖单 [price, quote volume]</td>
+</tr>
+</tbody></table>
+<h2 id='a7fb7754d7'>最近市场成交记录</h2>
+<p>此接口返回指定交易对最新的一个交易记录。</p>
+<h3 id='http-8'>HTTP 请求</h3>
+<p><code>GET /market/trade</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/trade?symbol=ethusdt"</span>
+</code></pre><h3 id='1f9ac54b15-8'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>NA</td>
+<td>交易对，例如btcusdt, bchbtc</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">600848670</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1489464451000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">600848670</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">7962.62</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0122</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1489464451000</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-6'>响应数据</h3>
+<aside class="notice">返回的JSON顶级数据对象名为'tick'而不是通常的'data'</aside>
+
+<table><thead>
+<tr>
+<th>字段名称</th>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>唯一交易id</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>以基础币种为单位的交易量</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>以报价币种为单位的成交价格</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>integer</td>
+<td>UNIX毫秒时间戳</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>交易方向：“买”或“卖”</td>
+</tr>
+</tbody></table>
+<h2 id='5583b4ac64'>获得近期交易记录</h2>
+<p>此接口返回指定交易对近期的所有交易记录。</p>
+<h3 id='http-9'>HTTP 请求</h3>
+<p><code>GET /market/history/trade</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/history/trade?symbol=ethusdt&amp;size=2"</span>
+</code></pre><h3 id='1f9ac54b15-9'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>NA</td>
+<td>交易对，例如 btcusdt, bccbtc</td>
+</tr>
+<tr>
+<td>size</td>
+<td>integer</td>
+<td>false</td>
+<td>1</td>
+<td>返回的交易记录数量，最大值2000</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">31618787514</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390317905</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">  
+         </span><span class="p">{</span><span class="w">  
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">9.000000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390317905</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">3161878751418918529341</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">94.690000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"direction"</span><span class="p">:</span><span class="s2">"sell"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="p">{</span><span class="w">  
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">73.771000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390317905</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">3161878751418918532514</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">94.660000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"direction"</span><span class="p">:</span><span class="s2">"sell"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="p">{</span><span class="w">  
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">31618776989</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390311353</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">  
+         </span><span class="p">{</span><span class="w">  
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">1.000000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390311353</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">3161877698918918522622</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">94.710000000000000000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"direction"</span><span class="p">:</span><span class="s2">"buy"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-7'>响应数据</h3>
+<aside class="notice">返回的数据对象是一个对象数组，每个数组元素为一个UNIX时间戳下的所有交易记录，这些交易记录以数组形式呈现。</aside>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>唯一交易id</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>以基础币种为单位的交易量</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>以报价币种为单位的成交价格</td>
+</tr>
+<tr>
+<td>ts</td>
+<td>integer</td>
+<td>UNIX毫秒时间戳</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>交易方向：“buy” 或 “sell”, “buy” 即买，“sell” 即卖</td>
+</tr>
+</tbody></table>
+<h2 id='24'>最近24小时行情数据</h2>
+<p>此接口返回最近24小时的行情数据汇总。</p>
+<h3 id='http-10'>HTTP 请求</h3>
+<p><code>GET /market/detail/</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail?symbol=ethusdt"</span>
+</code></pre><h3 id='1f9ac54b15-10'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数</th>
+<th>数据类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>symbol</td>
+<td>string</td>
+<td>true</td>
+<td>NA</td>
+<td>交易对，例如btcusdt, bchbtc</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+   </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">613071.438479561</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">86.21</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">94.35</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">98.7</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">31619471534</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">138909</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">84.63</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">31619471534</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">5.6617373443873316</span><span class="err">E</span><span class="mi">7</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-8'>响应数据</h3>
+<aside class="notice">返回的JSON顶级数据对象名为'tick'而不是通常的'data'</aside>
+
+<table><thead>
+<tr>
+<th>字段名称</th>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>UNIX秒时间戳作为id</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>float</td>
+<td>以基础币种计量的交易量</td>
+</tr>
+<tr>
+<td>count</td>
+<td>integer</td>
+<td>交易次数</td>
+</tr>
+<tr>
+<td>open</td>
+<td>float</td>
+<td>本阶段开盘价</td>
+</tr>
+<tr>
+<td>close</td>
+<td>float</td>
+<td>本阶段收盘价</td>
+</tr>
+<tr>
+<td>low</td>
+<td>float</td>
+<td>本阶段最低价</td>
+</tr>
+<tr>
+<td>high</td>
+<td>float</td>
+<td>本阶段最高价</td>
+</tr>
+<tr>
+<td>vol</td>
+<td>float</td>
+<td>以报价币种计量的交易量</td>
+</tr>
+<tr>
+<td>version</td>
+<td>integer</td>
+<td>内部数据</td>
+</tr>
+</tbody></table>
+<h1 id='2a0d0be224'>账户相关</h1><h2 id='bd9157656f'>账户信息</h2>
+<p>查询当前用户的所有账户（account-id）及其相关信息</p>
+<h3 id='http-11'>HTTP 请求</h3>
 <p><code>GET /v1/account/accounts</code></p>
-<h3 id='1f9ac54b15-4'>请求参数</h3>
+<h3 id='1f9ac54b15-11'>请求参数</h3>
 <p>无</p>
-<h3 id='2213f4c32f-2'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -704,7 +1382,7 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-9'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -740,9 +1418,9 @@
 <p>查询指定账户的余额，支持以下账户：</p>
 
 <p>spot：现货账户， margin：杠杆账户，otc：OTC账户，point：点卡账户</p>
-<h3 id='http-5'>HTTP 请求</h3>
+<h3 id='http-12'>HTTP 请求</h3>
 <p><code>GET /v1/account/accounts/{account-id}/balance</code></p>
-<h3 id='1f9ac54b15-5'>请求参数</h3>
+<h3 id='1f9ac54b15-12'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -762,7 +1440,7 @@
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-3'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -786,7 +1464,7 @@
     </span><span class="s2">"user-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-10'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -861,9 +1539,9 @@
 </tbody></table>
 <h2 id='bb4e9682b5'>资产划转（母子账户之间）</h2>
 <p>母账户执行母子账户之间的划转</p>
-<h3 id='http-6'>HTTP 请求</h3>
+<h3 id='http-13'>HTTP 请求</h3>
 <p><code>POST /v1/subuser/transfer</code></p>
-<h3 id='1f9ac54b15-6'>请求参数</h3>
+<h3 id='1f9ac54b15-13'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -902,7 +1580,7 @@
 <td>master-transfer-in（子账户划转给母账户虚拟币）/ master-transfer-out （母账户划转给子账户虚拟币）/master-point-transfer-in （子账户划转给母账户点卡）/master-point-transfer-out（母账户划转给子账户点卡）</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-4'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -910,7 +1588,7 @@
   </span><span class="s2">"data"</span><span class="p">:</span><span class="mi">123456</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"ok"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-11'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -959,11 +1637,11 @@
 </tbody></table>
 <h2 id='7ae6f46f99'>子账户余额（汇总）</h2>
 <p>母账户查询其下所有子账户的各币种汇总余额</p>
-<h3 id='http-7'>HTTP 请求</h3>
+<h3 id='http-14'>HTTP 请求</h3>
 <p><code>GET /v1/subuser/aggregate-balance</code></p>
-<h3 id='1f9ac54b15-7'>请求参数</h3>
+<h3 id='1f9ac54b15-14'>请求参数</h3>
 <p>无</p>
-<h3 id='2213f4c32f-5'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -985,7 +1663,7 @@
       </span><span class="err">...</span><span class="w">
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-12'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1047,9 +1725,9 @@
 </tbody></table>
 <h2 id='ead729be21'>子账户余额</h2>
 <p>母账户查询子账户各币种账户余额</p>
-<h3 id='http-8'>HTTP 请求</h3>
+<h3 id='http-15'>HTTP 请求</h3>
 <p><code>GET /v1/account/accounts/{sub-uid}</code></p>
-<h3 id='1f9ac54b15-8'>请求参数</h3>
+<h3 id='1f9ac54b15-15'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1069,7 +1747,7 @@
 <td>-</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-6'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -1100,7 +1778,7 @@
     </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-13'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -1178,7 +1856,7 @@
 </tbody></table>
 <h1 id='e0d7f450bc'>钱包（充值与提现）</h1><h2 id='ba9b2e88fe'>虚拟币提现</h2>
 <aside class="notice">仅支持在官网上相应币种 <a href='https://www.hbg.com/zh-cn/withdraw_address/'>地址列表 </a> 中的地址</aside>
-<h3 id='http-9'>HTTP 请求</h3>
+<h3 id='http-16'>HTTP 请求</h3>
 <p><code>POST /v1/dw/withdraw/api/create</code></p>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"address"</span>: <span class="s2">"0xde709f2102306220921060314715629080e2fb77"</span>,
@@ -1186,7 +1864,7 @@
   <span class="s2">"currency"</span>: <span class="s2">"eth"</span>,
   <span class="s2">"fee"</span>: <span class="s2">"0.01"</span>
 <span class="o">}</span>
-</code></pre><h3 id='1f9ac54b15-9'>请求参数</h3>
+</code></pre><h3 id='1f9ac54b15-16'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1232,14 +1910,14 @@
 <td>格式, &quot;123&quot;类的整数字符串</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-7'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-14'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1257,9 +1935,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='c9d941b159'>取消提现</h2><h3 id='http-10'>HTTP 请求</h3>
+<h2 id='c9d941b159'>取消提现</h2><h3 id='http-17'>HTTP 请求</h3>
 <p><code>POST /v1/dw/withdraw-virtual/{withdraw-id}/cancel</code></p>
-<h3 id='1f9ac54b15-10'>请求参数</h3>
+<h3 id='1f9ac54b15-17'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1279,14 +1957,14 @@
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-8'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">700</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-15'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1304,9 +1982,9 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='d3612d98d4'>充提记录</h2><h3 id='http-11'>HTTP 请求</h3>
+<h2 id='d3612d98d4'>充提记录</h2><h3 id='http-18'>HTTP 请求</h3>
 <p><code>GET /v1/query/deposit-withdraw</code></p>
-<h3 id='1f9ac54b15-11'>请求参数</h3>
+<h3 id='1f9ac54b15-18'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1350,7 +2028,7 @@
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-9'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -1373,7 +2051,7 @@
       </span><span class="err">...</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-16'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -1549,712 +2227,6 @@
 <td>已撤销</td>
 </tr>
 </tbody></table>
-<h1 id='d9d514d202'>行情数据</h1><h2 id='k'>K 线数据（蜡烛图）</h2>
-<p>此接口返回历史K线数据。</p>
-<h3 id='http-12'>HTTP 请求</h3>
-<p><code>GET /market/history/kline</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/kline?period=1day&amp;size=200&amp;symbol=btcusdt"</span>
-</code></pre><h3 id='1f9ac54b15-12'>请求参数</h3>
-<table><thead>
-<tr>
-<th>参数</th>
-<th>数据类型</th>
-<th>是否必须</th>
-<th>默认值</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>true</td>
-<td>NA</td>
-<td>交易对, e.g. btcusdt, bccbtc</td>
-</tr>
-<tr>
-<td>period</td>
-<td>string</td>
-<td>true</td>
-<td>NA</td>
-<td>The period of each candle, allowed values are: 1min, 5min, 15min, 30min, 60min, 1day, 1mon, 1week, 1year</td>
-</tr>
-<tr>
-<td>size</td>
-<td>integer</td>
-<td>false</td>
-<td>150</td>
-<td>The number of data returns, range [1, 2000]</td>
-</tr>
-</tbody></table>
-<h3 id='2213f4c32f-10'>响应数据</h3>
-<table><thead>
-<tr>
-<th>字段名称</th>
-<th>数据类型</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>integer</td>
-<td>以UNIX秒为单位的时间戳，并以此作为此K线柱的id</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>float</td>
-<td>以基础币种计量的交易量</td>
-</tr>
-<tr>
-<td>count</td>
-<td>integer</td>
-<td>交易次数</td>
-</tr>
-<tr>
-<td>open</td>
-<td>float</td>
-<td>本阶段开盘价</td>
-</tr>
-<tr>
-<td>close</td>
-<td>float</td>
-<td>本阶段收盘价</td>
-</tr>
-<tr>
-<td>low</td>
-<td>float</td>
-<td>本阶段最低价</td>
-</tr>
-<tr>
-<td>high</td>
-<td>float</td>
-<td>本阶段最高价</td>
-</tr>
-<tr>
-<td>vol</td>
-<td>float</td>
-<td>以报价币种计量的交易量</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1499184000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">37593.0266</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">1935.2000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">1879.0000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">1856.0000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">1940.0000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"vol"</span><span class="p">:</span><span class="w"> </span><span class="mf">71031537.97866500</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre><h2 id='ticker'>聚合行情（Ticker）</h2>
-<p>此接口获取ticker信息同时提供最近24小时的交易聚合信息。</p>
-<h3 id='http-13'>HTTP 请求</h3>
-<p><code>GET /market/detail/merged</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail/merged?symbol=ethusdt"</span>
-</code></pre><h3 id='1f9ac54b15-13'>请求参数</h3>
-<table><thead>
-<tr>
-<th>参数</th>
-<th>数据类型</th>
-<th>是否必须</th>
-<th>默认值</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>true</td>
-<td>NA</td>
-<td>交易对, 例如 btcusdt, bccbtc</td>
-</tr>
-</tbody></table>
-<h3 id='2213f4c32f-11'>响应数据</h3>
-<table><thead>
-<tr>
-<th>字段名称</th>
-<th>数据类型</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>integer</td>
-<td>以UNIX秒为单位的时间戳，并以此作为此ticker的id</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>float</td>
-<td>以基础币种计量的交易量</td>
-</tr>
-<tr>
-<td>count</td>
-<td>integer</td>
-<td>交易次数</td>
-</tr>
-<tr>
-<td>open</td>
-<td>float</td>
-<td>本阶段开盘价</td>
-</tr>
-<tr>
-<td>close</td>
-<td>float</td>
-<td>本阶段收盘价</td>
-</tr>
-<tr>
-<td>low</td>
-<td>float</td>
-<td>本阶段最低价</td>
-</tr>
-<tr>
-<td>high</td>
-<td>float</td>
-<td>本阶段最高价</td>
-</tr>
-<tr>
-<td>vol</td>
-<td>float</td>
-<td>以报价币种计量的交易量</td>
-</tr>
-<tr>
-<td>bid</td>
-<td>object</td>
-<td>当前的最高卖价 [price, quote volume]</td>
-</tr>
-<tr>
-<td>ask</td>
-<td>object</td>
-<td>当前的最低买价 [price, quote volume]</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1499225271</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1499225271000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">1885.0000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">1960.0000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">1985.0000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">1856.0000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">81486.2926</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">42122</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">157052744.85708200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"ask"</span><span class="p">:[</span><span class="mf">1885.0000</span><span class="p">,</span><span class="mf">21.8804</span><span class="p">],</span><span class="w">
-  </span><span class="s2">"bid"</span><span class="p">:[</span><span class="mf">1884.0000</span><span class="p">,</span><span class="mf">1.6702</span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='tickers'>所有交易对的最新 Tickers</h2>
-<p>获得所有交易对的 tickers。</p>
-
-<aside class="notice">此接口返回所有交易对的 ticker，因此数据量较大</aside>
-<h3 id='http-14'>HTTP 请求</h3>
-<p><code>GET /market/tickers</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/tickers"</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
-    </span><span class="p">{</span><span class="w">  
-        </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">0.044297</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">daily</span><span class="w"> </span><span class="err">Kline</span><span class="p">,</span><span class="err">opennig</span><span class="w"> </span><span class="err">price</span><span class="w">
-        </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">0.042178</span><span class="p">,</span><span class="w">     </span><span class="err">//</span><span class="w"> </span><span class="err">daily</span><span class="w"> </span><span class="err">Kline</span><span class="p">,</span><span class="err">closing</span><span class="w"> </span><span class="err">price</span><span class="w">
-        </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">0.040110</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">daily</span><span class="w"> </span><span class="err">Kline</span><span class="p">,</span><span class="err">the</span><span class="w"> </span><span class="err">minimum</span><span class="w"> </span><span class="err">price</span><span class="w">
-        </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">0.045255</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">daily</span><span class="w"> </span><span class="err">Kline</span><span class="p">,</span><span class="err">the</span><span class="w"> </span><span class="err">maxmum</span><span class="w"> </span><span class="err">price</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">12880.8510</span><span class="p">,</span><span class="w">  
-        </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">12838</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">563.0388715740</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"ethbtc"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">  
-        </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">0.008545</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">0.008656</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">0.008088</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">0.009388</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">88056.1860</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">16077</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">771.7975953754</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"symbol"</span><span class="p">:</span><span class="s2">"ltcbtc"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-14'>请求参数</h3>
-<p>此接口不接受任何参数。</p>
-<h3 id='2213f4c32f-12'>响应数据</h3>
-<p>核心响应数据为一个对象列，每个对象包含下面的字段</p>
-
-<table><thead>
-<tr>
-<th>字段名称</th>
-<th>数据类型</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>amount</td>
-<td>float</td>
-<td>以基础币种计量的交易量</td>
-</tr>
-<tr>
-<td>count</td>
-<td>integer</td>
-<td>交易次数</td>
-</tr>
-<tr>
-<td>open</td>
-<td>float</td>
-<td>本阶段开盘价</td>
-</tr>
-<tr>
-<td>close</td>
-<td>float</td>
-<td>本阶段收盘价</td>
-</tr>
-<tr>
-<td>low</td>
-<td>float</td>
-<td>本阶段最低价</td>
-</tr>
-<tr>
-<td>high</td>
-<td>float</td>
-<td>本阶段最高价</td>
-</tr>
-<tr>
-<td>vol</td>
-<td>float</td>
-<td>以报价币种计量的交易量</td>
-</tr>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>交易对，例如btcusdt, bccbtc</td>
-</tr>
-</tbody></table>
-<h2 id='0f7bd4961a'>市场深度数据</h2>
-<p>此接口返回指定交易对的当前市场深度数据。</p>
-<h3 id='http-15'>HTTP 请求</h3>
-<p><code>GET /market/depth</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/depth?symbol=btcusdt&amp;type=step1"</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">31615842081</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1489464585407</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7964</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0678</span><span class="p">],</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="p">[</span><span class="err">price</span><span class="p">,</span><span class="w"> </span><span class="err">amount</span><span class="p">]</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7963</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9162</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7961</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7960</span><span class="p">,</span><span class="w"> </span><span class="mf">12.8898</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7958</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7955</span><span class="p">,</span><span class="w"> </span><span class="mf">2.1009</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7954</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4708</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7953</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0564</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7951</span><span class="p">,</span><span class="w"> </span><span class="mf">2.8031</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7950</span><span class="p">,</span><span class="w"> </span><span class="mf">13.7785</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7949</span><span class="p">,</span><span class="w"> </span><span class="mf">0.125</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7948</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7942</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4337</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7940</span><span class="p">,</span><span class="w"> </span><span class="mf">6.1612</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7936</span><span class="p">,</span><span class="w"> </span><span class="mf">0.02</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7935</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3575</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7933</span><span class="p">,</span><span class="w"> </span><span class="mf">2.002</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7932</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3449</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7930</span><span class="p">,</span><span class="w"> </span><span class="mf">10.2974</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7929</span><span class="p">,</span><span class="w"> </span><span class="mf">3.2226</span><span class="p">]</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"asks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7979</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0736</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7980</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0292</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7981</span><span class="p">,</span><span class="w"> </span><span class="mf">5.5652</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7986</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2416</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7990</span><span class="p">,</span><span class="w"> </span><span class="mf">1.9970</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7995</span><span class="p">,</span><span class="w"> </span><span class="mf">0.88</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">7996</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0212</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8000</span><span class="p">,</span><span class="w"> </span><span class="mf">9.2609</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8002</span><span class="p">,</span><span class="w"> </span><span class="mf">0.02</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8008</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8010</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8735</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8011</span><span class="p">,</span><span class="w"> </span><span class="mf">2.36</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8012</span><span class="p">,</span><span class="w"> </span><span class="mf">0.02</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8014</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1067</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8015</span><span class="p">,</span><span class="w"> </span><span class="mf">12.9118</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8016</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5206</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8017</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0166</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8018</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3218</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8019</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">],</span><span class="w">
-      </span><span class="p">[</span><span class="mi">8020</span><span class="p">,</span><span class="w"> </span><span class="mf">13.6584</span><span class="p">]</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-15'>请求参数</h3>
-<table><thead>
-<tr>
-<th>参数</th>
-<th>数据类型</th>
-<th>必须</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>true</td>
-<td>交易对，例如btcusdt, bccbtc</td>
-</tr>
-<tr>
-<td>type</td>
-<td>string</td>
-<td>true</td>
-<td>深度的精细度，具体说明见下方</td>
-</tr>
-</tbody></table>
-
-<p><strong>参数type的各值说明（需补充）</strong></p>
-
-<table><thead>
-<tr>
-<th>取值</th>
-<th>说明</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>step0</td>
-<td></td>
-</tr>
-<tr>
-<td>step1</td>
-<td></td>
-</tr>
-<tr>
-<td>step2</td>
-<td></td>
-</tr>
-<tr>
-<td>step3</td>
-<td></td>
-</tr>
-<tr>
-<td>step4</td>
-<td></td>
-</tr>
-<tr>
-<td>step5</td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id='2213f4c32f-13'>响应数据</h3>
-<aside class="notice">返回的JSON顶级数据对象名为'tick'而不是通常的'data'</aside>
-
-<table><thead>
-<tr>
-<th>字段名称</th>
-<th>数据类型</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ts</td>
-<td>integer</td>
-<td>UNIX毫秒时间戳</td>
-</tr>
-<tr>
-<td>version</td>
-<td>integer</td>
-<td>内部字段</td>
-</tr>
-<tr>
-<td>bids</td>
-<td>object</td>
-<td>当前的所有买单 [price, quote volume]</td>
-</tr>
-<tr>
-<td>asks</td>
-<td>object</td>
-<td>当前的所有卖单 [price, quote volume]</td>
-</tr>
-</tbody></table>
-<h2 id='a7fb7754d7'>最近市场成交记录</h2>
-<p>此接口返回指定交易对最新的一个交易记录。</p>
-<h3 id='http-16'>HTTP 请求</h3>
-<p><code>GET /market/trade</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/trade?symbol=ethusdt"</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">600848670</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1489464451000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">600848670</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">7962.62</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0122</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1489464451000</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-16'>请求参数</h3>
-<table><thead>
-<tr>
-<th>参数</th>
-<th>数据类型</th>
-<th>是否必须</th>
-<th>默认值</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>true</td>
-<td>NA</td>
-<td>交易对，例如btcusdt, bccbtc</td>
-</tr>
-</tbody></table>
-<h3 id='2213f4c32f-14'>响应数据</h3>
-<aside class="notice">返回的JSON顶级数据对象名为'tick'而不是通常的'data'</aside>
-
-<table><thead>
-<tr>
-<th>字段名称</th>
-<th>数据类型</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>integer</td>
-<td>唯一交易id</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>float</td>
-<td>以基础币种为单位的交易量</td>
-</tr>
-<tr>
-<td>price</td>
-<td>float</td>
-<td>以报价币种为单位的成交价格</td>
-</tr>
-<tr>
-<td>ts</td>
-<td>integer</td>
-<td>UNIX毫秒时间戳</td>
-</tr>
-<tr>
-<td>direction</td>
-<td>string</td>
-<td>交易方向：“买”或“卖”</td>
-</tr>
-</tbody></table>
-<h2 id='5583b4ac64'>获得近期交易记录</h2>
-<p>此接口返回指定交易对近期的所有交易记录。</p>
-<h3 id='http-17'>HTTP 请求</h3>
-<p><code>GET /market/history/trade</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/history/trade?symbol=ethusdt&amp;size=2"</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">  
-   </span><span class="p">{</span><span class="w">  
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">31618787514</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390317905</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">  
-         </span><span class="p">{</span><span class="w">  
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">9.000000000000000000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390317905</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">3161878751418918529341</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">94.690000000000000000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"direction"</span><span class="p">:</span><span class="s2">"sell"</span><span class="w">
-         </span><span class="p">},</span><span class="w">
-         </span><span class="p">{</span><span class="w">  
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">73.771000000000000000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390317905</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">3161878751418918532514</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">94.660000000000000000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"direction"</span><span class="p">:</span><span class="s2">"sell"</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-   </span><span class="p">},</span><span class="w">
-   </span><span class="p">{</span><span class="w">  
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">31618776989</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390311353</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">  
-         </span><span class="p">{</span><span class="w">  
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">1.000000000000000000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"ts"</span><span class="p">:</span><span class="mi">1544390311353</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">3161877698918918522622</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"price"</span><span class="p">:</span><span class="mf">94.710000000000000000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"direction"</span><span class="p">:</span><span class="s2">"buy"</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-17'>请求参数</h3>
-<table><thead>
-<tr>
-<th>参数</th>
-<th>数据类型</th>
-<th>是否必须</th>
-<th>默认值</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>true</td>
-<td>NA</td>
-<td>交易对，例如 btcusdt, bccbtc</td>
-</tr>
-<tr>
-<td>size</td>
-<td>integer</td>
-<td>false</td>
-<td>1</td>
-<td>返回的交易记录数量，最大值2000</td>
-</tr>
-</tbody></table>
-<h3 id='2213f4c32f-15'>响应数据</h3>
-<aside class="notice">返回的数据对象是一个对象数组，每个数组元素为一个UNIX时间戳下的所有交易记录，这些交易记录以数组形式呈现。</aside>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>数据类型</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>integer</td>
-<td>唯一交易id</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>float</td>
-<td>以基础币种为单位的交易量</td>
-</tr>
-<tr>
-<td>price</td>
-<td>float</td>
-<td>以报价币种为单位的成交价格</td>
-</tr>
-<tr>
-<td>ts</td>
-<td>integer</td>
-<td>UNIX毫秒时间戳</td>
-</tr>
-<tr>
-<td>direction</td>
-<td>string</td>
-<td>交易方向：“买”或“卖”</td>
-</tr>
-</tbody></table>
-<h2 id='24'>最近24小时行情数据</h2>
-<p>此接口返回最近24小时的行情数据汇总。</p>
-<h3 id='http-18'>HTTP 请求</h3>
-<p><code>GET /market/detail/</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail?symbol=ethusdt"</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
-   </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">613071.438479561</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"open"</span><span class="p">:</span><span class="mf">86.21</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"close"</span><span class="p">:</span><span class="mf">94.35</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"high"</span><span class="p">:</span><span class="mf">98.7</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">31619471534</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">138909</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"low"</span><span class="p">:</span><span class="mf">84.63</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">31619471534</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"vol"</span><span class="p">:</span><span class="mf">5.6617373443873316</span><span class="err">E</span><span class="mi">7</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-18'>请求参数</h3>
-<table><thead>
-<tr>
-<th>参数</th>
-<th>数据类型</th>
-<th>是否必须</th>
-<th>默认值</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>symbol</td>
-<td>string</td>
-<td>true</td>
-<td>NA</td>
-<td>交易对，例如btcusdt, bccbtc</td>
-</tr>
-</tbody></table>
-<h3 id='2213f4c32f-16'>响应数据</h3>
-<aside class="notice">返回的JSON顶级数据对象名为'tick'而不是通常的'data'</aside>
-
-<table><thead>
-<tr>
-<th>字段名称</th>
-<th>数据类型</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>integer</td>
-<td>UNIX秒时间戳作为id</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>float</td>
-<td>以基础币种计量的交易量</td>
-</tr>
-<tr>
-<td>count</td>
-<td>integer</td>
-<td>交易次数</td>
-</tr>
-<tr>
-<td>open</td>
-<td>float</td>
-<td>本阶段开盘价</td>
-</tr>
-<tr>
-<td>close</td>
-<td>float</td>
-<td>本阶段收盘价</td>
-</tr>
-<tr>
-<td>low</td>
-<td>float</td>
-<td>本阶段最低价</td>
-</tr>
-<tr>
-<td>high</td>
-<td>float</td>
-<td>本阶段最高价</td>
-</tr>
-<tr>
-<td>vol</td>
-<td>float</td>
-<td>以报价币种计量的交易量</td>
-</tr>
-<tr>
-<td>version</td>
-<td>integer</td>
-<td>内部数据</td>
-</tr>
-</tbody></table>
 <h1 id='4832b46474'>现货 / 杠杆交易</h1>
 <aside class="notice">与这个部分的接口交互需要先进行身份验证。</aside>
 
@@ -2265,20 +2237,14 @@
 <p><code>POST /v1/order/orders/place</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/place"</span>
 BODY <span class="o">{</span>
-   <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
-   <span class="s2">"amount"</span>: <span class="s2">"10.1"</span>,
-   <span class="s2">"price"</span>: <span class="s2">"100.1"</span>,
-   <span class="s2">"source"</span>: <span class="s2">"api"</span>,
-   <span class="s2">"symbol"</span>: <span class="s2">"ethusdt"</span>,
-   <span class="s2">"type"</span>: <span class="s2">"buy-limit"</span><span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59378"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-19'>请求参数</h3>
+  <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
+  <span class="s2">"amount"</span>: <span class="s2">"10.1"</span>,
+  <span class="s2">"price"</span>: <span class="s2">"100.1"</span>,
+  <span class="s2">"source"</span>: <span class="s2">"api"</span>,
+  <span class="s2">"symbol"</span>: <span class="s2">"ethusdt"</span>,
+  <span class="s2">"type"</span>: <span class="s2">"buy-limit"</span>
+<span class="o">}</span>
+</code></pre><h3 id='1f9ac54b15-19'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2343,30 +2309,53 @@ BODY <span class="o">{</span>
 <p>当“下单价格”&lt;=“市场最高买入价”，订单提交后，系统将拒绝接受此订单；</p>
 
 <p>当“下单价格”&gt;“市场最高买入价”，提交成功后，此订单将被系统接受。</p>
-<h3 id='2213f4c32f-17'>响应数据</h3>
-<p>返回的主数据对象是一个对应下单单号的字符串。</p>
-<h2 id='4e53c0fccd'>撤销订单</h2>
-<p>此接口发送一个撤销订单的请求。</p>
 
-<aside class="warning">此接口只提交取消请求，实际取消结果需要通过订单状态，撮合状态等接口来确认。</aside>
-<h3 id='http-20'>HTTP 请求</h3>
-<p><code>POST /v1/order/orders/{order-id}/submitcancel</code></p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378/submitcancel"</span>
-</code></pre>
 <blockquote>
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59378"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-20'>请求参数</h3>
-<p>此接口不接受任何参数。</p>
-<h3 id='2213f4c32f-18'>响应数据</h3>
+</span></code></pre><h3 id='2213f4c32f-17'>响应数据</h3>
+<p>返回的主数据对象是一个对应下单单号的字符串。</p>
+<h2 id='4e53c0fccd'>撤销订单</h2>
+<p>此接口发送一个撤销订单的请求。</p>
+
+<aside class="warning">此接口只提交取消请求，实际取消结果需要通过订单状态，撮合状态等接口来确认。</aside>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378/submitcancel"</span>
+</code></pre><h3 id='http-20'>HTTP 请求</h3>
+<p><code>POST /v1/order/orders/{order-id}/submitcancel</code></p>
+<h3 id='1f9ac54b15-20'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order-id</td>
+<td>true</td>
+<td>string</td>
+<td>订单ID，填在path中</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59378"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-18'>响应数据</h3>
 <p>返回的主数据对象是一个对应下单单号的字符串。</p>
 <h2 id='95f2078356'>查询当前未成交订单</h2>
 <p>查询已提交但是仍未完全成交或被撤销的订单。</p>
-<h3 id='http-21'>HTTP 请求</h3>
-<p><code>GET /v1/order/openOrders</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/openOrders"</span>
 BODY <span class="o">{</span>
    <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
@@ -2375,29 +2364,9 @@ BODY <span class="o">{</span>
    <span class="s2">"source"</span>: <span class="s2">"api"</span>,
    <span class="s2">"symbol"</span>: <span class="s2">"ethusdt"</span>,
    <span class="s2">"type"</span>: <span class="s2">"buy-limit"</span><span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5454937</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"account-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">30925</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.000000000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.453000000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1530604762277</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell-limit"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"filled-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"filled-cash-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"filled-fees"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submitted"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-21'>请求参数</h3>
+</code></pre><h3 id='http-21'>HTTP 请求</h3>
+<p><code>GET /v1/order/openOrders</code></p>
+<h3 id='1f9ac54b15-21'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2436,7 +2405,29 @@ BODY <span class="o">{</span>
 <td>返回订单的数量，最大值2000。</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-19'>响应数据</h3>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5454937</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">30925</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.000000000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.453000000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1530604762277</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sell-limit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"filled-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"filled-cash-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"filled-fees"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submitted"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-19'>响应数据</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -2546,7 +2537,7 @@ BODY <span class="o">{</span>
 <td>[0,100]</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-20'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -2558,7 +2549,7 @@ BODY <span class="o">{</span>
     </span><span class="s2">"next-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5454600</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-20'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2600,26 +2591,7 @@ BODY <span class="o">{</span>
     <span class="s2">"1"</span>, <span class="s2">"2"</span>, <span class="s2">"3"</span>
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"3"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"failed"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"err-msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"记录无效"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"order-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"err-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base-record-invalid"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-23'>请求参数</h3>
+</code></pre><h3 id='1f9ac54b15-23'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2639,7 +2611,26 @@ BODY <span class="o">{</span>
 <td>单次不超过50个订单id</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-21'>响应数据</h3>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"3"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"failed"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"err-msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"记录无效"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order-id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"err-code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base-record-invalid"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-21'>响应数据</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -2658,7 +2649,27 @@ BODY <span class="o">{</span>
 <h3 id='http-24'>HTTP 请求</h3>
 <p><code>GET /v1/order/orders/{order-id}</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378"</span>
-</code></pre>
+</code></pre><h3 id='1f9ac54b15-24'>请求参数</h3>
+<table><thead>
+<tr>
+<th>参数名称</th>
+<th>是否必须</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+<th>取值范围</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order-id</td>
+<td>true</td>
+<td>string</td>
+<td>订单ID，填在path中</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -2683,27 +2694,7 @@ BODY <span class="o">{</span>
     </span><span class="s2">"batch"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-24'>请求参数</h3>
-<table><thead>
-<tr>
-<th>参数名称</th>
-<th>是否必须</th>
-<th>类型</th>
-<th>描述</th>
-<th>默认值</th>
-<th>取值范围</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>order-id</td>
-<td>true</td>
-<td>string</td>
-<td>订单ID，填在path中</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id='2213f4c32f-22'>响应数据</h3>
+</span></code></pre><h3 id='2213f4c32f-22'>响应数据</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -2817,27 +2808,7 @@ BODY <span class="o">{</span>
 <h3 id='http-25'>HTTP 请求</h3>
 <p><code>GET /v1/order/orders/{order-id}/matchresults</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378/matchresults"</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29553</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"order-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59378</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"match-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59335</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy-limit"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.1000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"filled-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.1155000000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"filled-fees"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0182310000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494901400435</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-25'>请求参数</h3>
+</code></pre><h3 id='1f9ac54b15-25'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -2857,7 +2828,27 @@ BODY <span class="o">{</span>
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-23'>响应数据</h3>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29553</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"order-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59378</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"match-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59335</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy-limit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.1000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"filled-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.1155000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"filled-fees"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0182310000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494901400435</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-23'>响应数据</h3>
 <aside class="notice">返回的主数据对象为一个对象数组，其中每一个元件代表一个交易结果</aside>
 
 <table><thead>
@@ -2953,34 +2944,7 @@ BODY <span class="o">{</span>
    <span class="s2">"symbol"</span>: <span class="s2">"ethusdt"</span>,
    <span class="s2">"type"</span>: <span class="s2">"buy-limit"</span>
    <span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59378</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"account-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100009</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.1000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494901162595</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy-limit"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"field-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"field-cash-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1011.0100000000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"field-fees"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0202000000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"finished-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494901400468</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"user-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filled"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"canceled-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"huobi"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"batch"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-26'>请求参数</h3>
+</code></pre><h3 id='1f9ac54b15-26'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3056,7 +3020,34 @@ BODY <span class="o">{</span>
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-24'>响应数据</h3>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59378</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100009</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.1000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494901162595</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy-limit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"field-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.1000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"field-cash-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1011.0100000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"field-fees"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0202000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"finished-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494901400468</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"user-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"filled"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"canceled-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"huobi"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"batch"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-24'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3170,27 +3161,7 @@ BODY <span class="o">{</span>
 <h3 id='http-27'>HTTP 请求</h3>
 <p><code>GET /v1/order/matchresults</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/matchresults"</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29553</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"order-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59378</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"match-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59335</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy-limit"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.1000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"filled-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.1155000000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"filled-fees"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0182310000"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494901400435</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='1f9ac54b15-27'>请求参数</h3>
+</code></pre><h3 id='1f9ac54b15-27'>请求参数</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3258,7 +3229,27 @@ BODY <span class="o">{</span>
 <td>&lt;=100</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-25'>响应数据</h3>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29553</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"order-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59378</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"match-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59335</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethusdt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"buy-limit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100.1000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"filled-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.1155000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"filled-fees"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0182310000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494901400435</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-25'>响应数据</h3>
 <aside class="notice">返回的主数据对象为一个对象数组，其中每一个元件代表一个交易结果。</aside>
 
 <table><thead>
@@ -3392,14 +3383,14 @@ BODY
 <td>划转数量</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-26'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-26'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3456,16 +3447,14 @@ BODY
 <td>借贷数量</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-27'>响应数据</h3>
-<blockquote>
-<p>Response:
-<code>json
-{  
-  &quot;data&quot;: 1000
-}
-</code></p>
-</blockquote>
 
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-27'>响应数据</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -3510,7 +3499,7 @@ BODY
 <td>归还币种</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-28'>响应数据</h3>
+
 <blockquote>
 <p>Response:
 <code>json
@@ -3519,7 +3508,7 @@ BODY
 }
 </code></p>
 </blockquote>
-
+<h3 id='2213f4c32f-28'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
@@ -3614,32 +3603,30 @@ BODY <span class="o">{</span>
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-29'>响应数据</h3>
-<blockquote>
-<p>Response:
-<code>json
-{  
-  &quot;data&quot;: [
-    {
-      &quot;loan-balance&quot;: &quot;0.100000000000000000&quot;,
-      &quot;interest-balance&quot;: &quot;0.000200000000000000&quot;,
-      &quot;interest-rate&quot;: &quot;0.002000000000000000&quot;,
-      &quot;loan-amount&quot;: &quot;0.100000000000000000&quot;,
-      &quot;accrued-at&quot;: 1511169724531,
-      &quot;interest-amount&quot;: &quot;0.000200000000000000&quot;,
-      &quot;symbol&quot;: &quot;ethbtc&quot;,
-      &quot;currency&quot;: &quot;btc&quot;,
-      &quot;id&quot;: 394,
-      &quot;state&quot;: &quot;accrual&quot;,
-      &quot;account-id&quot;: 17747,
-      &quot;user-id&quot;: 119913,
-      &quot;created-at&quot;: 1511169724531
-    }
-  ]
-}
-</code></p>
-</blockquote>
 
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">  
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"loan-balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.100000000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interest-balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000200000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interest-rate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002000000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"loan-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.100000000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"accrued-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1511169724531</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"interest-amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000200000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"symbol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ethbtc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">394</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accrual"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17747</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"user-id"</span><span class="p">:</span><span class="w"> </span><span class="mi">119913</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created-at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1511169724531</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='2213f4c32f-29'>响应数据</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -3774,7 +3761,7 @@ BODY <span class="o">{</span>
 <td></td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-30'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -3823,7 +3810,7 @@ BODY <span class="o">{</span>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-30'>响应数据</h3>
 <table><thead>
 <tr>
 <th>字段名称</th>
@@ -3893,7 +3880,7 @@ BODY <span class="o">{</span>
 <td>hb10</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-31'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -3922,7 +3909,7 @@ BODY <span class="o">{</span>
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-31'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -4061,7 +4048,7 @@ BODY <span class="o">{</span>
 <td>换入换出数量的范围请参照接口GET /etf/swap/config 提供的相应范围</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-32'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -4071,7 +4058,7 @@ BODY <span class="o">{</span>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-32'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -4219,7 +4206,7 @@ BODY <span class="o">{</span>
 <td>&gt;0 and &lt;=100</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-33'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -4294,7 +4281,7 @@ BODY <span class="o">{</span>
   </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-33'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数</th>
@@ -4477,7 +4464,7 @@ BODY <span class="o">{</span>
 <td>[1,2000]</td>
 </tr>
 </tbody></table>
-<h3 id='2213f4c32f-34'>响应数据</h3>
+
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -4498,7 +4485,7 @@ BODY <span class="o">{</span>
   </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre><h3 id='2213f4c32f-34'>响应数据</h3>
 <table><thead>
 <tr>
 <th>参数名称</th>
