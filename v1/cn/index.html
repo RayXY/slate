@@ -1259,7 +1259,7 @@
 <h2 id='24'>最近24小时行情数据</h2>
 <p>此接口返回最近24小时的行情数据汇总。</p>
 <h3 id='http-10'>HTTP 请求</h3>
-<p><code>GET /market/detail/</code></p>
+<p><code>GET /market/detail</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail?symbol=ethusdt"</span>
 </code></pre><h3 id='1f9ac54b15-10'>请求参数</h3>
 <table><thead>
@@ -1411,13 +1411,16 @@
 <td>true</td>
 <td>string</td>
 <td>账户类型</td>
-<td>spot：现货账户， margin：杠杆账户，otc：OTC账户，point：点卡账户</td>
+<td>spot：现货账户， margin：杠杆账户，otc：OTC 账户，point：点卡账户</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">杠杆账户（margin）会在第一次划转资产时创建，如果未划转过资产则不会有杠杆账户</aside>
 <h2 id='870c0ab88b'>账户余额</h2>
 <p>查询指定账户的余额，支持以下账户：</p>
 
-<p>spot：现货账户， margin：杠杆账户，otc：OTC账户，point：点卡账户</p>
+<p>spot：现货账户， margin：杠杆账户，otc：OTC 账户，point：点卡账户
+å</p>
 <h3 id='http-12'>HTTP 请求</h3>
 <p><code>GET /v1/account/accounts/{account-id}/balance</code></p>
 <h3 id='1f9ac54b15-12'>请求参数</h3>
@@ -1493,7 +1496,7 @@
 <td>true</td>
 <td>string</td>
 <td>账户类型</td>
-<td>spot：现货账户， margin：杠杆账户，otc：OTC账户，point：点卡账户</td>
+<td>spot：现货账户， margin：杠杆账户，otc：OTC 账户，point：点卡账户</td>
 </tr>
 <tr>
 <td>list</td>
