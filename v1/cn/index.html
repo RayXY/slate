@@ -402,7 +402,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://www.huobi.pro/API Key/'>创建 API Key </a></li>
+            <li><a href='https://www.hbg.com/API Key/'>创建 API Key </a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -486,7 +486,7 @@
 单个 API Key 维度限制，建议行情API访问也要加上签名，否则限频会更严格。
 </aside>
 <h2 id='c64cd15fdc'>签名认证</h2><h3 id='api-key'>创建 API Key</h3>
-<p>除公共接口（基础信息，行情数据）外的私有接口均必须使用您的 API Key 做签名认证，您可以在 <a href='https://www.huobi.pro/apikey/'>这里 </a> 创建 API Key。</p>
+<p>除公共接口（基础信息，行情数据）外的私有接口均必须使用您的 API Key 做签名认证，您可以在 <a href='https://www.hbg.com/apikey/'>这里 </a> 创建 API Key。</p>
 
 <p>API Key 包括以下两部分</p>
 
@@ -644,7 +644,9 @@
 <p>此接口返回所有火币全球站支持的币种。</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/common/currencys"</span>
 </code></pre><h3 id='http-2'>HTTP 请求</h3>
-<p><code>GET /v1/common/currencys</code></p>
+<ul>
+<li>GET <code>/v1/common/currencys</code></li>
+</ul>
 <h3 id='1f9ac54b15-2'>请求参数</h3>
 <p>此接口不接受任何参数。</p>
 
@@ -662,7 +664,9 @@
 <p>此接口返回当前的系统时间，时间是以毫秒为单位的UNIX时间戳。</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/common/timestamp"</span>
 </code></pre><h3 id='http-3'>HTTP 请求</h3>
-<p><code>GET /v1/common/timestamp</code></p>
+<ul>
+<li>GET <code>/v1/common/timestamp</code></li>
+</ul>
 <h3 id='1f9ac54b15-3'>请求参数</h3>
 <p>此接口不接受任何参数。</p>
 
@@ -675,7 +679,9 @@
 <h1 id='d9d514d202'>行情数据</h1><h2 id='k'>K 线数据（蜡烛图）</h2>
 <p>此接口返回历史K线数据。</p>
 <h3 id='http-4'>HTTP 请求</h3>
-<p><code>GET /market/history/kline</code></p>
+<ul>
+<li>GET <code>/market/history/kline</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/kline?period=1day&amp;size=200&amp;symbol=btcusdt"</span>
 </code></pre><h3 id='1f9ac54b15-4'>请求参数</h3>
 <table><thead>
@@ -777,7 +783,9 @@
 <h2 id='ticker'>聚合行情（Ticker）</h2>
 <p>此接口获取ticker信息同时提供最近24小时的交易聚合信息。</p>
 <h3 id='http-5'>HTTP 请求</h3>
-<p><code>GET /market/detail/merged</code></p>
+<ul>
+<li>GET <code>/market/detail/merged</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail/merged?symbol=ethusdt"</span>
 </code></pre><h3 id='1f9ac54b15-5'>请求参数</h3>
 <table><thead>
@@ -878,7 +886,9 @@
 
 <aside class="notice">此接口返回所有交易对的 ticker，因此数据量较大</aside>
 <h3 id='http-6'>HTTP 请求</h3>
-<p><code>GET /market/tickers</code></p>
+<ul>
+<li>GET <code>/market/tickers</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/tickers"</span>
 </code></pre><h3 id='1f9ac54b15-6'>请求参数</h3>
 <p>此接口不接受任何参数。</p>
@@ -962,7 +972,9 @@
 <h2 id='0f7bd4961a'>市场深度数据</h2>
 <p>此接口返回指定交易对的当前市场深度数据。</p>
 <h3 id='http-7'>HTTP 请求</h3>
-<p><code>GET /market/depth</code></p>
+<ul>
+<li>GET <code>/market/depth</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/depth?symbol=btcusdt&amp;type=step1"</span>
 </code></pre><h3 id='1f9ac54b15-7'>请求参数</h3>
 <table><thead>
@@ -1078,7 +1090,9 @@
 <h2 id='a7fb7754d7'>最近市场成交记录</h2>
 <p>此接口返回指定交易对最新的一个交易记录。</p>
 <h3 id='http-8'>HTTP 请求</h3>
-<p><code>GET /market/trade</code></p>
+<ul>
+<li>GET <code>/market/trade</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/trade?symbol=ethusdt"</span>
 </code></pre><h3 id='1f9ac54b15-8'>请求参数</h3>
 <table><thead>
@@ -1154,7 +1168,9 @@
 <h2 id='5583b4ac64'>获得近期交易记录</h2>
 <p>此接口返回指定交易对近期的所有交易记录。</p>
 <h3 id='http-9'>HTTP 请求</h3>
-<p><code>GET /market/history/trade</code></p>
+<ul>
+<li>GET <code>/market/history/trade</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/history/trade?symbol=ethusdt&amp;size=2"</span>
 </code></pre><h3 id='1f9ac54b15-9'>请求参数</h3>
 <table><thead>
@@ -1259,7 +1275,9 @@
 <h2 id='24'>最近24小时行情数据</h2>
 <p>此接口返回最近24小时的行情数据汇总。</p>
 <h3 id='http-10'>HTTP 请求</h3>
-<p><code>GET /market/detail</code></p>
+<ul>
+<li>GET <code>/market/detail</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/market/detail?symbol=ethusdt"</span>
 </code></pre><h3 id='1f9ac54b15-10'>请求参数</h3>
 <table><thead>
@@ -1353,7 +1371,9 @@
 <h1 id='2a0d0be224'>账户相关</h1><h2 id='bd9157656f'>账户信息</h2>
 <p>查询当前用户的所有账户（account-id）及其相关信息</p>
 <h3 id='http-11'>HTTP 请求</h3>
-<p><code>GET /v1/account/accounts</code></p>
+<ul>
+<li>GET <code>/v1/account/accounts</code></li>
+</ul>
 <h3 id='1f9ac54b15-11'>请求参数</h3>
 <p>无</p>
 
@@ -1422,7 +1442,9 @@
 <p>spot：现货账户， margin：杠杆账户，otc：OTC 账户，point：点卡账户
 å</p>
 <h3 id='http-12'>HTTP 请求</h3>
-<p><code>GET /v1/account/accounts/{account-id}/balance</code></p>
+<ul>
+<li>GET <code>/v1/account/accounts/{account-id}/balance</code></li>
+</ul>
 <h3 id='1f9ac54b15-12'>请求参数</h3>
 <table><thead>
 <tr>
@@ -1543,7 +1565,9 @@
 <h2 id='bb4e9682b5'>资产划转（母子账户之间）</h2>
 <p>母账户执行母子账户之间的划转</p>
 <h3 id='http-13'>HTTP 请求</h3>
-<p><code>POST /v1/subuser/transfer</code></p>
+<ul>
+<li>POST <code>/v1/subuser/transfer</code></li>
+</ul>
 <h3 id='1f9ac54b15-13'>请求参数</h3>
 <table><thead>
 <tr>
@@ -1641,7 +1665,9 @@
 <h2 id='7ae6f46f99'>子账户余额（汇总）</h2>
 <p>母账户查询其下所有子账户的各币种汇总余额</p>
 <h3 id='http-14'>HTTP 请求</h3>
-<p><code>GET /v1/subuser/aggregate-balance</code></p>
+<ul>
+<li>GET <code>/v1/subuser/aggregate-balance</code></li>
+</ul>
 <h3 id='1f9ac54b15-14'>请求参数</h3>
 <p>无</p>
 
@@ -1729,7 +1755,9 @@
 <h2 id='ead729be21'>子账户余额</h2>
 <p>母账户查询子账户各币种账户余额</p>
 <h3 id='http-15'>HTTP 请求</h3>
-<p><code>GET /v1/account/accounts/{sub-uid}</code></p>
+<ul>
+<li>GET <code>/v1/account/accounts/{sub-uid}</code></li>
+</ul>
 <h3 id='1f9ac54b15-15'>请求参数</h3>
 <table><thead>
 <tr>
@@ -1846,7 +1874,7 @@
 <td>String</td>
 <td>-</td>
 <td>账户类型</td>
-<td>Trade：交易账户，frozen：冻结账户</td>
+<td>trade：交易账户，frozen：冻结账户</td>
 </tr>
 <tr>
 <td>balance</td>
@@ -1860,7 +1888,9 @@
 <h1 id='e0d7f450bc'>钱包（充值与提现）</h1><h2 id='ba9b2e88fe'>虚拟币提现</h2>
 <aside class="notice">仅支持在官网上相应币种 <a href='https://www.hbg.com/zh-cn/withdraw_address/'>地址列表 </a> 中的地址</aside>
 <h3 id='http-16'>HTTP 请求</h3>
-<p><code>POST /v1/dw/withdraw/api/create</code></p>
+<ul>
+<li>POST <code>/v1/dw/withdraw/api/create</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code><span class="o">{</span>
   <span class="s2">"address"</span>: <span class="s2">"0xde709f2102306220921060314715629080e2fb77"</span>,
   <span class="s2">"amount"</span>: <span class="s2">"0.05"</span>,
@@ -1939,7 +1969,9 @@
 </tr>
 </tbody></table>
 <h2 id='c9d941b159'>取消提现</h2><h3 id='http-17'>HTTP 请求</h3>
-<p><code>POST /v1/dw/withdraw-virtual/{withdraw-id}/cancel</code></p>
+<ul>
+<li>POST <code>/v1/dw/withdraw-virtual/{withdraw-id}/cancel</code></li>
+</ul>
 <h3 id='1f9ac54b15-17'>请求参数</h3>
 <table><thead>
 <tr>
@@ -1986,7 +2018,9 @@
 </tr>
 </tbody></table>
 <h2 id='d3612d98d4'>充提记录</h2><h3 id='http-18'>HTTP 请求</h3>
-<p><code>GET /v1/query/deposit-withdraw</code></p>
+<ul>
+<li>GET <code>/v1/query/deposit-withdraw</code></li>
+</ul>
 <h3 id='1f9ac54b15-18'>请求参数</h3>
 <table><thead>
 <tr>
@@ -2237,7 +2271,9 @@
 <h2 id='fd6ce2a756'>下单</h2>
 <p>发送一个新订单到火币以进行撮合。</p>
 <h3 id='http-19'>HTTP 请求</h3>
-<p><code>POST /v1/order/orders/place</code></p>
+<ul>
+<li>POST <code>/v1/order/orders/place</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/place"</span>
 BODY <span class="o">{</span>
   <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
@@ -2327,7 +2363,9 @@ BODY <span class="o">{</span>
 <aside class="warning">此接口只提交取消请求，实际取消结果需要通过订单状态，撮合状态等接口来确认。</aside>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378/submitcancel"</span>
 </code></pre><h3 id='http-20'>HTTP 请求</h3>
-<p><code>POST /v1/order/orders/{order-id}/submitcancel</code></p>
+<ul>
+<li>POST <code>/v1/order/orders/{order-id}/submitcancel</code></li>
+</ul>
 <h3 id='1f9ac54b15-20'>请求参数</h3>
 <table><thead>
 <tr>
@@ -2369,7 +2407,9 @@ BODY <span class="o">{</span>
    <span class="s2">"type"</span>: <span class="s2">"buy-limit"</span>
 <span class="o">}</span>
 </code></pre><h3 id='http-21'>HTTP 请求</h3>
-<p><code>GET /v1/order/openOrders</code></p>
+<ul>
+<li>GET <code>/v1/order/openOrders</code></li>
+</ul>
 <h3 id='1f9ac54b15-21'>请求参数</h3>
 <table><thead>
 <tr>
@@ -2495,7 +2535,9 @@ BODY <span class="o">{</span>
 
 <aside class="warning">此接口只提交取消请求，实际取消结果需要通过订单状态，撮合状态等接口来确认。</aside>
 <h3 id='http-22'>HTTP 请求</h3>
-<p><code>POST /v1/order/orders/batchCancelOpenOrders</code></p>
+<ul>
+<li>POST <code>/v1/order/orders/batchCancelOpenOrders</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/batchCancelOpenOrders"</span>
 </code></pre><h3 id='1f9ac54b15-22'>请求参数</h3>
 <table><thead>
@@ -2588,7 +2630,9 @@ BODY <span class="o">{</span>
 <h2 id='ad00632ed5'>批量撤销订单</h2>
 <p>此接口同时为多个订单（基于id）发送取消请求。</p>
 <h3 id='http-23'>HTTP 请求</h3>
-<p><code>POST /v1/order/orders/batchcancel</code></p>
+<ul>
+<li>POST <code>/v1/order/orders/batchcancel</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/batchcancel"</span>
 BODY <span class="o">{</span>
   <span class="s2">"order-ids"</span>: <span class="o">[</span>
@@ -2651,7 +2695,9 @@ BODY <span class="o">{</span>
 <h2 id='92d59b6aad'>查询订单详情</h2>
 <p>此接口返回指定订单的最新状态和详情。</p>
 <h3 id='http-24'>HTTP 请求</h3>
-<p><code>GET /v1/order/orders/{order-id}</code></p>
+<ul>
+<li>GET <code>/v1/order/orders/{order-id}</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378"</span>
 </code></pre><h3 id='1f9ac54b15-24'>请求参数</h3>
 <table><thead>
@@ -2810,7 +2856,9 @@ BODY <span class="o">{</span>
 <h2 id='56c6c47284'>成交明细</h2>
 <p>此接口返回指定订单的成交明细。</p>
 <h3 id='http-25'>HTTP 请求</h3>
-<p><code>GET /v1/order/orders/{order-id}/matchresults</code></p>
+<ul>
+<li>GET <code>/v1/order/orders/{order-id}/matchresults</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders/59378/matchresults"</span>
 </code></pre><h3 id='1f9ac54b15-25'>请求参数</h3>
 <table><thead>
@@ -2939,7 +2987,9 @@ BODY <span class="o">{</span>
 <h2 id='d72a5b49e7'>搜索历史订单</h2>
 <p>此接口基于搜索条件查询历史订单。</p>
 <h3 id='http-26'>HTTP 请求</h3>
-<p><code>GET /v1/order/orders</code></p>
+<ul>
+<li>GET <code>/v1/order/orders</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/orders"</span>
 BODY <span class="o">{</span>
    <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
@@ -3165,7 +3215,9 @@ BODY <span class="o">{</span>
 <h2 id='0fa6055598'>当前和历史成交</h2>
 <p>此接口基于搜索条件查询当前和历史成交记录。</p>
 <h3 id='http-27'>HTTP 请求</h3>
-<p><code>GET /v1/order/matchresults</code></p>
+<ul>
+<li>GET <code>/v1/order/matchresults</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/order/matchresults"</span>
 </code></pre><h3 id='1f9ac54b15-27'>请求参数</h3>
 <table><thead>
@@ -3348,9 +3400,10 @@ BODY <span class="o">{</span>
 
 <p>从现货账户划转至杠杆账户（transfer-in），从杠杆账户划转至现货账户（transfer-out）</p>
 <h3 id='http-28'>HTTP 请求</h3>
-<p><code>POST /v1/dw/transfer-in/margin</code></p>
-
-<p><code>POST /v1/dw/transfer-out/margin</code></p>
+<ul>
+<li><p>POST <code>/v1/dw/transfer-in/margin</code></p></li>
+<li><p>POST <code>/v1/dw/transfer-out/margin</code></p></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/dw/transfer-in/margin"</span>
 BODY
 <span class="o">{</span>
@@ -3414,7 +3467,9 @@ BODY
 <h2 id='48cca1ce88'>申请借贷</h2>
 <p>此接口用于申请借贷.</p>
 <h3 id='http-29'>HTTP 请求</h3>
-<p><code>POST /v1/margin/orders</code></p>
+<ul>
+<li>POST <code>/v1/margin/orders</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/margin/orders"</span>
 BODY
 <span class="o">{</span>
@@ -3478,7 +3533,9 @@ BODY
 <h2 id='48aa7c8199'>归还借贷</h2>
 <p>此接口用于归还借贷.</p>
 <h3 id='http-30'>HTTP 请求</h3>
-<p><code>POST /v1/margin/orders/{order-id}/repay</code></p>
+<ul>
+<li>POST <code>/v1/margin/orders/{order-id}/repay</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/margin/orders/1000/repay"</span>
 BODY
 <span class="o">{</span>
@@ -3532,7 +3589,9 @@ BODY
 <h2 id='e52396720a'>查询借贷订单</h2>
 <p>此接口基于指定搜索条件返回借贷订单。</p>
 <h3 id='http-31'>HTTP 请求</h3>
-<p><code>POST /v1/margin/loan-orders</code></p>
+<ul>
+<li>POST <code>/v1/margin/loan-orders</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/margin/load-orders"</span>
 BODY <span class="o">{</span>
    <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
@@ -3738,7 +3797,9 @@ BODY <span class="o">{</span>
 <h2 id='6e79ba8e80'>借贷账户详情</h2>
 <p>此接口返回借贷账户详情。</p>
 <h3 id='http-32'>HTTP 请求</h3>
-<p><code>GET /v1/margin/accounts/balance</code></p>
+<ul>
+<li>GET <code>/v1/margin/accounts/balance</code></li>
+</ul>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/margin/accounts/balance"</span>
 BODY <span class="o">{</span>
    <span class="s2">"account-id"</span>: <span class="s2">"100009"</span>,
@@ -3866,7 +3927,9 @@ BODY <span class="o">{</span>
 <h1 id='etf-hb10'>ETF（HB10）</h1><h2 id='b122f813d5'>基本信息</h2>
 <p>用户可以通过该接口取得关于 ETF 换入换出的 基本信息，包括一次换入最小量，一次换入最大量，一 次换出最小量，一次换出最大量，换入费率，换出费 率，最新 ETF 换入换出状态，以及 ETF 的成分结构。</p>
 <h3 id='http-33'>HTTP 请求</h3>
-<p><code>GET /etf/swap/config</code></p>
+<ul>
+<li>GET <code>/etf/swap/config</code></li>
+</ul>
 <h3 id='1f9ac54b15-33'>请求参数</h3>
 <table><thead>
 <tr>
@@ -4024,9 +4087,10 @@ BODY <span class="o">{</span>
 <h2 id='9a1fc4aa33'>换入换出</h2>
 <p>用户可以通过该接口取得关于 ETF 换入（swap/in）换出（swap/out）的 基本信息，包括一次换入最小量，一次换入最大量，一次换出最小量，一次换出最大量，换入费率，换出费率，最新 ETF 换入换出状态，以及 ETF 的成分结构。</p>
 <h3 id='http-34'>HTTP 请求</h3>
-<p><code>POST /etf/swap/in</code></p>
-
-<p><code>POST /etf/swap/out</code></p>
+<ul>
+<li><p>POST <code>/etf/swap/in</code></p></li>
+<li><p>POST <code>/etf/swap/out</code></p></li>
+</ul>
 <h3 id='1f9ac54b15-34'>请求参数</h3>
 <table><thead>
 <tr>
@@ -4176,7 +4240,9 @@ BODY <span class="o">{</span>
 <h2 id='6fcdba1f71'>操作记录</h2>
 <p>用户可以通过该接口取得关于 ETF 换入换出操 作的明细记录。最多返回 100 条记录。</p>
 <h3 id='http-35'>HTTP 请求</h3>
-<p><code>GET /etf/swap/list</code></p>
+<ul>
+<li>GET <code>/etf/swap/list</code></li>
+</ul>
 <h3 id='1f9ac54b15-35'>请求参数</h3>
 <table><thead>
 <tr>
@@ -4434,7 +4500,9 @@ BODY <span class="o">{</span>
 <h2 id='etf'>ETF净值</h2>
 <p>当 symbol 为 hb10 时，用户可获得 hb10 ETF 净值的 K 线，包括 open, high, low, close, amount, vol。由于是净值信息，所以 the amount 和 vol 是 会返回 0。HB10 ETF 的净值每 15 秒计算一次。</p>
 <h3 id='http-36'>HTTP 请求</h3>
-<p><code>GET /quotation/market/history/kline</code></p>
+<ul>
+<li>GET <code>/quotation/market/history/kline</code></li>
+</ul>
 <h3 id='1f9ac54b15-36'>请求参数</h3>
 <table><thead>
 <tr>
