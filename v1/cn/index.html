@@ -469,7 +469,7 @@
 <tr>
 <td>ts</td>
 <td>int</td>
-<td>接口返回的时间戳</td>
+<td>接口返回的调整为北京时间的时间戳，单位毫秒</td>
 </tr>
 <tr>
 <td>data</td>
@@ -661,7 +661,7 @@
 </span></code></pre><h3 id='aceee0d936-2'>返回字段</h3>
 <aside class="notice">返回的“data”对象是一个字符串数组，每一个字符串代表一个支持的币种。</aside>
 <h2 id='5113d0e5ad'>返回当前系统时间</h2>
-<p>此接口返回当前的系统时间，时间是以毫秒为单位的UNIX时间戳。</p>
+<p>此接口返回当前的系统时间，时间是调整为北京时间的时间戳，单位毫秒。</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.huobi.pro/v1/common/timestamp"</span>
 </code></pre><h3 id='http-3'>HTTP 请求</h3>
 <ul>
@@ -675,7 +675,7 @@
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="mi">1494900087029</span><span class="w">
 </span></code></pre><h3 id='2213f4c32f'>响应数据</h3>
-<p>返回的“data”对象是一个整数表示返回的时间戳。</p>
+<p>返回的“data”对象是一个整数表示返回的调整为北京时间的时间戳，单位毫秒。</p>
 <h1 id='d9d514d202'>行情数据</h1><h2 id='k'>K 线数据（蜡烛图）</h2>
 <p>此接口返回历史K线数据。</p>
 <h3 id='http-4'>HTTP 请求</h3>
@@ -742,7 +742,7 @@
 <tr>
 <td>id</td>
 <td>integer</td>
-<td>以UNIX秒为单位的时间戳，并以此作为此K线柱的id</td>
+<td>调整为北京时间的时间戳，单位毫秒，并以此作为此K线柱的id</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -833,7 +833,7 @@
 <tr>
 <td>id</td>
 <td>integer</td>
-<td>以UNIX秒为单位的时间戳，并以此作为此ticker的id</td>
+<td>调整为北京时间的时间戳，单位毫秒，并以此作为此ticker的id</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -853,7 +853,7 @@
 <tr>
 <td>close</td>
 <td>float</td>
-<td>本阶段收盘价</td>
+<td>本阶段最新价</td>
 </tr>
 <tr>
 <td>low</td>
@@ -946,7 +946,7 @@
 <tr>
 <td>close</td>
 <td>float</td>
-<td>本阶段收盘价</td>
+<td>本阶段最新价</td>
 </tr>
 <tr>
 <td>low</td>
@@ -982,6 +982,7 @@
 <th>参数</th>
 <th>数据类型</th>
 <th>必须</th>
+<th>默认值</th>
 <th>描述</th>
 </tr>
 </thead><tbody>
@@ -989,15 +990,26 @@
 <td>symbol</td>
 <td>string</td>
 <td>true</td>
+<td>NA</td>
 <td>交易对，例如btcusdt, bccbtc</td>
+</tr>
+<tr>
+<td>depth</td>
+<td>integer</td>
+<td>false</td>
+<td>20</td>
+<td>返回深度的数量，可取值5，10，20</td>
 </tr>
 <tr>
 <td>type</td>
 <td>string</td>
 <td>true</td>
-<td>深度的精细度，具体说明见下方</td>
+<td>step0</td>
+<td>深度的价格聚合度，具体说明见下方</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">当type值为‘step0’时，‘depth’的默认值为150而非20。</aside>
 
 <p><strong>参数type的各值说明（需补充）</strong></p>
 
@@ -1009,27 +1021,27 @@
 </thead><tbody>
 <tr>
 <td>step0</td>
-<td></td>
+<td>无聚合</td>
 </tr>
 <tr>
 <td>step1</td>
-<td></td>
+<td>聚合度为报价精度*10</td>
 </tr>
 <tr>
 <td>step2</td>
-<td></td>
+<td>聚合度为报价精度*100</td>
 </tr>
 <tr>
 <td>step3</td>
-<td></td>
+<td>聚合度为报价精度*1000</td>
 </tr>
 <tr>
 <td>step4</td>
-<td></td>
+<td>聚合度为报价精度*10000</td>
 </tr>
 <tr>
 <td>step5</td>
-<td></td>
+<td>聚合度为报价精度*100000</td>
 </tr>
 </tbody></table>
 
@@ -1069,7 +1081,7 @@
 <tr>
 <td>ts</td>
 <td>integer</td>
-<td>UNIX毫秒时间戳</td>
+<td>调整为北京时间的时间戳，单位毫秒</td>
 </tr>
 <tr>
 <td>version</td>
@@ -1157,12 +1169,12 @@
 <tr>
 <td>ts</td>
 <td>integer</td>
-<td>UNIX毫秒时间戳</td>
+<td>调整为北京时间的时间戳，单位毫秒</td>
 </tr>
 <tr>
 <td>direction</td>
 <td>string</td>
-<td>交易方向：“买”或“卖”</td>
+<td>交易方向：“buy” 或 “sell”, “buy” 即买，“sell” 即卖</td>
 </tr>
 </tbody></table>
 <h2 id='5583b4ac64'>获得近期交易记录</h2>
@@ -1237,7 +1249,7 @@
    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre><h3 id='2213f4c32f-7'>响应数据</h3>
-<aside class="notice">返回的数据对象是一个对象数组，每个数组元素为一个UNIX时间戳下的所有交易记录，这些交易记录以数组形式呈现。</aside>
+<aside class="notice">返回的数据对象是一个对象数组，每个数组元素为一个调整为北京时间的时间戳（单位毫秒）下的所有交易记录，这些交易记录以数组形式呈现。</aside>
 
 <table><thead>
 <tr>
@@ -1264,7 +1276,7 @@
 <tr>
 <td>ts</td>
 <td>integer</td>
-<td>UNIX毫秒时间戳</td>
+<td>调整为北京时间的时间戳，单位毫秒</td>
 </tr>
 <tr>
 <td>direction</td>
@@ -1325,7 +1337,7 @@
 <tr>
 <td>id</td>
 <td>integer</td>
-<td>UNIX秒时间戳作为id</td>
+<td>响应id</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -2319,7 +2331,7 @@ BODY <span class="o">{</span>
 <td>string</td>
 <td>true</td>
 <td>NA</td>
-<td>订单交易量，以交易对的基础币种来表示（TBC）</td>
+<td>订单交易量</td>
 </tr>
 <tr>
 <td>price</td>
@@ -2497,7 +2509,7 @@ BODY <span class="o">{</span>
 <tr>
 <td>created-at</td>
 <td>int</td>
-<td>订单创建的毫秒时间戳</td>
+<td>订单创建的调整为北京时间的时间戳，单位毫秒</td>
 </tr>
 <tr>
 <td>type</td>
